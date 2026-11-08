@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEnterpriseHub | App Catalog & Direct Downloads</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="site-wrapper">
+    <header class="hero">
+      <div class="brand-tag">App Hub</div>
+      <h1 class="hero-title">Official Android Applications</h1>
+      <p class="hero-subtitle">Direct browser APK downloads and dedicated web pages for all published utilities.</p>
+      
+      <div class="search-container">
+        <input 
+          type="text" 
+          id="search-input" 
+          placeholder="Search apps by name, description, or keyword..." 
+          autocomplete="off"
+        />
+      </div>
+    </header>
+
+    <main class="catalog-section">
+      <div id="status-container" class="status-container">
+        <div class="spinner"></div>
+        <p>Scanning releases and APK assets...</p>
+      </div>
+      <div id="app-grid" class="app-grid" style="display: none;"></div>
+    </main>
+
+    <footer class="site-footer">
+      <p>© SEnterpriseHub · All APKs verified directly from GitHub releases</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

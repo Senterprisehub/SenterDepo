@@ -1,0 +1,114 @@
+[
+  {
+    "id": "arogyadietai",
+    "name": "Arogya Diet AI",
+    "repo": "senterprisehub/arogyadietai",
+    "pageUrl": "https://senterprisehub.github.io/arogyadietai/",
+    "defaultIcon": "https://raw.githubusercontent.com/senterprisehub/arogyadietai/main/icon.png",
+    "fallbackDesc": "AI-powered diet planning and nutritional guidance assistant."
+  },
+  {
+    "id": "mileage-tracker",
+    "name": "Mileage Tracker",
+    "repo": "senterprisehub/Mileage-Tracker",
+    "pageUrl": "https://senterprisehub.github.io/Mileage-Tracker/",
+    "defaultIcon": "https://raw.githubusercontent.com/senterprisehub/Mileage-Tracker/main/icon.png",
+    "fallbackDesc": "Automated vehicle mileage, route logging, and fuel expense calculator."
+  },
+  {
+    "id": "proinvoice",
+    "name": "ProInvoice",
+    "repo": "senterprisehub/ProInvoice",
+    "pageUrl": "https://senterprisehub.github.io/ProInvoice/",
+    "defaultIcon": "https://raw.githubusercontent.com/senterprisehub/ProInvoice/main/icon.png",
+    "fallbackDesc": "Professional billing, invoice generation, and tax-ready PDF manager."
+  },
+  {
+    "id": "location-saving-app",
+    "name": "Location Saving App",
+    "repo": "senterprisehub/Location-Saving-App",
+    "pageUrl": "https://senterprisehub.github.io/Location-Saving-App/",
+    "defaultIcon": "https://raw.githubusercontent.com/senterprisehub/Location-Saving-App/main/icon.png",
+    "fallbackDesc": "Fast GPS coordinate bookmarker with offline tag mapping."
+  },
+  {
+    "id": "receiptpos",
+    "name": "Receipt POS",
+    "repo": "senterprisehub/ReceiptPOS",
+    "pageUrl": "https://senterprisehub.github.io/ReceiptPOS/",
+    "defaultIcon": "https://raw.githubusercontent.com/senterprisehub/ReceiptPOS/main/icon.png",
+    "fallbackDesc": "Lightweight point-of-sale terminal and instant receipt printer for retail."
+  },
+  {
+    "id": "mock-gps-pro",
+    "name": "Mock GPS Pro",
+    "repo": "senterprisehub/Mock-GPS-Pro",
+    "pageUrl": "https://senterprisehub.github.io/Mock-GPS-Pro/",
+    "defaultIcon": "https://raw.githubusercontent.com/senterprisehub/Mock-GPS-Pro/main/icon.png",
+    "fallbackDesc": "Developer mock location spoofer with customizable route simulations."
+  },
+  {
+    "id": "sales-flow-app",
+    "name": "Sales Flow App",
+    "repo": "senterprisehub/Sales-Flow-App",
+    "pageUrl": "https://senterprisehub.github.io/Sales-Flow-App/",
+    "defaultIcon": "https://raw.githubusercontent.com/senterprisehub/Sales-Flow-App/main/icon.png",
+    "fallbackDesc": "Mobile field sales tracker, client CRM, and lead management hub."
+  },
+  {
+    "id": "voltpulse",
+    "name": "VoltPulse",
+    "repo": "senterprisehub/VoltPulse",
+    "pageUrl": "https://senterprisehub.github.io/VoltPulse/",
+    "defaultIcon": "https://raw.githubusercontent.com/senterprisehub/VoltPulse/main/icon.png",
+    "fallbackDesc": "Real-time electrical measurement, voltage monitoring, and pulse analyzer."
+  },
+  {
+    "id": "sales-flow",
+    "name": "Sales Flow",
+    "repo": "senterprisehub/Sales-flow",
+    "pageUrl": "https://senterprisehub.github.io/Sales-flow/",
+    "defaultIcon": "https://raw.githubusercontent.com/senterprisehub/Sales-flow/main/icon.png",
+    "fallbackDesc": "Pipeline automation and daily activity reporting for sales executives."
+  },
+  {
+    "id": "thermo-med-pro",
+    "name": "Thermo Med Pro",
+    "repo": "senterprisehub/Thermo-Med-Pro",
+    "pageUrl": "https://senterprisehub.github.io/Thermo-Med-Pro/",
+    "defaultIcon": "https://raw.githubusercontent.com/senterprisehub/Thermo-Med-Pro/main/icon.png",
+    "fallbackDesc": "Medical temperature logger and cold-chain compliance monitoring tool."
+  },
+  {
+    "id": "thermo-print-studio",
+    "name": "Thermo Print Studio",
+    "repo": "senterprisehub/Thermo-Print-Studio",
+    "pageUrl": "https://senterprisehub.github.io/Thermo-Print-Studio/",
+    "defaultIcon": "https://raw.githubusercontent.com/senterprisehub/Thermo-Print-Studio/main/icon.png",
+    "fallbackDesc": "Bluetooth and USB ESC/POS thermal printer layout designer and driver utility."
+  },
+  {
+    "id": "proinvoice-app",
+    "name": "ProInvoice App",
+    "repo": "senterprisehub/Proinvoice-App",
+    "pageUrl": "https://senterprisehub.github.io/Proinvoice-App/",
+    "defaultIcon": "https://raw.githubusercontent.com/senterprisehub/Proinvoice-App/main/icon.png",
+    "fallbackDesc": "Mobile invoice maker with automated client statement reconciliation."
+  },
+  {
+    "id": "bmi-health-tracker",
+    "name": "BMI Health Tracker",
+    "repo": "senterprisehub/BMI-Health-Tracker",
+    "pageUrl": "https://senterprisehub.github.io/BMI-Health-Tracker/",
+    "defaultIcon": "https://raw.githubusercontent.com/senterprisehub/BMI-Health-Tracker/main/icon.png",
+    "fallbackDesc": "Body Mass Index calculator with historical wellness tracking."
+  },
+  {
+    "id": "adj",
+    "name": "ADJ Utility",
+    "repo": "senterprisehub/ADJ",
+    "pageUrl": "https://senterprisehub.github.io/ADJ/",
+    "defaultIcon": "https://raw.githubusercontent.com/senterprisehub/ADJ/main/icon.png",
+    "fallbackDesc": "Specialized field operational and calculation utility."
+  }
+]
