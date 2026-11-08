@@ -2,291 +2,277 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <meta name="google-site-verification" content="google9e1371db0f52541e">
-<title>SR Apps Studio | Android Ecosystem & APK Distribution</title>
-<meta name="description" content="Discover and download verified Android APKs and Progressive Web Applications from SR Apps Studio with synchronized global hourly release cycles.">
+<title>SR Apps Studio | Android APK & Web Apps Portal</title>
+<meta name="description" content="Official repository distribution portal for verified Android APKs and Progressive Web Applications by senterprisehub.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://senterprisehub.github.io/hub/">
+<link rel="canonical" href="https://srappstudio.vercel.app/">
 ​<style>
-*, *::before, *::after {
+* {
 box-sizing: border-box;
 margin: 0;
 padding: 0;
 }
-​html, body {
-width: 100%;
-min-height: 100%;
-background-color: #f8fafc;
+​body {
+background-color: #f1f5f9;
 color: #0f172a;
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-line-height: 1.5;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+line-height: 1.45;
 -webkit-font-smoothing: antialiased;
+padding-bottom: 40px;
 }
-​img, svg {
-display: block;
-max-width: 100%;
-}
-​header {
-position: sticky;
-top: 0;
-z-index: 100;
+​/* HEADER */
+header {
 background: #ffffff;
 border-bottom: 1px solid #e2e8f0;
-padding: 10px 16px;
-box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+position: sticky;
+top: 0;
+z-index: 1000;
+box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
-​.header-inner {
-max-width: 1140px;
+​.header-bar {
+max-width: 1080px;
 margin: 0 auto;
+padding: 10px 16px;
 display: flex;
 align-items: center;
 justify-content: space-between;
-gap: 8px;
+gap: 12px;
 }
-​.brand-wrap {
+​.brand {
 display: flex;
 align-items: center;
 gap: 10px;
 text-decoration: none;
+color: inherit;
 }
-​.brand-icon-box {
-width: 36px;
-height: 36px;
-min-width: 36px;
-min-height: 36px;
-max-width: 36px;
-max-height: 36px;
-border-radius: 8px;
+​.brand-icon {
+width: 38px;
+height: 38px;
+min-width: 38px;
+max-width: 38px;
 background: #0284c7;
+border-radius: 10px;
 display: flex;
 align-items: center;
 justify-content: center;
-overflow: hidden;
-flex-shrink: 0;
+color: #ffffff;
 }
-​.brand-icon-box svg {
+​.brand-icon svg {
 width: 22px;
 height: 22px;
 fill: #ffffff;
 }
-​.brand-title {
+​.brand-text h1 {
 font-size: 1.05rem;
 font-weight: 800;
-color: #0f172a;
-letter-spacing: -0.02em;
 line-height: 1.1;
+color: #0f172a;
 }
-​.brand-title span {
+​.brand-text h1 span {
 color: #0284c7;
 }
-​.brand-badge {
-font-size: 0.65rem;
+​.brand-sub {
+font-size: 0.68rem;
 font-weight: 700;
 color: #059669;
-background: #ecfdf5;
-border: 1px solid #a7f3d0;
-padding: 1px 6px;
-border-radius: 4px;
-display: inline-block;
-margin-top: 2px;
+text-transform: uppercase;
+letter-spacing: 0.04em;
 }
-​.header-controls {
+​.header-actions {
 display: flex;
 align-items: center;
-gap: 6px;
+gap: 8px;
 }
-​.timer-badge {
+​.clock-badge {
 display: inline-flex;
 align-items: center;
-gap: 4px;
-background: #f1f5f9;
+gap: 5px;
+background: #f8fafc;
 border: 1px solid #cbd5e1;
-padding: 5px 8px;
+padding: 5px 10px;
 border-radius: 6px;
-font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 font-size: 0.78rem;
+font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
 font-weight: 700;
 color: #0284c7;
 white-space: nowrap;
 }
 ​.btn-sync {
-display: inline-flex;
-align-items: center;
-justify-content: center;
 background: #0284c7;
 color: #ffffff;
 border: 1px solid #0284c7;
-padding: 5px 10px;
+padding: 6px 12px;
 border-radius: 6px;
 font-size: 0.78rem;
 font-weight: 600;
 cursor: pointer;
-white-space: nowrap;
+display: inline-flex;
+align-items: center;
+gap: 4px;
 }
 ​.btn-sync:hover {
 background: #0369a1;
 }
-​.hero {
-text-align: center;
-padding: 24px 16px 16px;
-max-width: 820px;
+​/* CONTAINER */
+.container {
+max-width: 1080px;
 margin: 0 auto;
+padding: 0 16px;
 }
-​.official-badge {
+​/* HERO */
+.hero {
+text-align: center;
+padding: 24px 8px 16px;
+}
+​.hub-badge {
 display: inline-block;
 font-size: 0.72rem;
 font-weight: 700;
-color: #0284c7;
 background: #e0f2fe;
+color: #0369a1;
 border: 1px solid #bae6fd;
-padding: 3px 10px;
+padding: 3px 12px;
 border-radius: 9999px;
 margin-bottom: 10px;
 }
-​.hero-h1 {
-font-size: 1.8rem;
+​.hero-title {
+font-size: 1.65rem;
 font-weight: 800;
-color: #0f172a;
-letter-spacing: -0.03em;
 line-height: 1.2;
+color: #0f172a;
 margin-bottom: 8px;
 }
-​.hero-h1 span {
+​.hero-title span {
 color: #0284c7;
 }
-​.hero-p {
+​.hero-desc {
+font-size: 0.88rem;
 color: #64748b;
-font-size: 0.9rem;
-max-width: 580px;
-margin: 0 auto 14px;
-line-height: 1.45;
+max-width: 540px;
+margin: 0 auto 12px;
 }
-​.countdown-alert {
+​.sync-note {
 display: inline-block;
 background: #fffbeb;
 border: 1px solid #fde68a;
-color: #b45309;
-font-size: 0.78rem;
+color: #92400e;
+font-size: 0.76rem;
 font-weight: 600;
-padding: 6px 12px;
-border-radius: 6px;
-margin-bottom: 20px;
-line-height: 1.4;
+padding: 6px 14px;
+border-radius: 8px;
+margin-bottom: 18px;
 }
-​.stats-card {
+​/* STATS STRIP */
+.stats-row {
 display: grid;
 grid-template-columns: repeat(4, 1fr);
 background: #ffffff;
 border: 1px solid #e2e8f0;
-border-radius: 10px;
-padding: 12px 6px;
+border-radius: 12px;
+padding: 12px 8px;
 margin-bottom: 20px;
-box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+box-shadow: 0 1px 2px rgba(0,0,0,0.03);
 }
-​.stat-col {
+​.stat-item {
 text-align: center;
 border-right: 1px solid #f1f5f9;
-padding: 0 4px;
+padding: 2px 4px;
 }
-​.stat-col:last-child {
+​.stat-item:last-child {
 border-right: none;
 }
-​.stat-val {
+​.stat-number {
 font-size: 1.35rem;
 font-weight: 800;
 color: #0f172a;
 line-height: 1.1;
 }
-​.stat-val.green { color: #059669; }
-.stat-val.blue { color: #4f46e5; }
-.stat-val.sky { color: #0284c7; }
-​.stat-lbl {
-font-size: 0.65rem;
+​.stat-number.green { color: #059669; }
+.stat-number.blue { color: #4f46e5; }
+.stat-number.sky { color: #0284c7; }
+​.stat-label {
+font-size: 0.64rem;
 font-weight: 700;
 color: #94a3b8;
 text-transform: uppercase;
 letter-spacing: 0.05em;
-margin-top: 2px;
+margin-top: 3px;
 }
-​.search-input {
+​/* SEARCH & FILTER */
+.search-box {
 width: 100%;
-max-width: 640px;
-padding: 11px 14px;
-border-radius: 8px;
-border: 1px solid #cbd5e1;
-font-size: 0.9rem;
-background: #ffffff;
-color: #0f172a;
-outline: none;
+max-width: 600px;
 margin: 0 auto 12px;
 display: block;
+padding: 11px 16px;
+border: 1px solid #cbd5e1;
+border-radius: 10px;
+font-size: 0.9rem;
+background: #ffffff;
+outline: none;
 }
-​.search-input:focus {
+​.search-box:focus {
 border-color: #0284c7;
 box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
 }
-​.filter-pills {
+​.filter-group {
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
 gap: 6px;
-max-width: 640px;
-margin: 0 auto 24px;
+margin-bottom: 24px;
 }
-​.filter-btn {
+​.filter-pill {
 background: #ffffff;
 border: 1px solid #cbd5e1;
-padding: 5px 11px;
+padding: 6px 12px;
+border-radius: 8px;
 font-size: 0.74rem;
 font-weight: 600;
 color: #475569;
-border-radius: 6px;
 cursor: pointer;
 }
-​.filter-btn.active {
+​.filter-pill.active {
 background: #0f172a;
 color: #ffffff;
 border-color: #0f172a;
 }
-​main {
-max-width: 1140px;
-width: 100%;
-margin: 0 auto;
-padding: 0 16px 40px;
-}
-​.apps-grid {
+​/* APP CARDS GRID */
+.grid {
 display: grid;
-grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
 gap: 16px;
 }
-​.app-card {
+​.card {
 background: #ffffff;
 border: 1px solid #e2e8f0;
-border-radius: 10px;
+border-radius: 12px;
 padding: 16px;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
 gap: 12px;
-box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+box-shadow: 0 1px 3px rgba(0,0,0,0.03);
 }
-​.app-card:hover {
+​.card:hover {
 border-color: #cbd5e1;
-box-shadow: 0 4px 12px rgba(15, 23, 42, 0.07);
+box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
 }
-​.card-top {
+​.card-head {
 display: flex;
 align-items: flex-start;
 gap: 12px;
 }
-​.app-icon-box {
-width: 48px;
-height: 48px;
-min-width: 48px;
-min-height: 48px;
-max-width: 48px;
-max-height: 48px;
+​/* STRICT IMAGE SIZING: NOTHING WILL EVER EXPAND */
+.app-icon {
+width: 48px !important;
+height: 48px !important;
+min-width: 48px !important;
+min-height: 48px !important;
+max-width: 48px !important;
+max-height: 48px !important;
 border-radius: 10px;
 background: #0284c7;
 color: #ffffff;
@@ -294,149 +280,145 @@ display: flex;
 align-items: center;
 justify-content: center;
 font-weight: 800;
-font-size: 1.2rem;
-flex-shrink: 0;
+font-size: 1.25rem;
 overflow: hidden;
+flex-shrink: 0;
 }
-​.app-icon-box img {
+​.app-icon img {
 width: 48px !important;
 height: 48px !important;
+min-width: 48px !important;
+min-height: 48px !important;
 max-width: 48px !important;
 max-height: 48px !important;
 object-fit: cover;
+display: block;
 border-radius: 10px;
 }
-​.card-meta {
-min-width: 0;
+​.card-title-group {
 flex: 1;
+min-width: 0;
 }
-​.app-title {
-font-size: 1rem;
+​.app-name {
+font-size: 0.98rem;
 font-weight: 700;
 color: #0f172a;
 white-space: nowrap;
 overflow: hidden;
 text-overflow: ellipsis;
-line-height: 1.25;
+line-height: 1.2;
 }
-​.badge-row {
-display: flex;
-align-items: center;
-gap: 6px;
-margin-top: 4px;
-}
-​.dist-badge {
+​.app-type-tag {
+display: inline-block;
 font-size: 0.62rem;
 font-weight: 700;
-padding: 1px 6px;
+padding: 2px 6px;
 border-radius: 4px;
+margin-top: 4px;
 text-transform: uppercase;
-font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
 }
-​.dist-badge.apk {
+​.app-type-tag.apk {
 background: #ecfdf5;
 color: #059669;
 border: 1px solid #a7f3d0;
 }
-​.dist-badge.web {
+​.app-type-tag.web {
 background: #eef2ff;
 color: #4f46e5;
 border: 1px solid #c7d2fe;
 }
-​.app-desc {
+​.card-desc {
 font-size: 0.82rem;
 color: #475569;
 line-height: 1.4;
-margin-top: 6px;
 min-height: 36px;
 }
-​.spec-strip {
+​.card-meta-bar {
 display: flex;
 align-items: center;
 justify-content: space-between;
-font-size: 0.72rem;
-font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-color: #64748b;
-padding: 6px 10px;
 background: #f8fafc;
-border-radius: 6px;
 border: 1px solid #f1f5f9;
-margin-top: 6px;
+padding: 6px 10px;
+border-radius: 6px;
+font-size: 0.72rem;
+font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+color: #64748b;
 }
-​.spec-strip strong {
+​.card-meta-bar strong {
 color: #0f172a;
 }
-​.btn-grid-two {
+​/* ACTION BUTTONS */
+.action-row {
 display: grid;
 grid-template-columns: 1.2fr 1fr;
 gap: 8px;
-margin-top: 8px;
 }
-​.btn-link {
+​.btn {
 display: inline-flex;
 align-items: center;
 justify-content: center;
-padding: 8px 10px;
+text-decoration: none;
 font-size: 0.78rem;
 font-weight: 600;
+padding: 8px 10px;
 border-radius: 6px;
-text-decoration: none;
-text-align: center;
 white-space: nowrap;
+text-align: center;
 }
-​.btn-apk-dl {
+​.btn-download {
 background: #0284c7;
 color: #ffffff;
 border: 1px solid #0284c7;
 }
-​.btn-apk-dl:hover {
+​.btn-download:hover {
 background: #0369a1;
 }
-​.btn-app-page {
+​.btn-portal {
 background: #ffffff;
 color: #0f172a;
 border: 1px solid #cbd5e1;
 }
-​.btn-app-page:hover {
+​.btn-portal:hover {
 background: #f8fafc;
 }
-​.btn-web-single {
+​.btn-web {
+width: 100%;
 background: #4f46e5;
 color: #ffffff;
 border: 1px solid #4f46e5;
-width: 100%;
-margin-top: 8px;
 }
-​.btn-web-single:hover {
+​.btn-web:hover {
 background: #4338ca;
 }
-​.pwa-instruction {
-margin-top: 6px;
-padding: 6px 8px;
-border-radius: 6px;
+​.web-help {
 background: #f5f3ff;
 border: 1px solid #ddd6fe;
+border-radius: 6px;
+padding: 6px 8px;
 font-size: 0.7rem;
 color: #5b21b6;
 line-height: 1.35;
+margin-top: 6px;
 }
-​.no-results {
+​.empty-state {
 text-align: center;
 padding: 40px 16px;
 background: #ffffff;
 border: 1px dashed #cbd5e1;
-border-radius: 10px;
+border-radius: 12px;
 display: none;
-margin-top: 20px;
+grid-column: 1 / -1;
 }
 ​footer {
 border-top: 1px solid #e2e8f0;
 background: #ffffff;
-padding: 16px;
-margin-top: auto;
+padding: 18px 16px;
+margin-top: 40px;
 }
-​.footer-inner {
-max-width: 1140px;
+​.footer-content {
+max-width: 1080px;
 margin: 0 auto;
 display: flex;
 align-items: center;
@@ -446,23 +428,23 @@ gap: 8px;
 font-size: 0.78rem;
 color: #64748b;
 }
-​.footer-inner a {
+​.footer-content a {
 color: #0284c7;
 text-decoration: none;
 font-weight: 600;
 }
-​@media (max-width: 640px) {
-.stats-card {
+​@media (max-width: 600px) {
+.stats-row {
 grid-template-columns: repeat(2, 1fr);
-row-gap: 10px;
+row-gap: 8px;
 }
-.stat-col:nth-child(2) {
+.stat-item:nth-child(2) {
 border-right: none;
 }
-.stat-col:nth-child(3),
-.stat-col:nth-child(4) {
+.stat-item:nth-child(3),
+.stat-item:nth-child(4) {
 border-top: 1px solid #f1f5f9;
-padding-top: 8px;
+padding-top: 6px;
 }
 .btn-sync span {
 display: none;
@@ -471,523 +453,512 @@ display: none;
 </style>
 </head>
 <body>
-​<header>
-<div class="header-inner">
-<div class="brand-wrap">
-<div class="brand-icon-box" style="width:36px;height:36px;max-width:36px;max-height:36px;">
-<svg viewBox="0 0 24 24" style="width:22px;height:22px;max-width:22px;max-height:22px;"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0002s.4482-1.0002.9993-1.0002c.5516 0 .9998.4486.9998 1.0002s-.4482 1.0002-.9998 1.0002m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0002s.4482-1.0002.9993-1.0002c.5516 0 .9998.4486.9998 1.0002s-.4482 1.0002-.9998 1.0002m11.4045-6.02l1.9963-3.4578c.1146-.1988.0464-.4529-.1523-.5676-.1989-.1146-.4533-.0465-.568.1523l-2.0223 3.503C15.5898 8.4116 13.8566 8 12 8s-3.5898.4116-5.1352.9513L4.8425 5.4483c-.1147-.1988-.3691-.2669-.568-.1523-.1987.1147-.2669.3688-.1523.5676l1.9963 3.4578C2.6888 11.2863.3435 15.3435 0 20.0002h24c-.3435-4.6567-2.6888-8.7139-6.1185-10.6788"/></svg>
+​<!-- HEADER -->
+<header>
+<div class="header-bar">
+<a href="https://srappstudio.vercel.app/" class="brand">
+<div class="brand-icon" style="width:38px;height:38px;min-width:38px;min-height:38px;max-width:38px;max-height:38px;">
+<svg viewBox="0 0 24 24" style="width:22px;height:22px;max-width:22px;max-height:22px;" width="22" height="22">
+<path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0002s.4482-1.0002.9993-1.0002c.5516 0 .9998.4486.9998 1.0002s-.4482 1.0002-.9998 1.0002m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0002s.4482-1.0002.9993-1.0002c.5516 0 .9998.4486.9998 1.0002s-.4482 1.0002-.9998 1.0002m11.4045-6.02l1.9963-3.4578c.1146-.1988.0464-.4529-.1523-.5676-.1989-.1146-.4533-.0465-.568.1523l-2.0223 3.503C15.5898 8.4116 13.8566 8 12 8s-3.5898.4116-5.1352.9513L4.8425 5.4483c-.1147-.1988-.3691-.2669-.568-.1523-.1987.1147-.2669.3688-.1523.5676l1.9963 3.4578C2.6888 11.2863.3435 15.3435 0 20.0002h24c-.3435-4.6567-2.6888-8.7139-6.1185-10.6788"/>
+</svg>
 </div>
-<div>
-<div class="brand-title">SR Apps <span>Studio</span></div>
-<div class="brand-badge">● Universal Sync</div>
+<div class="brand-text">
+<h1>SR Apps <span>Studio</span></h1>
+<div class="brand-sub">● Universal Sync</div>
 </div>
+</a>
+​<div class="header-actions">
+<div class="clock-badge" title="Universal sync countdown">
+⏲ <span id="sync-clock">59:59</span>
 </div>
-​<div class="header-controls">
-<div class="timer-badge" title="Next global hourly sync countdown">
-⏲ <span id="sync-timer">59:59</span>
-</div>
-<button class="btn-sync" onclick="location.reload()" title="Synchronize catalog">
+<button class="btn-sync" onclick="location.reload()" title="Refresh catalog">
 ↻ <span>Sync Now</span>
 </button>
 </div>
 </div>
 </header>
-​<section class="hero">
-<div class="official-badge">✓ Official Portal: senterprisehub</div>
-<h1 class="hero-h1">Verified Android APKs & <span>Web Apps</span></h1>
-<p class="hero-p">Direct APK release binaries and web applications synchronized with senterprisehub repositories.</p>
-​<div class="countdown-alert">
+​<!-- MAIN BODY -->
+<div class="container">
+<section class="hero">
+<div class="hub-badge">✓ Official Portal: senterprisehub</div>
+<h2 class="hero-title">Verified Android APKs & <span>Web Apps</span></h2>
+<p class="hero-desc">Direct release binaries and Progressive Web Applications synchronized with senterprisehub repositories.</p>
+​<div class="sync-note">
 ⏳ <strong>For new releases wait for refresh countdown</strong> (or click Sync Now).
 </div>
-​<div class="stats-card">
-<div class="stat-col">
-<div class="stat-val" id="stat-total">14</div>
-<div class="stat-lbl">Total Apps</div>
+​<!-- COUNTERS -->
+<div class="stats-row">
+<div class="stat-item">
+<div class="stat-number">14</div>
+<div class="stat-label">Total Apps</div>
 </div>
-<div class="stat-col">
-<div class="stat-val green" id="stat-apk">11</div>
-<div class="stat-lbl">APK Apps</div>
+<div class="stat-item">
+<div class="stat-number green">11</div>
+<div class="stat-label">APK Apps</div>
 </div>
-<div class="stat-col">
-<div class="stat-val blue" id="stat-web">3</div>
-<div class="stat-lbl">Web Apps</div>
+<div class="stat-item">
+<div class="stat-number blue">3</div>
+<div class="stat-label">Web Apps</div>
 </div>
-<div class="stat-col">
-<div class="stat-val sky">Live</div>
-<div class="stat-lbl">Status</div>
+<div class="stat-item">
+<div class="stat-number sky">Live</div>
+<div class="stat-label">Status</div>
 </div>
 </div>
-​<input type="text" id="search-input" class="search-input" placeholder="Search applications, tags, or features...">
-​<div class="filter-pills" id="filter-bar">
-<button class="filter-btn active" data-filter="all">All (14)</button>
-<button class="filter-btn" data-filter="apk">Android APK (11)</button>
-<button class="filter-btn" data-filter="web">Web App (3)</button>
-<button class="filter-btn" data-filter="Business &amp; POS">Business & POS (5)</button>
-<button class="filter-btn" data-filter="Hardware &amp; Tools">Hardware & Tools (5)</button>
-<button class="filter-btn" data-filter="Health &amp; AI">Health & AI (4)</button>
+​<!-- SEARCH INPUT -->
+<input type="text" id="app-search" class="search-box" placeholder="Search applications, tags, or features...">
+​<!-- CATEGORY PILLS -->
+<div class="filter-group" id="filter-group">
+<button class="filter-pill active" data-filter="all">All (14)</button>
+<button class="filter-pill" data-filter="apk">Android APK (11)</button>
+<button class="filter-pill" data-filter="web">Web App (3)</button>
+<button class="filter-pill" data-filter="Business &amp; POS">Business & POS (5)</button>
+<button class="filter-pill" data-filter="Hardware &amp; Tools">Hardware & Tools (5)</button>
+<button class="filter-pill" data-filter="Health &amp; AI">Health & AI (4)</button>
 </div>
 </section>
-​<main>
-<div class="apps-grid" id="apps-container">
+​<!-- CARDS GRID -->
+<main class="grid" id="apps-grid">
 ​<!-- 1. Arogya Diet AI -->
-<div class="app-card" data-category="Health &amp; AI" data-type="apk" data-keywords="arogya diet ai nutrition health">
+<div class="card" data-category="Health &amp; AI" data-type="apk" data-keywords="arogya diet ai nutrition health food">
 <div>
-<div class="card-top">
-<div class="app-icon-box" style="width:48px;height:48px;">
-<img src="https://raw.githubusercontent.com/senterprisehub/arogyadietai/main/icon.png" width="48" height="48" alt="Arogya Diet AI" onerror="this.onerror=null;this.parentNode.innerHTML='A';">
+<div class="card-head">
+<div class="app-icon" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;">
+<img src="https://raw.githubusercontent.com/senterprisehub/arogyadietai/main/icon.png" width="48" height="48" alt="Arogya Diet AI" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;" onerror="this.onerror=null;this.parentNode.innerHTML='A';">
 </div>
-<div class="card-meta">
-<h3 class="app-title">Arogya Diet AI</h3>
-<div class="badge-row">
-<span class="dist-badge apk">APK Native</span>
-</div>
+<div class="card-title-group">
+<div class="app-name">Arogya Diet AI</div>
+<span class="app-type-tag apk">APK Native</span>
 </div>
 </div>
-<p class="app-desc">AI-powered diet planning and nutritional guidance assistant.</p>
+<p class="card-desc">AI-powered diet planning and nutritional guidance assistant.</p>
 </div>
 <div>
-<div class="spec-strip">
+<div class="card-meta-bar">
 <span>Android OS</span>
 <strong>18.4 MB</strong>
 </div>
-<div class="btn-grid-two">
-<a href="https://github.com/senterprisehub/arogyadietai/releases/latest/download/arogyadietai.apk" class="btn-link btn-apk-dl" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
-<a href="https://senterprisehub.github.io/arogyadietai/" class="btn-link btn-app-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+<div class="action-row" style="margin-top:8px;">
+<a href="https://github.com/senterprisehub/arogyadietai/releases/latest/download/arogyadietai.apk" class="btn btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/arogyadietai/" class="btn btn-portal" target="_blank" rel="noopener noreferrer">App Page ↗</a>
 </div>
 </div>
 </div>
 ​<!-- 2. Mileage Tracker -->
-<div class="app-card" data-category="Business &amp; POS" data-type="apk" data-keywords="mileage tracker gps vehicle fuel expense">
+<div class="card" data-category="Business &amp; POS" data-type="apk" data-keywords="mileage tracker vehicle fuel gps distance">
 <div>
-<div class="card-top">
-<div class="app-icon-box" style="width:48px;height:48px;">
-<img src="https://raw.githubusercontent.com/senterprisehub/Mileage-Tracker/main/icon.png" width="48" height="48" alt="Mileage Tracker" onerror="this.onerror=null;this.parentNode.innerHTML='M';">
+<div class="card-head">
+<div class="app-icon" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;">
+<img src="https://raw.githubusercontent.com/senterprisehub/Mileage-Tracker/main/icon.png" width="48" height="48" alt="Mileage Tracker" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;" onerror="this.onerror=null;this.parentNode.innerHTML='M';">
 </div>
-<div class="card-meta">
-<h3 class="app-title">Mileage Tracker</h3>
-<div class="badge-row">
-<span class="dist-badge apk">APK Native</span>
-</div>
+<div class="card-title-group">
+<div class="app-name">Mileage Tracker</div>
+<span class="app-type-tag apk">APK Native</span>
 </div>
 </div>
-<p class="app-desc">Automated vehicle mileage, route logging, and fuel expense calculator.</p>
+<p class="card-desc">Automated vehicle mileage, route logging, and fuel expense calculator.</p>
 </div>
 <div>
-<div class="spec-strip">
+<div class="card-meta-bar">
 <span>Android OS</span>
 <strong>14.2 MB</strong>
 </div>
-<div class="btn-grid-two">
-<a href="https://github.com/senterprisehub/Mileage-Tracker/releases/latest/download/mileage-tracker.apk" class="btn-link btn-apk-dl" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
-<a href="https://senterprisehub.github.io/Mileage-Tracker/" class="btn-link btn-app-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+<div class="action-row" style="margin-top:8px;">
+<a href="https://github.com/senterprisehub/Mileage-Tracker/releases/latest/download/mileage-tracker.apk" class="btn btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/Mileage-Tracker/" class="btn btn-portal" target="_blank" rel="noopener noreferrer">App Page ↗</a>
 </div>
 </div>
 </div>
 ​<!-- 3. ProInvoice -->
-<div class="app-card" data-category="Business &amp; POS" data-type="apk" data-keywords="proinvoice billing invoice pdf tax manager">
+<div class="card" data-category="Business &amp; POS" data-type="apk" data-keywords="proinvoice billing invoice pdf tax receipts accounting">
 <div>
-<div class="card-top">
-<div class="app-icon-box" style="width:48px;height:48px;">
-<img src="https://raw.githubusercontent.com/senterprisehub/ProInvoice/main/icon.png" width="48" height="48" alt="ProInvoice" onerror="this.onerror=null;this.parentNode.innerHTML='P';">
+<div class="card-head">
+<div class="app-icon" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;">
+<img src="https://raw.githubusercontent.com/senterprisehub/ProInvoice/main/icon.png" width="48" height="48" alt="ProInvoice" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;" onerror="this.onerror=null;this.parentNode.innerHTML='P';">
 </div>
-<div class="card-meta">
-<h3 class="app-title">ProInvoice</h3>
-<div class="badge-row">
-<span class="dist-badge apk">APK Native</span>
-</div>
+<div class="card-title-group">
+<div class="app-name">ProInvoice</div>
+<span class="app-type-tag apk">APK Native</span>
 </div>
 </div>
-<p class="app-desc">Professional billing, invoice generation, and tax-ready PDF manager.</p>
+<p class="card-desc">Professional billing, invoice generation, and tax-ready PDF manager.</p>
 </div>
 <div>
-<div class="spec-strip">
+<div class="card-meta-bar">
 <span>Android OS</span>
 <strong>16.8 MB</strong>
 </div>
-<div class="btn-grid-two">
-<a href="https://github.com/senterprisehub/ProInvoice/releases/latest/download/proinvoice.apk" class="btn-link btn-apk-dl" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
-<a href="https://senterprisehub.github.io/ProInvoice/" class="btn-link btn-app-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+<div class="action-row" style="margin-top:8px;">
+<a href="https://github.com/senterprisehub/ProInvoice/releases/latest/download/proinvoice.apk" class="btn btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/ProInvoice/" class="btn btn-portal" target="_blank" rel="noopener noreferrer">App Page ↗</a>
 </div>
 </div>
 </div>
 ​<!-- 4. Location Saving App -->
-<div class="app-card" data-category="Hardware &amp; Tools" data-type="apk" data-keywords="location saving app gps coordinates maps offline">
+<div class="card" data-category="Hardware &amp; Tools" data-type="apk" data-keywords="location saving app gps maps offline places">
 <div>
-<div class="card-top">
-<div class="app-icon-box" style="width:48px;height:48px;">
-<img src="https://raw.githubusercontent.com/senterprisehub/Location-Saving-App/main/icon.png" width="48" height="48" alt="Location Saving App" onerror="this.onerror=null;this.parentNode.innerHTML='L';">
+<div class="card-head">
+<div class="app-icon" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;">
+<img src="https://raw.githubusercontent.com/senterprisehub/Location-Saving-App/main/icon.png" width="48" height="48" alt="Location Saving App" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;" onerror="this.onerror=null;this.parentNode.innerHTML='L';">
 </div>
-<div class="card-meta">
-<h3 class="app-title">Location Saving App</h3>
-<div class="badge-row">
-<span class="dist-badge apk">APK Native</span>
-</div>
+<div class="card-title-group">
+<div class="app-name">Location Saving App</div>
+<span class="app-type-tag apk">APK Native</span>
 </div>
 </div>
-<p class="app-desc">Fast GPS coordinate bookmarker with offline tag mapping.</p>
+<p class="card-desc">Fast GPS coordinate bookmarker with offline tag mapping.</p>
 </div>
 <div>
-<div class="spec-strip">
+<div class="card-meta-bar">
 <span>Android OS</span>
 <strong>11.5 MB</strong>
 </div>
-<div class="btn-grid-two">
-<a href="https://github.com/senterprisehub/Location-Saving-App/releases/latest/download/location-saving-app.apk" class="btn-link btn-apk-dl" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
-<a href="https://senterprisehub.github.io/Location-Saving-App/" class="btn-link btn-app-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+<div class="action-row" style="margin-top:8px;">
+<a href="https://github.com/senterprisehub/Location-Saving-App/releases/latest/download/location-saving-app.apk" class="btn btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/Location-Saving-App/" class="btn btn-portal" target="_blank" rel="noopener noreferrer">App Page ↗</a>
 </div>
 </div>
 </div>
-​<!-- 5. ReceiptPOS -->
-<div class="app-card" data-category="Business &amp; POS" data-type="apk" data-keywords="receiptpos pos point of sale receipt printer retail">
+​<!-- 5. Receipt POS -->
+<div class="card" data-category="Business &amp; POS" data-type="apk" data-keywords="receipt pos terminal thermal printer billing retail">
 <div>
-<div class="card-top">
-<div class="app-icon-box" style="width:48px;height:48px;">
-<img src="https://raw.githubusercontent.com/senterprisehub/ReceiptPOS/main/icon.png" width="48" height="48" alt="Receipt POS" onerror="this.onerror=null;this.parentNode.innerHTML='R';">
+<div class="card-head">
+<div class="app-icon" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;">
+<img src="https://raw.githubusercontent.com/senterprisehub/ReceiptPOS/main/icon.png" width="48" height="48" alt="Receipt POS" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;" onerror="this.onerror=null;this.parentNode.innerHTML='R';">
 </div>
-<div class="card-meta">
-<h3 class="app-title">Receipt POS</h3>
-<div class="badge-row">
-<span class="dist-badge apk">APK Native</span>
-</div>
+<div class="card-title-group">
+<div class="app-name">Receipt POS</div>
+<span class="app-type-tag apk">APK Native</span>
 </div>
 </div>
-<p class="app-desc">Lightweight point-of-sale terminal and instant receipt printer for retail.</p>
+<p class="card-desc">Lightweight point-of-sale terminal and instant receipt printer for retail.</p>
 </div>
 <div>
-<div class="spec-strip">
+<div class="card-meta-bar">
 <span>Android OS</span>
 <strong>21.0 MB</strong>
 </div>
-<div class="btn-grid-two">
-<a href="https://github.com/senterprisehub/ReceiptPOS/releases/latest/download/receiptpos.apk" class="btn-link btn-apk-dl" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
-<a href="https://senterprisehub.github.io/ReceiptPOS/" class="btn-link btn-app-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+<div class="action-row" style="margin-top:8px;">
+<a href="https://github.com/senterprisehub/ReceiptPOS/releases/latest/download/receiptpos.apk" class="btn btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/ReceiptPOS/" class="btn btn-portal" target="_blank" rel="noopener noreferrer">App Page ↗</a>
 </div>
 </div>
 </div>
 ​<!-- 6. Mock GPS Pro -->
-<div class="app-card" data-category="Hardware &amp; Tools" data-type="apk" data-keywords="mock gps pro developer spoofer route simulation">
+<div class="card" data-category="Hardware &amp; Tools" data-type="apk" data-keywords="mock gps pro route simulator mock location spoofer">
 <div>
-<div class="card-top">
-<div class="app-icon-box" style="width:48px;height:48px;">
-<img src="https://raw.githubusercontent.com/senterprisehub/Mock-GPS-Pro/main/icon.png" width="48" height="48" alt="Mock GPS Pro" onerror="this.onerror=null;this.parentNode.innerHTML='M';">
+<div class="card-head">
+<div class="app-icon" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;">
+<img src="https://raw.githubusercontent.com/senterprisehub/Mock-GPS-Pro/main/icon.png" width="48" height="48" alt="Mock GPS Pro" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;" onerror="this.onerror=null;this.parentNode.innerHTML='M';">
 </div>
-<div class="card-meta">
-<h3 class="app-title">Mock GPS Pro</h3>
-<div class="badge-row">
-<span class="dist-badge apk">APK Native</span>
-</div>
+<div class="card-title-group">
+<div class="app-name">Mock GPS Pro</div>
+<span class="app-type-tag apk">APK Native</span>
 </div>
 </div>
-<p class="app-desc">Developer mock location spoofer with customizable route simulations.</p>
+<p class="card-desc">Developer mock location spoofer with customizable route simulations.</p>
 </div>
 <div>
-<div class="spec-strip">
+<div class="card-meta-bar">
 <span>Android OS</span>
 <strong>12.8 MB</strong>
 </div>
-<div class="btn-grid-two">
-<a href="https://github.com/senterprisehub/Mock-GPS-Pro/releases/latest/download/mock-gps-pro.apk" class="btn-link btn-apk-dl" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
-<a href="https://senterprisehub.github.io/Mock-GPS-Pro/" class="btn-link btn-app-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+<div class="action-row" style="margin-top:8px;">
+<a href="https://github.com/senterprisehub/Mock-GPS-Pro/releases/latest/download/mock-gps-pro.apk" class="btn btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/Mock-GPS-Pro/" class="btn btn-portal" target="_blank" rel="noopener noreferrer">App Page ↗</a>
 </div>
 </div>
 </div>
 ​<!-- 7. Sales Flow App -->
-<div class="app-card" data-category="Business &amp; POS" data-type="apk" data-keywords="sales flow app crm leads field tracker pipeline">
+<div class="card" data-category="Business &amp; POS" data-type="apk" data-keywords="sales flow app leads crm customer pipeline">
 <div>
-<div class="card-top">
-<div class="app-icon-box" style="width:48px;height:48px;">
-<img src="https://raw.githubusercontent.com/senterprisehub/Sales-Flow-App/main/icon.png" width="48" height="48" alt="Sales Flow App" onerror="this.onerror=null;this.parentNode.innerHTML='S';">
+<div class="card-head">
+<div class="app-icon" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;">
+<img src="https://raw.githubusercontent.com/senterprisehub/Sales-Flow-App/main/icon.png" width="48" height="48" alt="Sales Flow App" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;" onerror="this.onerror=null;this.parentNode.innerHTML='S';">
 </div>
-<div class="card-meta">
-<h3 class="app-title">Sales Flow App</h3>
-<div class="badge-row">
-<span class="dist-badge apk">APK Native</span>
-</div>
+<div class="card-title-group">
+<div class="app-name">Sales Flow App</div>
+<span class="app-type-tag apk">APK Native</span>
 </div>
 </div>
-<p class="app-desc">Mobile field sales tracker, client CRM, and lead management hub.</p>
+<p class="card-desc">Mobile field sales tracker, client CRM, and lead management hub.</p>
 </div>
 <div>
-<div class="spec-strip">
+<div class="card-meta-bar">
 <span>Android OS</span>
 <strong>19.5 MB</strong>
 </div>
-<div class="btn-grid-two">
-<a href="https://github.com/senterprisehub/Sales-Flow-App/releases/latest/download/sales-flow-app.apk" class="btn-link btn-apk-dl" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
-<a href="https://senterprisehub.github.io/Sales-Flow-App/" class="btn-link btn-app-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+<div class="action-row" style="margin-top:8px;">
+<a href="https://github.com/senterprisehub/Sales-Flow-App/releases/latest/download/sales-flow-app.apk" class="btn btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/Sales-Flow-App/" class="btn btn-portal" target="_blank" rel="noopener noreferrer">App Page ↗</a>
 </div>
 </div>
 </div>
 ​<!-- 8. VoltPulse -->
-<div class="app-card" data-category="Hardware &amp; Tools" data-type="apk" data-keywords="voltpulse voltage meter electrical pulse analyzer">
+<div class="card" data-category="Hardware &amp; Tools" data-type="apk" data-keywords="voltpulse voltage electrical multimeter oscilloscope analyzer">
 <div>
-<div class="card-top">
-<div class="app-icon-box" style="width:48px;height:48px;">
-<img src="https://raw.githubusercontent.com/senterprisehub/VoltPulse/main/icon.png" width="48" height="48" alt="VoltPulse" onerror="this.onerror=null;this.parentNode.innerHTML='V';">
+<div class="card-head">
+<div class="app-icon" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;">
+<img src="https://raw.githubusercontent.com/senterprisehub/VoltPulse/main/icon.png" width="48" height="48" alt="VoltPulse" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;" onerror="this.onerror=null;this.parentNode.innerHTML='V';">
 </div>
-<div class="card-meta">
-<h3 class="app-title">VoltPulse</h3>
-<div class="badge-row">
-<span class="dist-badge apk">APK Native</span>
-</div>
+<div class="card-title-group">
+<div class="app-name">VoltPulse</div>
+<span class="app-type-tag apk">APK Native</span>
 </div>
 </div>
-<p class="app-desc">Real-time electrical measurement, voltage monitoring, and pulse analyzer.</p>
+<p class="card-desc">Real-time electrical measurement, voltage monitoring, and pulse analyzer.</p>
 </div>
 <div>
-<div class="spec-strip">
+<div class="card-meta-bar">
 <span>Android OS</span>
 <strong>15.6 MB</strong>
 </div>
-<div class="btn-grid-two">
-<a href="https://github.com/senterprisehub/VoltPulse/releases/latest/download/voltpulse.apk" class="btn-link btn-apk-dl" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
-<a href="https://senterprisehub.github.io/VoltPulse/" class="btn-link btn-app-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+<div class="action-row" style="margin-top:8px;">
+<a href="https://github.com/senterprisehub/VoltPulse/releases/latest/download/voltpulse.apk" class="btn btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/VoltPulse/" class="btn btn-portal" target="_blank" rel="noopener noreferrer">App Page ↗</a>
 </div>
 </div>
 </div>
 ​<!-- 9. Sales Flow (Web App) -->
-<div class="app-card" data-category="Business &amp; POS" data-type="web" data-keywords="sales flow webapp pwa reporting sales executives">
+<div class="card" data-category="Business &amp; POS" data-type="web" data-keywords="sales flow web app reporting pipeline management pwa">
 <div>
-<div class="card-top">
-<div class="app-icon-box" style="width:48px;height:48px;">
-<img src="https://raw.githubusercontent.com/senterprisehub/Sales-flow/main/icon.png" width="48" height="48" alt="Sales Flow" onerror="this.onerror=null;this.parentNode.innerHTML='S';">
+<div class="card-head">
+<div class="app-icon" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;">
+<img src="https://raw.githubusercontent.com/senterprisehub/Sales-flow/main/icon.png" width="48" height="48" alt="Sales Flow" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;" onerror="this.onerror=null;this.parentNode.innerHTML='S';">
 </div>
-<div class="card-meta">
-<h3 class="app-title">Sales Flow</h3>
-<div class="badge-row">
-<span class="dist-badge web">Web App</span>
-</div>
+<div class="card-title-group">
+<div class="app-name">Sales Flow</div>
+<span class="app-type-tag web">Web App</span>
 </div>
 </div>
-<p class="app-desc">Pipeline automation and daily activity reporting for sales executives.</p>
+<p class="card-desc">Pipeline automation and daily activity reporting for sales executives.</p>
 </div>
 <div>
-<div class="spec-strip">
+<div class="card-meta-bar">
 <span>Browser Engine</span>
 <strong>Cloud App</strong>
 </div>
-<a href="https://senterprisehub.github.io/Sales-flow/" class="btn-link btn-web-single" target="_blank" rel="noopener noreferrer">Open Web Application ↗</a>
-<div class="pwa-instruction"><strong>Add to Screen:</strong> Open link → Tap browser menu (⋮) → Select <strong>Install / Add to Home screen</strong>.</div>
+<div style="margin-top:8px;">
+<a href="https://senterprisehub.github.io/Sales-flow/" class="btn btn-web" target="_blank" rel="noopener noreferrer">Open Web Application ↗</a>
+</div>
+<div class="web-help"><strong>Add to Screen:</strong> Open link → Tap browser menu (⋮) → Select <strong>Install / Add to Home screen</strong>.</div>
 </div>
 </div>
 ​<!-- 10. Thermo Med Pro -->
-<div class="app-card" data-category="Health &amp; AI" data-type="apk" data-keywords="thermo med pro medical temperature logger health cold chain">
+<div class="card" data-category="Health &amp; AI" data-type="apk" data-keywords="thermo med pro medical thermometer temperature cold chain">
 <div>
-<div class="card-top">
-<div class="app-icon-box" style="width:48px;height:48px;">
-<img src="https://raw.githubusercontent.com/senterprisehub/Thermo-Med-Pro/main/icon.png" width="48" height="48" alt="Thermo Med Pro" onerror="this.onerror=null;this.parentNode.innerHTML='T';">
+<div class="card-head">
+<div class="app-icon" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;">
+<img src="https://raw.githubusercontent.com/senterprisehub/Thermo-Med-Pro/main/icon.png" width="48" height="48" alt="Thermo Med Pro" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;" onerror="this.onerror=null;this.parentNode.innerHTML='T';">
 </div>
-<div class="card-meta">
-<h3 class="app-title">Thermo Med Pro</h3>
-<div class="badge-row">
-<span class="dist-badge apk">APK Native</span>
-</div>
+<div class="card-title-group">
+<div class="app-name">Thermo Med Pro</div>
+<span class="app-type-tag apk">APK Native</span>
 </div>
 </div>
-<p class="app-desc">Medical temperature logger and cold-chain compliance monitoring tool.</p>
+<p class="card-desc">Medical temperature logger and cold-chain compliance monitoring tool.</p>
 </div>
 <div>
-<div class="spec-strip">
+<div class="card-meta-bar">
 <span>Android OS</span>
 <strong>17.3 MB</strong>
 </div>
-<div class="btn-grid-two">
-<a href="https://github.com/senterprisehub/Thermo-Med-Pro/releases/latest/download/thermo-med-pro.apk" class="btn-link btn-apk-dl" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
-<a href="https://senterprisehub.github.io/Thermo-Med-Pro/" class="btn-link btn-app-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+<div class="action-row" style="margin-top:8px;">
+<a href="https://github.com/senterprisehub/Thermo-Med-Pro/releases/latest/download/thermo-med-pro.apk" class="btn btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/Thermo-Med-Pro/" class="btn btn-portal" target="_blank" rel="noopener noreferrer">App Page ↗</a>
 </div>
 </div>
 </div>
 ​<!-- 11. Thermo Print Studio -->
-<div class="app-card" data-category="Hardware &amp; Tools" data-type="apk" data-keywords="thermo print studio thermal printer bluetooth esc pos driver">
+<div class="card" data-category="Hardware &amp; Tools" data-type="apk" data-keywords="thermo print studio thermal bluetooth esc pos printer driver">
 <div>
-<div class="card-top">
-<div class="app-icon-box" style="width:48px;height:48px;">
-<img src="https://raw.githubusercontent.com/senterprisehub/Thermo-Print-Studio/main/icon.png" width="48" height="48" alt="Thermo Print Studio" onerror="this.onerror=null;this.parentNode.innerHTML='T';">
+<div class="card-head">
+<div class="app-icon" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;">
+<img src="https://raw.githubusercontent.com/senterprisehub/Thermo-Print-Studio/main/icon.png" width="48" height="48" alt="Thermo Print Studio" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;" onerror="this.onerror=null;this.parentNode.innerHTML='T';">
 </div>
-<div class="card-meta">
-<h3 class="app-title">Thermo Print Studio</h3>
-<div class="badge-row">
-<span class="dist-badge apk">APK Native</span>
-</div>
+<div class="card-title-group">
+<div class="app-name">Thermo Print Studio</div>
+<span class="app-type-tag apk">APK Native</span>
 </div>
 </div>
-<p class="app-desc">Bluetooth and USB ESC/POS thermal printer layout designer and driver utility.</p>
+<p class="card-desc">Bluetooth and USB ESC/POS thermal printer layout designer and driver utility.</p>
 </div>
 <div>
-<div class="spec-strip">
+<div class="card-meta-bar">
 <span>Android OS</span>
 <strong>22.4 MB</strong>
 </div>
-<div class="btn-grid-two">
-<a href="https://github.com/senterprisehub/Thermo-Print-Studio/releases/latest/download/thermo-print-studio.apk" class="btn-link btn-apk-dl" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
-<a href="https://senterprisehub.github.io/Thermo-Print-Studio/" class="btn-link btn-app-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+<div class="action-row" style="margin-top:8px;">
+<a href="https://github.com/senterprisehub/Thermo-Print-Studio/releases/latest/download/thermo-print-studio.apk" class="btn btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/Thermo-Print-Studio/" class="btn btn-portal" target="_blank" rel="noopener noreferrer">App Page ↗</a>
 </div>
 </div>
 </div>
 ​<!-- 12. ProInvoice App (Web App) -->
-<div class="app-card" data-category="Business &amp; POS" data-type="web" data-keywords="proinvoice app webapp pwa statement invoice finance">
+<div class="card" data-category="Business &amp; POS" data-type="web" data-keywords="proinvoice app webapp accounting invoice statement reconciliation">
 <div>
-<div class="card-top">
-<div class="app-icon-box" style="width:48px;height:48px;">
-<img src="https://raw.githubusercontent.com/senterprisehub/Proinvoice-App/main/icon.png" width="48" height="48" alt="ProInvoice App" onerror="this.onerror=null;this.parentNode.innerHTML='P';">
+<div class="card-head">
+<div class="app-icon" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;">
+<img src="https://raw.githubusercontent.com/senterprisehub/Proinvoice-App/main/icon.png" width="48" height="48" alt="ProInvoice App" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;" onerror="this.onerror=null;this.parentNode.innerHTML='P';">
 </div>
-<div class="card-meta">
-<h3 class="app-title">ProInvoice App</h3>
-<div class="badge-row">
-<span class="dist-badge web">Web App</span>
-</div>
+<div class="card-title-group">
+<div class="app-name">ProInvoice App</div>
+<span class="app-type-tag web">Web App</span>
 </div>
 </div>
-<p class="app-desc">Mobile invoice maker with automated client statement reconciliation.</p>
+<p class="card-desc">Mobile invoice maker with automated client statement reconciliation.</p>
 </div>
 <div>
-<div class="spec-strip">
+<div class="card-meta-bar">
 <span>Browser Engine</span>
 <strong>Cloud App</strong>
 </div>
-<a href="https://senterprisehub.github.io/Proinvoice-App/" class="btn-link btn-web-single" target="_blank" rel="noopener noreferrer">Open Web Application ↗</a>
-<div class="pwa-instruction"><strong>Add to Screen:</strong> Open link → Tap browser menu (⋮) → Select <strong>Install / Add to Home screen</strong>.</div>
+<div style="margin-top:8px;">
+<a href="https://senterprisehub.github.io/Proinvoice-App/" class="btn btn-web" target="_blank" rel="noopener noreferrer">Open Web Application ↗</a>
+</div>
+<div class="web-help"><strong>Add to Screen:</strong> Open link → Tap browser menu (⋮) → Select <strong>Install / Add to Home screen</strong>.</div>
 </div>
 </div>
 ​<!-- 13. BMI Health Tracker -->
-<div class="app-card" data-category="Health &amp; AI" data-type="apk" data-keywords="bmi health tracker body mass index fitness wellness">
+<div class="card" data-category="Health &amp; AI" data-type="apk" data-keywords="bmi health tracker body mass index fitness weight wellness">
 <div>
-<div class="card-top">
-<div class="app-icon-box" style="width:48px;height:48px;">
-<img src="https://raw.githubusercontent.com/senterprisehub/BMI-Health-Tracker/main/icon.png" width="48" height="48" alt="BMI Health Tracker" onerror="this.onerror=null;this.parentNode.innerHTML='B';">
+<div class="card-head">
+<div class="app-icon" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;">
+<img src="https://raw.githubusercontent.com/senterprisehub/BMI-Health-Tracker/main/icon.png" width="48" height="48" alt="BMI Health Tracker" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;" onerror="this.onerror=null;this.parentNode.innerHTML='B';">
 </div>
-<div class="card-meta">
-<h3 class="app-title">BMI Health Tracker</h3>
-<div class="badge-row">
-<span class="dist-badge apk">APK Native</span>
-</div>
+<div class="card-title-group">
+<div class="app-name">BMI Health Tracker</div>
+<span class="app-type-tag apk">APK Native</span>
 </div>
 </div>
-<p class="app-desc">Body Mass Index calculator with historical wellness tracking.</p>
+<p class="card-desc">Body Mass Index calculator with historical wellness tracking.</p>
 </div>
 <div>
-<div class="spec-strip">
+<div class="card-meta-bar">
 <span>Android OS</span>
 <strong>10.9 MB</strong>
 </div>
-<div class="btn-grid-two">
-<a href="https://github.com/senterprisehub/BMI-Health-Tracker/releases/latest/download/bmi-health-tracker.apk" class="btn-link btn-apk-dl" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
-<a href="https://senterprisehub.github.io/BMI-Health-Tracker/" class="btn-link btn-app-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+<div class="action-row" style="margin-top:8px;">
+<a href="https://github.com/senterprisehub/BMI-Health-Tracker/releases/latest/download/bmi-health-tracker.apk" class="btn btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/BMI-Health-Tracker/" class="btn btn-portal" target="_blank" rel="noopener noreferrer">App Page ↗</a>
 </div>
 </div>
 </div>
 ​<!-- 14. ADJ Utility (Web App) -->
-<div class="app-card" data-category="Hardware &amp; Tools" data-type="web" data-keywords="adj utility webapp field calculation">
+<div class="card" data-category="Hardware &amp; Tools" data-type="web" data-keywords="adj utility calculations operations field tools webapp">
 <div>
-<div class="card-top">
-<div class="app-icon-box" style="width:48px;height:48px;">
-<img src="https://raw.githubusercontent.com/senterprisehub/ADJ/main/icon.png" width="48" height="48" alt="ADJ Utility" onerror="this.onerror=null;this.parentNode.innerHTML='A';">
+<div class="card-head">
+<div class="app-icon" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;">
+<img src="https://raw.githubusercontent.com/senterprisehub/ADJ/main/icon.png" width="48" height="48" alt="ADJ Utility" style="width:48px;height:48px;min-width:48px;min-height:48px;max-width:48px;max-height:48px;" onerror="this.onerror=null;this.parentNode.innerHTML='A';">
 </div>
-<div class="card-meta">
-<h3 class="app-title">ADJ Utility</h3>
-<div class="badge-row">
-<span class="dist-badge web">Web App</span>
-</div>
+<div class="card-title-group">
+<div class="app-name">ADJ Utility</div>
+<span class="app-type-tag web">Web App</span>
 </div>
 </div>
-<p class="app-desc">Specialized field operational and calculation utility.</p>
+<p class="card-desc">Specialized field operational and calculation utility.</p>
 </div>
 <div>
-<div class="spec-strip">
+<div class="card-meta-bar">
 <span>Browser Engine</span>
 <strong>Cloud App</strong>
 </div>
-<a href="https://senterprisehub.github.io/ADJ/" class="btn-link btn-web-single" target="_blank" rel="noopener noreferrer">Open Web Application ↗</a>
-<div class="pwa-instruction"><strong>Add to Screen:</strong> Open link → Tap browser menu (⋮) → Select <strong>Install / Add to Home screen</strong>.</div>
+<div style="margin-top:8px;">
+<a href="https://senterprisehub.github.io/ADJ/" class="btn btn-web" target="_blank" rel="noopener noreferrer">Open Web Application ↗</a>
+</div>
+<div class="web-help"><strong>Add to Screen:</strong> Open link → Tap browser menu (⋮) → Select <strong>Install / Add to Home screen</strong>.</div>
 </div>
 </div>
-​</div>
-​<div class="no-results" id="empty-alert">
-<h3>No matching applications found</h3>
-<p style="color:#64748b;font-size:0.85rem;margin-top:4px;">Try clearing your search term or selecting a different category filter.</p>
+​<!-- EMPTY STATE -->
+<div class="empty-state" id="empty-state">
+<h3 style="font-size:1.05rem;color:#0f172a;margin-bottom:4px;">No matching applications found</h3>
+<p style="font-size:0.82rem;color:#64748b;">Try clearing your search query or selecting another category filter.</p>
 </div>
-</main>
-​<footer>
-<div class="footer-inner">
+​</main>
+</div>
+​<!-- FOOTER -->
+<footer>
+<div class="footer-content">
 <div>© SR Apps Studio · High-Performance Android & Web Distribution</div>
 <div>
 <a href="https://github.com/senterprisehub" target="_blank" rel="noopener noreferrer">github.com/senterprisehub</a>
 </div>
 </div>
 </footer>
-​<script>
-(function() {
-// 1. Synchronized Universal Hourly Countdown
-var timerEl = document.getElementById('sync-timer');
-if (timerEl) {
-function tick() {
+​<!-- SIMPLE, BULLETPROOF JAVASCRIPT -->
+<script>
+(function () {
+'use strict';
+​// 1. UTC Epoch Clock
+var clockEl = document.getElementById('sync-clock');
+function updateTimer() {
+if (!clockEl) return;
 var now = Date.now();
 var msIntoHour = now % 3600000;
 var msRemaining = 3600000 - msIntoHour;
 var totalSec = Math.floor(msRemaining / 1000);
 var mins = Math.floor(totalSec / 60);
 var secs = totalSec % 60;
-timerEl.textContent = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+clockEl.textContent = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
 }
-tick();
-setInterval(tick, 1000);
-}
-​// 2. Instant Search and Category Filter Engine
-var cards = document.querySelectorAll('.app-card');
-var filterBtns = document.querySelectorAll('.filter-btn');
-var searchInput = document.getElementById('search-input');
-var emptyAlert = document.getElementById('empty-alert');
-var currentFilter = 'all';
-var currentQuery = '';
-​function runFilter() {
+updateTimer();
+setInterval(updateTimer, 1000);
+​// 2. Real-time Search and Filter
+var searchInput = document.getElementById('app-search');
+var filterButtons = document.querySelectorAll('.filter-pill');
+var cards = document.querySelectorAll('.card');
+var emptyState = document.getElementById('empty-state');
+var activeFilter = 'all';
+var searchQuery = '';
+​function applyFilters() {
 var visibleCount = 0;
-var q = currentQuery.toLowerCase().trim();
+var query = searchQuery.trim().toLowerCase();
 ​for (var i = 0; i < cards.length; i++) {
 var card = cards[i];
-var cat = card.getAttribute('data-category') || '';
+var category = card.getAttribute('data-category') || '';
 var type = card.getAttribute('data-type') || '';
-var kw = card.getAttribute('data-keywords') || '';
-var titleEl = card.querySelector('.app-title');
-var title = titleEl ? titleEl.textContent.toLowerCase() : '';
-​var catMatches = false;
-if (currentFilter === 'all') {
-catMatches = true;
-} else if (currentFilter === 'apk') {
-catMatches = (type === 'apk');
-} else if (currentFilter === 'web') {
-catMatches = (type === 'web');
-} else if (currentFilter === cat) {
-catMatches = true;
+var keywords = card.getAttribute('data-keywords') || '';
+var nameEl = card.querySelector('.app-name');
+var appName = nameEl ? nameEl.textContent.toLowerCase() : '';
+​var filterMatches = false;
+if (activeFilter === 'all') {
+filterMatches = true;
+} else if (activeFilter === 'apk') {
+filterMatches = (type === 'apk');
+} else if (activeFilter === 'web') {
+filterMatches = (type === 'web');
+} else if (activeFilter === category) {
+filterMatches = true;
 }
 ​var searchMatches = true;
-if (q.length > 0) {
-searchMatches = (title.indexOf(q) !== -1 || kw.indexOf(q) !== -1);
+if (query.length > 0) {
+searchMatches = (appName.indexOf(query) !== -1 || keywords.indexOf(query) !== -1);
 }
-​if (catMatches && searchMatches) {
+​if (filterMatches && searchMatches) {
 card.style.display = 'flex';
 visibleCount++;
 } else {
 card.style.display = 'none';
 }
 }
-​if (emptyAlert) {
-emptyAlert.style.display = (visibleCount === 0) ? 'block' : 'none';
+​if (emptyState) {
+emptyState.style.display = (visibleCount === 0) ? 'block' : 'none';
 }
 }
-​for (var b = 0; b < filterBtns.length; b++) {
-filterBtns[b].addEventListener('click', function() {
-for (var j = 0; j < filterBtns.length; j++) {
-filterBtns[j].classList.remove('active');
+​for (var b = 0; b < filterButtons.length; b++) {
+filterButtons[b].addEventListener('click', function () {
+for (var j = 0; j < filterButtons.length; j++) {
+filterButtons[j].classList.remove('active');
 }
 this.classList.add('active');
-currentFilter = this.getAttribute('data-filter') || 'all';
-runFilter();
+activeFilter = this.getAttribute('data-filter') || 'all';
+applyFilters();
 });
 }
 ​if (searchInput) {
-searchInput.addEventListener('input', function() {
-currentQuery = this.value;
-runFilter();
+searchInput.addEventListener('input', function () {
+searchQuery = this.value;
+applyFilters();
 });
 }
 })();
