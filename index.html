@@ -84,6 +84,7 @@ font-size: 12px;
 font-weight: 600;
 cursor: pointer;
 }
+.btn-sync:active { opacity: 0.8; }
 .container {
 max-width: 900px;
 margin: 0 auto;
@@ -199,6 +200,11 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 gap: 10px;
+animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(6px); }
+to { opacity: 1; transform: translateY(0); }
 }
 .card-top {
 display: flex;
@@ -262,6 +268,12 @@ border: 1px solid #a7f3d0;
 background: #eef2ff;
 color: #4f46e5;
 border: 1px solid #c7d2fe;
+}
+.app-tag.new-badge {
+background: #fef3c7;
+color: #d97706;
+border: 1px solid #fcd34d;
+margin-left: 4px;
 }
 .card-desc {
 font-size: 12px;
@@ -359,12 +371,12 @@ footer a { color: #0284c7; text-decoration: none; font-weight: 600; }
 </div>
 <div class="brand-text">
 <h1>SR Apps <span>Studio</span></h1>
-<p>Universal Sync</p>
+<p id="engine-status">Live Synced</p>
 </div>
 </a>
 <div class="header-actions">
 <div class="timer-badge" id="clock-display">59:59</div>
-<button class="btn-sync" onclick="location.reload()">Sync</button>
+<button class="btn-sync" id="btn-manual-sync">Sync</button>
 </div>
 </div>
 </header>
@@ -389,24 +401,24 @@ footer a { color: #0284c7; text-decoration: none; font-weight: 600; }
 <div class="stat-lbl">Web Apps</div>
 </div>
 <div>
-<div class="stat-val" style="color:#0284c7;">Live</div>
+<div class="stat-val" id="stat-live" style="color:#0284c7;">Active</div>
 <div class="stat-lbl">Status</div>
 </div>
 </div>
 ​<input type="text" id="search-bar" class="search-input" placeholder="Search apps by name or keywords...">
 ​<div class="filters" id="filters-container">
-<button class="filter-btn active" data-filter="all">All (14)</button>
-<button class="filter-btn" data-filter="apk">Android APK (11)</button>
-<button class="filter-btn" data-filter="web">Web App (3)</button>
-<button class="filter-btn" data-filter="Business &amp; POS">Business & POS (5)</button>
-<button class="filter-btn" data-filter="Hardware &amp; Tools">Hardware & Tools (5)</button>
-<button class="filter-btn" data-filter="Health &amp; AI">Health & AI (4)</button>
+<button class="filter-btn active" data-filter="all">All (<span id="count-all">14</span>)</button>
+<button class="filter-btn" data-filter="apk">Android APK (<span id="count-apk">11</span>)</button>
+<button class="filter-btn" data-filter="web">Web App (<span id="count-web">3</span>)</button>
+<button class="filter-btn" data-filter="Business &amp; POS">Business & POS</button>
+<button class="filter-btn" data-filter="Hardware &amp; Tools">Hardware & Tools</button>
+<button class="filter-btn" data-filter="Health &amp; AI">Health & AI</button>
 </div>
 </div>
-​<!-- APP CARDS -->
+​<!-- APP CARDS GRID -->
 <div class="cards-grid" id="cards-grid">
 ​<!-- 1 -->
-<div class="card" data-cat="Health &amp; AI" data-type="apk" data-kw="arogya diet ai nutrition health food">
+<div class="card" data-repo="arogyadietai" data-cat="Health &amp; AI" data-type="apk" data-kw="arogya diet ai nutrition health food">
 <div class="card-top">
 <div class="app-icon-wrap" style="width:44px;height:44px;max-width:44px;max-height:44px;">
 <img src="https://raw.githubusercontent.com/senterprisehub/arogyadietai/main/icon.png" width="44" height="44" style="width:44px;height:44px;max-width:44px;max-height:44px;object-fit:cover;border-radius:8px;" alt="A" onerror="this.style.display='none';">
@@ -426,7 +438,7 @@ footer a { color: #0284c7; text-decoration: none; font-weight: 600; }
 </div>
 </div>
 ​<!-- 2 -->
-<div class="card" data-cat="Business &amp; POS" data-type="apk" data-kw="mileage tracker vehicle route gps fuel">
+<div class="card" data-repo="Mileage-Tracker" data-cat="Business &amp; POS" data-type="apk" data-kw="mileage tracker vehicle route gps fuel">
 <div class="card-top">
 <div class="app-icon-wrap" style="width:44px;height:44px;max-width:44px;max-height:44px;">
 <img src="https://raw.githubusercontent.com/senterprisehub/Mileage-Tracker/main/icon.png" width="44" height="44" style="width:44px;height:44px;max-width:44px;max-height:44px;object-fit:cover;border-radius:8px;" alt="M" onerror="this.style.display='none';">
@@ -446,7 +458,7 @@ footer a { color: #0284c7; text-decoration: none; font-weight: 600; }
 </div>
 </div>
 ​<!-- 3 -->
-<div class="card" data-cat="Business &amp; POS" data-type="apk" data-kw="proinvoice billing invoice receipts tax pdf">
+<div class="card" data-repo="ProInvoice" data-cat="Business &amp; POS" data-type="apk" data-kw="proinvoice billing invoice receipts tax pdf">
 <div class="card-top">
 <div class="app-icon-wrap" style="width:44px;height:44px;max-width:44px;max-height:44px;">
 <img src="https://raw.githubusercontent.com/senterprisehub/ProInvoice/main/icon.png" width="44" height="44" style="width:44px;height:44px;max-width:44px;max-height:44px;object-fit:cover;border-radius:8px;" alt="P" onerror="this.style.display='none';">
@@ -466,7 +478,7 @@ footer a { color: #0284c7; text-decoration: none; font-weight: 600; }
 </div>
 </div>
 ​<!-- 4 -->
-<div class="card" data-cat="Hardware &amp; Tools" data-type="apk" data-kw="location saving app gps maps offline">
+<div class="card" data-repo="Location-Saving-App" data-cat="Hardware &amp; Tools" data-type="apk" data-kw="location saving app gps maps offline">
 <div class="card-top">
 <div class="app-icon-wrap" style="width:44px;height:44px;max-width:44px;max-height:44px;">
 <img src="https://raw.githubusercontent.com/senterprisehub/Location-Saving-App/main/icon.png" width="44" height="44" style="width:44px;height:44px;max-width:44px;max-height:44px;object-fit:cover;border-radius:8px;" alt="L" onerror="this.style.display='none';">
@@ -486,7 +498,7 @@ footer a { color: #0284c7; text-decoration: none; font-weight: 600; }
 </div>
 </div>
 ​<!-- 5 -->
-<div class="card" data-cat="Business &amp; POS" data-type="apk" data-kw="receipt pos billing terminal thermal printer retail">
+<div class="card" data-repo="ReceiptPOS" data-cat="Business &amp; POS" data-type="apk" data-kw="receipt pos billing terminal thermal printer retail">
 <div class="card-top">
 <div class="app-icon-wrap" style="width:44px;height:44px;max-width:44px;max-height:44px;">
 <img src="https://raw.githubusercontent.com/senterprisehub/ReceiptPOS/main/icon.png" width="44" height="44" style="width:44px;height:44px;max-width:44px;max-height:44px;object-fit:cover;border-radius:8px;" alt="R" onerror="this.style.display='none';">
@@ -506,7 +518,7 @@ footer a { color: #0284c7; text-decoration: none; font-weight: 600; }
 </div>
 </div>
 ​<!-- 6 -->
-<div class="card" data-cat="Hardware &amp; Tools" data-type="apk" data-kw="mock gps pro route simulator spoofer mock location">
+<div class="card" data-repo="Mock-GPS-Pro" data-cat="Hardware &amp; Tools" data-type="apk" data-kw="mock gps pro route simulator spoofer mock location">
 <div class="card-top">
 <div class="app-icon-wrap" style="width:44px;height:44px;max-width:44px;max-height:44px;">
 <img src="https://raw.githubusercontent.com/senterprisehub/Mock-GPS-Pro/main/icon.png" width="44" height="44" style="width:44px;height:44px;max-width:44px;max-height:44px;object-fit:cover;border-radius:8px;" alt="M" onerror="this.style.display='none';">
@@ -526,7 +538,7 @@ footer a { color: #0284c7; text-decoration: none; font-weight: 600; }
 </div>
 </div>
 ​<!-- 7 -->
-<div class="card" data-cat="Business &amp; POS" data-type="apk" data-kw="sales flow app leads crm sales team">
+<div class="card" data-repo="Sales-Flow-App" data-cat="Business &amp; POS" data-type="apk" data-kw="sales flow app leads crm sales team">
 <div class="card-top">
 <div class="app-icon-wrap" style="width:44px;height:44px;max-width:44px;max-height:44px;">
 <img src="https://raw.githubusercontent.com/senterprisehub/Sales-Flow-App/main/icon.png" width="44" height="44" style="width:44px;height:44px;max-width:44px;max-height:44px;object-fit:cover;border-radius:8px;" alt="S" onerror="this.style.display='none';">
@@ -546,7 +558,7 @@ footer a { color: #0284c7; text-decoration: none; font-weight: 600; }
 </div>
 </div>
 ​<!-- 8 -->
-<div class="card" data-cat="Hardware &amp; Tools" data-type="apk" data-kw="voltpulse electrical multimeter oscilloscope voltage analyzer">
+<div class="card" data-repo="VoltPulse" data-cat="Hardware &amp; Tools" data-type="apk" data-kw="voltpulse electrical multimeter oscilloscope voltage analyzer">
 <div class="card-top">
 <div class="app-icon-wrap" style="width:44px;height:44px;max-width:44px;max-height:44px;">
 <img src="https://raw.githubusercontent.com/senterprisehub/VoltPulse/main/icon.png" width="44" height="44" style="width:44px;height:44px;max-width:44px;max-height:44px;object-fit:cover;border-radius:8px;" alt="V" onerror="this.style.display='none';">
@@ -566,7 +578,7 @@ footer a { color: #0284c7; text-decoration: none; font-weight: 600; }
 </div>
 </div>
 ​<!-- 9 (Web App) -->
-<div class="card" data-cat="Business &amp; POS" data-type="web" data-kw="sales flow web app reporting pipeline management pwa">
+<div class="card" data-repo="Sales-flow" data-cat="Business &amp; POS" data-type="web" data-kw="sales flow web app reporting pipeline management pwa">
 <div class="card-top">
 <div class="app-icon-wrap" style="width:44px;height:44px;max-width:44px;max-height:44px;">
 <img src="https://raw.githubusercontent.com/senterprisehub/Sales-flow/main/icon.png" width="44" height="44" style="width:44px;height:44px;max-width:44px;max-height:44px;object-fit:cover;border-radius:8px;" alt="S" onerror="this.style.display='none';">
@@ -586,7 +598,7 @@ footer a { color: #0284c7; text-decoration: none; font-weight: 600; }
 </div>
 </div>
 ​<!-- 10 -->
-<div class="card" data-cat="Health &amp; AI" data-type="apk" data-kw="thermo med pro temperature medical cold chain">
+<div class="card" data-repo="Thermo-Med-Pro" data-cat="Health &amp; AI" data-type="apk" data-kw="thermo med pro temperature medical cold chain">
 <div class="card-top">
 <div class="app-icon-wrap" style="width:44px;height:44px;max-width:44px;max-height:44px;">
 <img src="https://raw.githubusercontent.com/senterprisehub/Thermo-Med-Pro/main/icon.png" width="44" height="44" style="width:44px;height:44px;max-width:44px;max-height:44px;object-fit:cover;border-radius:8px;" alt="T" onerror="this.style.display='none';">
@@ -606,7 +618,7 @@ footer a { color: #0284c7; text-decoration: none; font-weight: 600; }
 </div>
 </div>
 ​<!-- 11 -->
-<div class="card" data-cat="Hardware &amp; Tools" data-type="apk" data-kw="thermo print studio bluetooth thermal esc pos printer driver">
+<div class="card" data-repo="Thermo-Print-Studio" data-cat="Hardware &amp; Tools" data-type="apk" data-kw="thermo print studio bluetooth thermal esc pos printer driver">
 <div class="card-top">
 <div class="app-icon-wrap" style="width:44px;height:44px;max-width:44px;max-height:44px;">
 <img src="https://raw.githubusercontent.com/senterprisehub/Thermo-Print-Studio/main/icon.png" width="44" height="44" style="width:44px;height:44px;max-width:44px;max-height:44px;object-fit:cover;border-radius:8px;" alt="T" onerror="this.style.display='none';">
@@ -626,7 +638,7 @@ footer a { color: #0284c7; text-decoration: none; font-weight: 600; }
 </div>
 </div>
 ​<!-- 12 (Web App) -->
-<div class="card" data-cat="Business &amp; POS" data-type="web" data-kw="proinvoice app webapp invoice statement billing">
+<div class="card" data-repo="Proinvoice-App" data-cat="Business &amp; POS" data-type="web" data-kw="proinvoice app webapp invoice statement billing">
 <div class="card-top">
 <div class="app-icon-wrap" style="width:44px;height:44px;max-width:44px;max-height:44px;">
 <img src="https://raw.githubusercontent.com/senterprisehub/Proinvoice-App/main/icon.png" width="44" height="44" style="width:44px;height:44px;max-width:44px;max-height:44px;object-fit:cover;border-radius:8px;" alt="P" onerror="this.style.display='none';">
@@ -646,7 +658,7 @@ footer a { color: #0284c7; text-decoration: none; font-weight: 600; }
 </div>
 </div>
 ​<!-- 13 -->
-<div class="card" data-cat="Health &amp; AI" data-type="apk" data-kw="bmi health tracker body mass index weight wellness">
+<div class="card" data-repo="BMI-Health-Tracker" data-cat="Health &amp; AI" data-type="apk" data-kw="bmi health tracker body mass index weight wellness">
 <div class="card-top">
 <div class="app-icon-wrap" style="width:44px;height:44px;max-width:44px;max-height:44px;">
 <img src="https://raw.githubusercontent.com/senterprisehub/BMI-Health-Tracker/main/icon.png" width="44" height="44" style="width:44px;height:44px;max-width:44px;max-height:44px;object-fit:cover;border-radius:8px;" alt="B" onerror="this.style.display='none';">
@@ -666,7 +678,7 @@ footer a { color: #0284c7; text-decoration: none; font-weight: 600; }
 </div>
 </div>
 ​<!-- 14 (Web App) -->
-<div class="card" data-cat="Hardware &amp; Tools" data-type="web" data-kw="adj utility calculations operations field tools webapp">
+<div class="card" data-repo="ADJ" data-cat="Hardware &amp; Tools" data-type="web" data-kw="adj utility calculations operations field tools webapp">
 <div class="card-top">
 <div class="app-icon-wrap" style="width:44px;height:44px;max-width:44px;max-height:44px;">
 <img src="https://raw.githubusercontent.com/senterprisehub/ADJ/main/icon.png" width="44" height="44" style="width:44px;height:44px;max-width:44px;max-height:44px;object-fit:cover;border-radius:8px;" alt="A" onerror="this.style.display='none';">
@@ -696,7 +708,8 @@ No applications match your search or filter criteria.
 <a href="https://github.com/senterprisehub" target="_blank" rel="noopener noreferrer">senterprisehub</a>
 </footer>
 ​<script>
-// 1. UTC Countdown
+(function() {
+// 1. UTC Universal Countdown
 function updateClock() {
 var now = Date.now();
 var remaining = 3600000 - (now % 3600000);
@@ -710,21 +723,48 @@ el.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
 }
 updateClock();
 setInterval(updateClock, 1000);
-​// 2. Search & Filter
+​// 2. Global State & DOM Elements
 var searchEl = document.getElementById('search-bar');
-var cards = document.querySelectorAll('.card');
+var cardsContainer = document.getElementById('cards-grid');
 var filterBtns = document.querySelectorAll('.filter-btn');
 var noRes = document.getElementById('no-results');
 var currentFilter = 'all';
-​function doFilter() {
+​// 3. Stat Calculation Engine
+function recalculateStats() {
+var allCards = document.querySelectorAll('.card');
+var total = allCards.length;
+var apkCount = 0;
+var webCount = 0;
+​for (var i = 0; i < allCards.length; i++) {
+var t = allCards[i].getAttribute('data-type');
+if (t === 'apk') apkCount++;
+if (t === 'web') webCount++;
+}
+​var statTotal = document.getElementById('stat-total');
+var statApk = document.getElementById('stat-apk');
+var statWeb = document.getElementById('stat-web');
+var countAll = document.getElementById('count-all');
+var countApk = document.getElementById('count-apk');
+var countWeb = document.getElementById('count-web');
+​if (statTotal) statTotal.textContent = total;
+if (statApk) statApk.textContent = apkCount;
+if (statWeb) statWeb.textContent = webCount;
+if (countAll) countAll.textContent = total;
+if (countApk) countApk.textContent = apkCount;
+if (countWeb) countWeb.textContent = webCount;
+}
+​// 4. Filtering & Search Routine
+function doFilter() {
 var query = (searchEl ? searchEl.value : '').toLowerCase().trim();
+var allCards = document.querySelectorAll('.card');
 var shown = 0;
-​for (var i = 0; i < cards.length; i++) {
-var card = cards[i];
+​for (var i = 0; i < allCards.length; i++) {
+var card = allCards[i];
 var cat = card.getAttribute('data-cat') || '';
 var typ = card.getAttribute('data-type') || '';
 var kw = card.getAttribute('data-kw') || '';
-var title = card.querySelector('.app-name').textContent.toLowerCase();
+var nameEl = card.querySelector('.app-name');
+var title = nameEl ? nameEl.textContent.toLowerCase() : '';
 ​var matchFilter = false;
 if (currentFilter === 'all') matchFilter = true;
 else if (currentFilter === 'apk') matchFilter = (typ === 'apk');
@@ -758,6 +798,125 @@ doFilter();
 ​if (searchEl) {
 searchEl.addEventListener('input', doFilter);
 }
+​// 5. Autonomous Future Repository Ingestion Engine
+// Fetches GitHub repositories list using exactly 1 safe unauthenticated call.
+// Automatically appends new repositories as cards without touching existing ones.
+function discoverFutureRepos() {
+var statusEl = document.getElementById('engine-status');
+​fetch('https://api.github.com/users/senterprisehub/repos?per_page=100&sort=updated')
+.then(function(res) {
+if (!res.ok) throw new Error('Status ' + res.status);
+return res.json();
+})
+.then(function(repos) {
+if (!Array.isArray(repos)) return;
+​// Collect all existing repository identifiers already on the page
+var existingCards = document.querySelectorAll('.card');
+var existingSet = {};
+for (var i = 0; i < existingCards.length; i++) {
+var r = existingCards[i].getAttribute('data-repo');
+if (r) existingSet[r.toLowerCase()] = true;
+}
+​var ignored = { 'hub': true, 'senterprisehub.github.io': true, '.github': true };
+var newlyAdded = 0;
+​repos.forEach(function(repo) {
+var repoName = repo.name;
+var repoKey = repoName.toLowerCase();
+​// If it's an ignored portal repository or already rendered, skip
+if (ignored[repoKey] || existingSet[repoKey]) return;
+​// Identify if it's an APK or Web App from topics and description
+var topics = repo.topics || [];
+var desc = (repo.description || '').toLowerCase();
+var isApk = false;
+​for (var t = 0; t < topics.length; t++) {
+var top = topics[t].toLowerCase();
+if (top.indexOf('apk') !== -1 || top.indexOf('android') !== -1) {
+isApk = true;
+break;
+}
+}
+if (!isApk && (desc.indexOf('apk') !== -1 || desc.indexOf('android') !== -1)) {
+isApk = true;
+}
+​// Determine Category
+var cat = 'Hardware & Tools';
+if (desc.indexOf('invoice') !== -1 || desc.indexOf('pos') !== -1 || desc.indexOf('sale') !== -1 || desc.indexOf('mileage') !== -1) {
+cat = 'Business & POS';
+} else if (desc.indexOf('health') !== -1 || desc.indexOf('diet') !== -1 || desc.indexOf('ai') !== -1 || desc.indexOf('bmi') !== -1) {
+cat = 'Health & AI';
+}
+​var formattedTitle = repoName.replace(/[-_]/g, ' ');
+var firstLetter = formattedTitle.charAt(0).toUpperCase();
+​// Create new card element dynamically
+var card = document.createElement('div');
+card.className = 'card';
+card.setAttribute('data-repo', repoName);
+card.setAttribute('data-cat', cat);
+card.setAttribute('data-type', isApk ? 'apk' : 'web');
+card.setAttribute('data-kw', formattedTitle.toLowerCase() + ' ' + desc);
+​var actionHtml = '';
+if (isApk) {
+actionHtml =
+'<div>' +
+'<div class="card-meta"><span>Android OS</span><strong>Latest APK</strong></div>' +
+'<div class="card-btns" style="margin-top:8px;">' +
+'<a href="https://github.com/senterprisehub/' + repoName + '/releases" class="btn btn-dl" target="_blank" rel="noopener noreferrer">Download APK</a>' +
+'<a href="https://senterprisehub.github.io/' + repoName + '/" class="btn btn-portal" target="_blank" rel="noopener noreferrer">App Page</a>' +
+'</div>' +
+'</div>';
+} else {
+actionHtml =
+'<div>' +
+'<div class="card-meta"><span>Browser Engine</span><strong>Cloud App</strong></div>' +
+'<div style="margin-top:8px;">' +
+'<a href="https://senterprisehub.github.io/' + repoName + '/" class="btn btn-web" target="_blank" rel="noopener noreferrer">Open Web Application</a>' +
+'</div>' +
+'<div class="pwa-tip"><strong>Install:</strong> Open link → Tap browser menu (⋮) → <strong>Add to Home screen</strong>.</div>' +
+'</div>';
+}
+​card.innerHTML =
+'<div class="card-top">' +
+'<div class="app-icon-wrap" style="width:44px;height:44px;max-width:44px;max-height:44px;">' +
+'<img src="https://raw.githubusercontent.com/senterprisehub/' + repoName + '/main/icon.png" width="44" height="44" style="width:44px;height:44px;max-width:44px;max-height:44px;object-fit:cover;border-radius:8px;" alt="' + firstLetter + '" onerror="this.style.display=\'none\';">' +
+'</div>' +
+'<div class="app-info">' +
+'<div class="app-name">' + formattedTitle + '</div>' +
+'<span class="app-tag ' + (isApk ? 'apk' : 'web') + '">' + (isApk ? 'APK Native' : 'Web App') + '</span>' +
+'<span class="app-tag new-badge">New</span>' +
+'</div>' +
+'</div>' +
+'<p class="card-desc">' + (repo.description || 'Public application release from SR Apps Studio.') + '</p>' +
+actionHtml;
+​if (noRes) {
+cardsContainer.insertBefore(card, noRes);
+} else {
+cardsContainer.appendChild(card);
+}
+​existingSet[repoKey] = true;
+newlyAdded++;
+});
+​if (newlyAdded > 0) {
+recalculateStats();
+doFilter();
+}
+​if (statusEl) statusEl.textContent = 'Live Synced';
+})
+.catch(function(err) {
+// Graceful failover: existing 14 pre-rendered cards remain active
+if (statusEl) statusEl.textContent = 'Active (Cached)';
+});
+}
+​// Initial run & hourly sync trigger
+discoverFutureRepos();
+​var syncBtn = document.getElementById('btn-manual-sync');
+if (syncBtn) {
+syncBtn.addEventListener('click', function() {
+var statusEl = document.getElementById('engine-status');
+if (statusEl) statusEl.textContent = 'Scanning...';
+discoverFutureRepos();
+});
+}
+​})();
 </script>
 </body>
 </html>
