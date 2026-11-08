@@ -2,923 +2,1154 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 ​<!-- Google Search Console Verification Meta Tag -->
 <meta name="google-site-verification" content="google9e1371db0f52541e" />
 ​<!-- Primary SEO Meta Tags -->
-<title>SR Apps Studio | Enterprise Android Ecosystem & APK Distribution</title>
-<meta name="title" content="SR Apps Studio | Enterprise Android Ecosystem & APK Distribution" />
-<meta name="description" content="Discover and download verified Android APKs and Progressive Web Applications from SR Apps Studio with automatic hourly release syncing." />
-<meta name="keywords" content="Android APK, download APK, Android apps, Web App, PWA, open source APK, SR Apps Studio, senterprisehub, APK direct download" />
-<meta name="author" content="SR Apps Studio / senterprisehub" />
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<title>SR Apps Studio | Android Ecosystem & APK Distribution</title>
+<meta name="title" content="SR Apps Studio | Android Ecosystem & APK Distribution" />
+<meta name="description" content="Discover and download verified Android APKs and Progressive Web Applications from SR Apps Studio with synchronized global hourly release cycles." />
+<meta name="keywords" content="Android APK, download APK, Android apps, Web App, PWA, SR Apps Studio, senterprisehub, APK direct download" />
+<meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://senterprisehub.github.io/hub/" />
-​<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://senterprisehub.github.io/hub/" />
-<meta property="og:title" content="SR Apps Studio | Dynamic Android & Web App Hub" />
-<meta property="og:description" content="Live catalog of Android APK builds, Progressive Web Apps, and direct downloads from official GitHub repositories." />
 ​<!-- Fonts & Icons -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-​<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-theme: {
-extend: {
-fontFamily: {
-sans: ['Inter', 'sans-serif'],
-mono: ['JetBrains Mono', 'monospace'],
-},
-colors: {
-brand: {
-50: '#f0f7ff',
-100: '#e0effe',
-200: '#bae0fd',
-500: '#0284c7',
-600: '#0369a1',
-700: '#075985',
-800: '#0c4a6e',
-}
-}
-}
-}
-}
-</script>
 ​<style>
-::-webkit-scrollbar { width: 7px; height: 7px; }
-::-webkit-scrollbar-track { background: #f1f5f9; }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
-::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-​@keyframes pulse-subtle {
-0%, 100% { opacity: 0.4; transform: scale(1); }
-50% { opacity: 0.7; transform: scale(1.05); }
+/* Reset & Base Variables */
+*, *::before, *::after {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
 }
-.animate-pulse-subtle { animation: pulse-subtle 6s ease-in-out infinite; }
-​.dev-card { transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1); }
-.dev-card:hover {
-transform: translateY(-4px);
-box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+​:root {
+--bg: #f8fafc;
+--surface: #ffffff;
+--surface-hover: #f1f5f9;
+--border: #e2e8f0;
+--border-focus: #0284c7;
+--text-main: #0f172a;
+--text-muted: #64748b;
+--text-subtle: #94a3b8;
+--primary: #0284c7;
+--primary-hover: #0369a1;
+--primary-soft: #f0f9ff;
+--emerald: #059669;
+--emerald-soft: #ecfdf5;
+--indigo: #4f46e5;
+--indigo-soft: #eef2ff;
+--amber: #d97706;
+--amber-soft: #fffbeb;
+--radius-sm: 8px;
+--radius-md: 12px;
+--radius-lg: 16px;
+--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+--shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+--shadow-hover: 0 12px 24px -4px rgba(15, 23, 42, 0.1);
+}
+​body {
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+background-color: var(--bg);
+color: var(--text-main);
+line-height: 1.5;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+position: relative;
+overflow-x: hidden;
+-webkit-font-smoothing: antialiased;
+}
+​/* Ambient Background Simulation */
+#ambient-canvas {
+position: fixed;
+inset: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
+z-index: 0;
+opacity: 0.5;
+}
+​.ambient-glow {
+position: fixed;
+top: -100px;
+left: 50%;
+transform: translateX(-50%);
+width: 600px;
+height: 350px;
+background: radial-gradient(circle, rgba(186, 224, 253, 0.45) 0%, rgba(238, 242, 255, 0.3) 50%, transparent 70%);
+filter: blur(50px);
+pointer-events: none;
+z-index: 0;
+}
+​/* Header */
+header {
+position: sticky;
+top: 0;
+z-index: 40;
+background: rgba(255, 255, 255, 0.88);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border-bottom: 1px solid var(--border);
+}
+​.header-inner {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0.75rem 1rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 1rem;
+}
+​.brand-group {
+display: flex;
+align-items: center;
+gap: 0.75rem;
+}
+​.brand-icon {
+width: 38px;
+height: 38px;
+border-radius: var(--radius-md);
+background: linear-gradient(135deg, #0284c7, #4f46e5);
+color: #fff;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.15rem;
+box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+}
+​.brand-title {
+font-size: 1.1rem;
+font-weight: 800;
+color: var(--text-main);
+line-height: 1.2;
+letter-spacing: -0.02em;
+}
+​.brand-title span {
+color: var(--primary);
+}
+​.brand-badge {
+display: inline-flex;
+align-items: center;
+gap: 0.35rem;
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.68rem;
+font-weight: 600;
+padding: 0.15rem 0.45rem;
+border-radius: 4px;
+background: var(--emerald-soft);
+color: var(--emerald);
+border: 1px solid rgba(5, 150, 105, 0.2);
+}
+​.brand-badge .ping-dot {
+width: 6px;
+height: 6px;
+border-radius: 50%;
+background: var(--emerald);
+display: inline-block;
+}
+​.header-controls {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+​.timer-badge {
+display: inline-flex;
+align-items: center;
+gap: 0.4rem;
+background: var(--surface);
+border: 1px solid var(--border);
+padding: 0.4rem 0.65rem;
+border-radius: var(--radius-sm);
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.78rem;
+font-weight: 600;
+color: var(--primary);
+box-shadow: var(--shadow-sm);
+}
+​.timer-badge i {
+color: var(--text-muted);
+}
+​.btn-sync {
+display: inline-flex;
+align-items: center;
+gap: 0.4rem;
+font-size: 0.78rem;
+font-weight: 600;
+color: var(--text-main);
+background: var(--surface);
+border: 1px solid var(--border);
+padding: 0.45rem 0.75rem;
+border-radius: var(--radius-sm);
+cursor: pointer;
+transition: all 0.2s ease;
+box-shadow: var(--shadow-sm);
+}
+​.btn-sync:hover {
+background: var(--surface-hover);
+border-color: #cbd5e1;
+}
+​/* Hero Section */
+.hero {
+position: relative;
+z-index: 10;
+padding: 2.5rem 1rem 1.5rem;
+text-align: center;
+max-width: 900px;
+margin: 0 auto;
+}
+​.verified-pill {
+display: inline-flex;
+align-items: center;
+gap: 0.4rem;
+padding: 0.35rem 0.85rem;
+border-radius: 9999px;
+font-size: 0.75rem;
+font-weight: 600;
+background: var(--primary-soft);
+color: var(--primary);
+border: 1px solid rgba(2, 132, 199, 0.2);
+margin-bottom: 0.75rem;
+}
+​.verified-pill code {
+font-family: 'JetBrains Mono', monospace;
+font-weight: 700;
+}
+​.hero-title {
+font-size: clamp(1.8rem, 4vw, 2.75rem);
+font-weight: 800;
+letter-spacing: -0.03em;
+line-height: 1.15;
+color: var(--text-main);
+margin-bottom: 0.5rem;
+}
+​.hero-title .gradient-text {
+background: linear-gradient(135deg, #0284c7, #4f46e5);
+-webkit-background-clip: text;
+background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+​.hero-desc {
+font-size: 0.95rem;
+color: var(--text-muted);
+max-width: 580px;
+margin: 0 auto 1rem;
+line-height: 1.5;
+}
+​.notice-box {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+padding: 0.5rem 1rem;
+border-radius: var(--radius-md);
+background: var(--amber-soft);
+color: var(--amber);
+border: 1px solid rgba(217, 119, 6, 0.25);
+font-size: 0.78rem;
+font-weight: 500;
+margin-bottom: 1.5rem;
+}
+​/* Stats Grid */
+.stats-bar {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 0.75rem;
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: var(--radius-lg);
+padding: 0.85rem 0.5rem;
+box-shadow: var(--shadow-sm);
+margin-bottom: 1.75rem;
+}
+​.stat-item {
+text-align: center;
+border-right: 1px solid var(--border);
+}
+​.stat-item:last-child {
+border-right: none;
+}
+​.stat-val {
+font-family: 'JetBrains Mono', monospace;
+font-size: 1.4rem;
+font-weight: 700;
+color: var(--text-main);
+line-height: 1.1;
+}
+​.stat-val.emerald { color: var(--emerald); }
+.stat-val.indigo { color: var(--indigo); }
+.stat-val.sky { color: var(--primary); }
+​.stat-lbl {
+font-size: 0.68rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.05em;
+color: var(--text-subtle);
+margin-top: 0.2rem;
+}
+​/* Search & Filter Controls */
+.controls-wrap {
+display: flex;
+flex-direction: column;
+gap: 0.75rem;
+max-width: 750px;
+margin: 0 auto;
+}
+​.search-box {
+position: relative;
+width: 100%;
+}
+​.search-box i {
+position: absolute;
+left: 1rem;
+top: 50%;
+transform: translateY(-50%);
+color: var(--text-subtle);
+font-size: 0.9rem;
+}
+​.search-box input {
+width: 100%;
+padding: 0.75rem 1rem 0.75rem 2.6rem;
+font-size: 0.9rem;
+border: 1px solid var(--border);
+border-radius: var(--radius-md);
+background: var(--surface);
+color: var(--text-main);
+outline: none;
+box-shadow: var(--shadow-sm);
+transition: all 0.2s ease;
+}
+​.search-box input:focus {
+border-color: var(--border-focus);
+box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+​.filter-pills {
+display: flex;
+align-items: center;
+justify-content: center;
+flex-wrap: wrap;
+gap: 0.4rem;
+}
+​.filter-btn {
+font-size: 0.75rem;
+font-weight: 600;
+padding: 0.35rem 0.75rem;
+border-radius: var(--radius-sm);
+border: 1px solid var(--border);
+background: var(--surface);
+color: var(--text-muted);
+cursor: pointer;
+transition: all 0.15s ease;
+}
+​.filter-btn:hover {
+border-color: #cbd5e1;
+color: var(--text-main);
+}
+​.filter-btn.active {
+background: var(--text-main);
+color: #fff;
+border-color: var(--text-main);
+}
+​/* App Grid Container */
+main {
+position: relative;
+z-index: 10;
+max-width: 1200px;
+width: 100%;
+margin: 0 auto;
+padding: 1rem 1rem 3rem;
+flex: 1;
+}
+​.apps-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+gap: 1.25rem;
+}
+​/* App Cards */
+.app-card {
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: var(--radius-lg);
+padding: 1.25rem;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+gap: 1rem;
+box-shadow: var(--shadow-sm);
+transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+​.app-card:hover {
+transform: translateY(-3px);
+box-shadow: var(--shadow-hover);
+border-color: #cbd5e1;
+}
+​.card-top {
+display: flex;
+align-items: flex-start;
+justify-content: space-between;
+gap: 0.75rem;
+}
+​.card-meta {
+display: flex;
+align-items: center;
+gap: 0.85rem;
+min-width: 0;
+}
+​.card-logo {
+width: 48px;
+height: 48px;
+border-radius: var(--radius-md);
+object-fit: cover;
+background: var(--bg);
+border: 1px solid var(--border);
+flex-shrink: 0;
+}
+​.card-title-group {
+min-width: 0;
+}
+​.card-title {
+font-size: 1rem;
+font-weight: 700;
+color: var(--text-main);
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+line-height: 1.2;
+}
+​.card-sub-badges {
+display: flex;
+align-items: center;
+gap: 0.4rem;
+margin-top: 0.25rem;
+flex-wrap: wrap;
+}
+​.badge-apk {
+display: inline-flex;
+align-items: center;
+gap: 0.25rem;
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.65rem;
+font-weight: 600;
+padding: 0.15rem 0.4rem;
+border-radius: 4px;
+background: var(--emerald-soft);
+color: var(--emerald);
+border: 1px solid rgba(5, 150, 105, 0.2);
+}
+​.badge-web {
+display: inline-flex;
+align-items: center;
+gap: 0.25rem;
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.65rem;
+font-weight: 600;
+padding: 0.15rem 0.4rem;
+border-radius: 4px;
+background: var(--indigo-soft);
+color: var(--indigo);
+border: 1px solid rgba(79, 70, 229, 0.2);
+}
+​.badge-ver {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.65rem;
+color: var(--text-subtle);
+}
+​.card-desc {
+font-size: 0.82rem;
+color: var(--text-muted);
+line-height: 1.45;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
+margin-top: 0.5rem;
+}
+​.card-tags {
+display: flex;
+flex-wrap: wrap;
+gap: 0.3rem;
+margin-top: 0.6rem;
+}
+​.tag-item {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.62rem;
+padding: 0.15rem 0.4rem;
+border-radius: 4px;
+background: var(--surface-hover);
+color: var(--text-muted);
+border: 1px solid var(--border);
+}
+​.spec-strip {
+display: flex;
+align-items: center;
+justify-content: space-between;
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.7rem;
+color: var(--text-subtle);
+padding: 0.45rem 0.75rem;
+background: var(--bg);
+border: 1px solid var(--border);
+border-radius: var(--radius-sm);
+margin-bottom: 0.75rem;
+}
+​.spec-strip strong {
+color: var(--text-main);
+}
+​/* Action Buttons */
+.btn-grid-two {
+display: grid;
+grid-template-columns: 1.2fr 1fr;
+gap: 0.5rem;
+}
+​.btn-action {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 0.4rem;
+padding: 0.55rem 0.75rem;
+font-size: 0.78rem;
+font-weight: 600;
+border-radius: var(--radius-sm);
+text-decoration: none;
+cursor: pointer;
+transition: all 0.15s ease;
+border: 1px solid transparent;
+text-align: center;
+}
+​.btn-primary {
+background: var(--primary);
+color: #fff;
+}
+​.btn-primary:hover {
+background: var(--primary-hover);
+}
+​.btn-secondary {
+background: var(--surface);
+color: var(--text-main);
+border-color: var(--border);
+}
+​.btn-secondary:hover {
+background: var(--surface-hover);
+border-color: #cbd5e1;
+}
+​.btn-indigo {
+background: var(--indigo);
+color: #fff;
+width: 100%;
+}
+​.btn-indigo:hover {
+background: #4338ca;
+}
+​/* PWA Micro Instruction */
+.pwa-hint {
+margin-top: 0.5rem;
+padding: 0.5rem 0.75rem;
+border-radius: var(--radius-sm);
+background: var(--indigo-soft);
+border: 1px solid rgba(79, 70, 229, 0.15);
+font-size: 0.68rem;
+color: var(--indigo);
+line-height: 1.35;
+}
+​.pwa-hint strong {
+color: #312e81;
+}
+​/* Empty State */
+.empty-box {
+text-align: center;
+padding: 4rem 1rem;
+background: var(--surface);
+border: 1px dashed var(--border);
+border-radius: var(--radius-lg);
+display: none;
+}
+​.empty-box i {
+font-size: 2.5rem;
+color: var(--text-subtle);
+margin-bottom: 0.75rem;
+}
+​.empty-box h3 {
+font-size: 1rem;
+font-weight: 700;
+color: var(--text-main);
+}
+​.empty-box p {
+font-size: 0.82rem;
+color: var(--text-muted);
+margin-top: 0.25rem;
+}
+​/* Footer */
+footer {
+border-top: 1px solid var(--border);
+background: var(--surface);
+padding: 1.5rem 1rem;
+margin-top: auto;
+position: relative;
+z-index: 10;
+}
+​.footer-inner {
+max-width: 1200px;
+margin: 0 auto;
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 0.75rem;
+font-size: 0.78rem;
+color: var(--text-muted);
+}
+​.footer-inner a {
+color: var(--text-main);
+text-decoration: none;
+font-weight: 600;
+}
+​/* Responsive */
+@media (max-width: 640px) {
+.stats-bar {
+grid-template-columns: repeat(2, 1fr);
+gap: 0.5rem;
+}
+.stat-item:nth-child(2) {
+border-right: none;
+}
+.stat-item:nth-child(3) {
+border-top: 1px solid var(--border);
+}
+.stat-item:nth-child(4) {
+border-top: 1px solid var(--border);
+}
+.header-controls .btn-sync span {
+display: none;
+}
 }
 </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen flex flex-col relative selection:bg-sky-500 selection:text-white">
-​<!-- Interactive Particle Canvas -->
-<canvas id="ambient-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
-​<!-- Background Gradient Orbs -->
-<div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 pointer-events-none overflow-hidden z-0">
-<div class="absolute -top-32 left-1/4 w-96 h-96 bg-sky-200/50 rounded-full blur-3xl animate-pulse-subtle"></div>
-<div class="absolute -top-24 right-1/4 w-80 h-80 bg-indigo-200/40 rounded-full blur-3xl animate-pulse-subtle" style="animation-delay: 2s;"></div>
-</div>
-​<!-- Top Navigation Bar -->
-<header class="sticky top-0 z-40 backdrop-blur-md bg-white/80 border-b border-slate-200/80 transition-all">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-​<!-- Brand Logo -->
-<div class="flex items-center space-x-3">
-<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-sky-600/20">
-<i class="fa-brands fa-android text-xl"></i>
+<body>
+​<!-- Ambient Glow & Dynamic Canvas -->
+<div class="ambient-glow"></div>
+<canvas id="ambient-canvas"></canvas>
+​<!-- Global Header -->
+<header>
+<div class="header-inner">
+<div class="brand-group">
+<div class="brand-icon">
+<i class="fa-brands fa-android"></i>
 </div>
 <div>
-<div class="flex items-center space-x-2">
-<span class="font-bold text-lg tracking-tight text-slate-900">SR Apps <span class="text-sky-600">Studio</span></span>
-<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-emerald-50 text-emerald-700 border border-emerald-200" id="sync-indicator">
-<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5 animate-ping"></span> Live 60m Sync
-</span>
-</div>
-<p class="text-[11px] text-slate-500 font-mono hidden sm:block">Automated Distribution Portal</p>
+<div class="brand-title">SR Apps <span>Studio</span></div>
+<div class="brand-badge">
+<span class="ping-dot"></span> Universal Epoch Sync
 </div>
 </div>
-​<!-- Action Items & Countdown Timer -->
-<div class="flex items-center space-x-2 sm:space-x-4">
-​<!-- Reverse Countdown Timer Badge -->
-<div class="inline-flex items-center space-x-1.5 bg-slate-100/90 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-mono shadow-sm" title="Time remaining until the next automatic repository refresh">
-<i class="fa-regular fa-clock text-sky-600 text-[11px]"></i>
-<span class="text-slate-500 hidden md:inline">Sync in:</span>
-<span id="sync-countdown" class="font-bold text-sky-700">60:00</span>
 </div>
-​<!-- Manual Re-scan Button -->
-<button id="refresh-catalog-btn" title="Force refresh repository catalog immediately" class="inline-flex items-center space-x-1.5 text-xs font-medium text-slate-700 hover:text-slate-900 bg-white border border-slate-300 hover:border-slate-400 px-3 py-1.5 rounded-lg transition-all shadow-sm">
-<i class="fa-solid fa-arrows-rotate text-sky-600" id="refresh-spinner"></i>
-<span class="hidden sm:inline">Sync Now</span>
+​<div class="header-controls">
+<div class="timer-badge" title="Universal sync countdown: synchronized across all visitors">
+<i class="fa-regular fa-clock"></i>
+<span id="sync-countdown">--:--</span>
+</div>
+<button id="refresh-btn" class="btn-sync" title="Sync repository catalog immediately">
+<i class="fa-solid fa-arrows-rotate" id="refresh-icon"></i>
+<span>Sync Now</span>
 </button>
-​<!-- GitHub Profile Link -->
-<a href="https://github.com/senterprisehub" target="_blank" rel="noopener noreferrer" 
-class="inline-flex items-center space-x-2 text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 bg-slate-100/80 hover:bg-slate-200/70 border border-slate-200 px-3 py-1.5 rounded-lg transition-all">
-<i class="fa-brands fa-github text-base"></i>
-<span class="hidden md:inline">GitHub</span>
-</a>
 </div>
-​</div>
+</div>
 </header>
-​<!-- Hero Section -->
-<section class="relative z-10 pt-8 pb-8 sm:pt-12 sm:pb-10 border-b border-slate-200/60 bg-gradient-to-b from-white via-white/70 to-slate-50/50">
-<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-​<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-sky-50 text-sky-700 border border-sky-200 shadow-sm mb-3">
-<i class="fa-solid fa-shield-halved text-sky-600"></i>
-<span>Verified Ecosystem: Official builds under <code class="bg-sky-100/80 text-sky-800 px-1.5 py-0.5 rounded font-mono">senterprisehub</code></span>
+​<!-- Hero Information Bar -->
+<section class="hero">
+<div class="verified-pill">
+<i class="fa-solid fa-shield-halved"></i>
+<span>Official Portal: <code>senterprisehub</code></span>
 </div>
-​<h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-SR Apps Studio & <span class="bg-gradient-to-r from-sky-600 to-indigo-600 bg-clip-text text-transparent">Ecosystem</span>
+​<h1 class="hero-title">
+Verified Android APKs & <span class="gradient-text">Web Apps</span>
 </h1>
-​<p class="mt-2.5 text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
-Direct Android APK downloads and Progressive Web Applications synchronized directly with GitHub releases.
+​<p class="hero-desc">
+Direct-download builds and Progressive Web Applications synchronized globally on a fixed 60-minute cycle.
 </p>
-​<!-- Refresh Countdown Notice Banner -->
-<div class="mt-4 max-w-xl mx-auto inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200/80 shadow-sm">
-<i class="fa-solid fa-hourglass-half text-amber-600 animate-pulse"></i>
-<span><strong>For New releases Wait for refresh countdown</strong> (or tap <code class="font-mono bg-amber-100/70 text-amber-900 px-1 py-0.5 rounded">Sync Now</code> to fetch immediately).</span>
+​<div class="notice-box">
+<i class="fa-solid fa-hourglass-half"></i>
+<span><strong>For new releases wait for refresh countdown</strong> (or tap Sync Now).</span>
 </div>
-​<!-- Portal Statistics Counter Bar -->
-<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto mt-6 p-3 sm:p-4 bg-white/90 rounded-2xl border border-slate-200 shadow-sm backdrop-blur-sm">
-<div class="p-2 text-center border-r border-slate-100 last:border-0">
-<div class="text-xl sm:text-2xl font-bold font-mono text-slate-900" id="stat-total-apps">--</div>
-<div class="text-[11px] uppercase tracking-wider font-semibold text-slate-500 mt-0.5">Scanned Repos</div>
+​<!-- Live Counters -->
+<div class="stats-bar">
+<div class="stat-item">
+<div class="stat-val" id="stat-total">--</div>
+<div class="stat-lbl">Total Apps</div>
 </div>
-<div class="p-2 text-center border-r border-slate-100 last:border-0">
-<div class="text-xl sm:text-2xl font-bold font-mono text-emerald-600" id="stat-ready-apks">--</div>
-<div class="text-[11px] uppercase tracking-wider font-semibold text-slate-500 mt-0.5">APK Apps</div>
+<div class="stat-item">
+<div class="stat-val emerald" id="stat-apk">--</div>
+<div class="stat-lbl">APK Apps</div>
 </div>
-<div class="p-2 text-center border-r border-slate-100 last:border-0">
-<div class="text-xl sm:text-2xl font-bold font-mono text-indigo-600" id="stat-web-apps">--</div>
-<div class="text-[11px] uppercase tracking-wider font-semibold text-slate-500 mt-0.5">Web Apps</div>
+<div class="stat-item">
+<div class="stat-val indigo" id="stat-web">--</div>
+<div class="stat-lbl">Web Apps</div>
 </div>
-<div class="p-2 text-center">
-<div class="text-xl sm:text-2xl font-bold font-mono text-sky-600" id="stat-api-status">Hourly Sync</div>
-<div class="text-[11px] uppercase tracking-wider font-semibold text-slate-500 mt-0.5">Engine Status</div>
-</div>
-</div>
-​<!-- Search & Dynamic Category Filters -->
-<div class="mt-6 max-w-3xl mx-auto space-y-3.5">
-​<!-- Search Input -->
-<div class="relative">
-<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
-<i class="fa-solid fa-magnifying-glass text-sm"></i>
-</div>
-<input 
-type="text" 
-id="search-input" 
-placeholder="Filter apps by title, package, tags, or description..." 
-class="w-full pl-11 pr-24 py-3 bg-white border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 shadow-sm transition-all"
-/>
-<div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-<span class="text-[11px] font-mono text-slate-400 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md hidden sm:inline">ESC to clear</span>
+<div class="stat-item">
+<div class="stat-val sky" id="stat-status">Active</div>
+<div class="stat-lbl">Status</div>
 </div>
 </div>
-​<!-- Dynamic Category Filter Pills -->
-<div class="flex items-center justify-center flex-wrap gap-2 pt-1" id="category-pills"></div>
-​</div>
-​</div>
+​<!-- Search & Filters -->
+<div class="controls-wrap">
+<div class="search-box">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input type="text" id="search-input" placeholder="Search applications, tags, or features..." autocomplete="off" />
+</div>
+<div class="filter-pills" id="filter-container"></div>
+</div>
 </section>
-​<!-- Main Content: Application Grid -->
-<main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 relative z-10">
-​<!-- Active Apps Grid -->
-<div id="apps-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-​<!-- Empty Results View -->
-<div id="empty-state" class="hidden text-center py-16 px-4 bg-white rounded-2xl border border-dashed border-slate-300 my-8">
-<div class="w-14 h-14 mx-auto rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mb-3 text-xl">
+​<!-- Main Catalog Grid -->
+<main>
+<div class="apps-grid" id="apps-grid"></div>
+​<div class="empty-box" id="empty-state">
 <i class="fa-solid fa-folder-open"></i>
+<h3>No matching applications found</h3>
+<p>Try clearing your search term or select another category filter.</p>
 </div>
-<h3 class="text-base font-semibold text-slate-800" id="empty-title">No applications matched</h3>
-<p class="text-sm text-slate-500 mt-1 max-w-md mx-auto" id="empty-desc">Try clearing your search terms or selecting another category.</p>
-<button id="reset-filter-btn" class="mt-4 px-4 py-1.5 rounded-lg text-xs font-semibold text-sky-600 bg-sky-50 border border-sky-200 hover:bg-sky-100 transition-all">
-Reset All Filters
-</button>
-</div>
-​</main>
-​<!-- Technical Details & Installation Guide Modal -->
-<div id="app-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200">
-<div class="bg-white rounded-2xl max-w-lg w-full p-6 border border-slate-200 shadow-2xl relative transform scale-95 transition-transform duration-200 max-h-[90vh] overflow-y-auto" id="modal-card">
-<button id="close-modal-btn" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 w-8 h-8 rounded-lg flex items-center justify-center hover:bg-slate-100 transition-all">
-<i class="fa-solid fa-xmark text-lg"></i>
-</button>
-​<div class="flex items-start space-x-4 mb-4">
-<img id="modal-logo" src="" alt="App icon" class="w-16 h-16 rounded-2xl border border-slate-100 shadow-sm object-cover bg-slate-100">
+</main>
+​<!-- Standard Footer -->
+<footer>
+<div class="footer-inner">
+<div>© SR Apps Studio · High-Performance Android & Web Distribution</div>
 <div>
-<h3 id="modal-title" class="text-xl font-bold text-slate-900 leading-snug"></h3>
-<p id="modal-repo" class="text-xs font-mono text-sky-700"></p>
-<div class="flex items-center gap-1.5 mt-1.5 flex-wrap">
-<span id="modal-type-badge" class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium"></span>
-<span id="modal-version-tag" class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-sky-50 text-sky-700 border border-sky-200"></span>
-</div>
-</div>
-</div>
-​<p id="modal-desc" class="text-sm text-slate-600 leading-relaxed mb-4 border-b border-slate-100 pb-4"></p>
-​<!-- Web App Installation Guide -->
-<div id="modal-pwa-guide" class="mb-5 p-4 rounded-xl bg-indigo-50/70 border border-indigo-100 text-xs text-indigo-950">
-<div class="font-bold text-indigo-900 mb-2 flex items-center gap-1.5 text-sm">
-<i class="fa-solid fa-mobile-screen-button text-indigo-600"></i>
-<span>How to install as a Web App on your device:</span>
-</div>
-<ol class="space-y-1.5 list-decimal pl-4 leading-relaxed text-indigo-900/90 font-medium">
-<li>Click <strong>Open Web Application</strong> below to launch in your browser.</li>
-<li><strong>On Android (Chrome):</strong> Tap the <strong>three dots menu (⋮)</strong> → Select <strong>"Install app"</strong> or <strong>"Add to Home screen"</strong>.</li>
-<li><strong>On iPhone (Safari):</strong> Tap the <strong>Share button</strong> → Select <strong>"Add to Home Screen"</strong>.</li>
-<li><strong>On Desktop (Chrome/Edge):</strong> Click the <strong>Install icon</strong> in the address bar.</li>
-</ol>
-</div>
-​<!-- Metadata Attributes -->
-<div class="grid grid-cols-2 gap-3 p-3 bg-slate-50 rounded-xl text-xs mb-5 border border-slate-100">
-<div>
-<span class="text-slate-500 block mb-0.5">Application Classification</span>
-<span id="modal-target" class="font-mono text-slate-800 font-medium truncate block">--</span>
-</div>
-<div>
-<span class="text-slate-500 block mb-0.5">Asset / Binary Size</span>
-<span id="modal-filesize" class="font-mono text-slate-800 font-medium">--</span>
-</div>
-<div>
-<span class="text-slate-500 block mb-0.5">Distribution Channel</span>
-<span class="font-mono text-slate-800 font-medium">GitHub Releases / CDN</span>
-</div>
-<div>
-<span class="text-slate-500 block mb-0.5">Platform Target</span>
-<span id="modal-arch" class="font-mono text-slate-800 font-medium">--</span>
-</div>
-</div>
-​<!-- Action Buttons -->
-<div class="space-y-2" id="modal-actions"></div>
-​</div>
-</div>
-​<!-- Professional Footer -->
-<footer class="mt-auto border-t border-slate-200 bg-white/80 backdrop-blur-sm z-10 py-7">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-<div class="flex items-center space-x-2">
-<i class="fa-brands fa-android text-sky-600 text-base"></i>
-<span class="font-semibold text-slate-700">SR Apps Studio</span>
-<span>·</span>
-<span>Distribution Ecosystem</span>
-</div>
-<div class="flex items-center space-x-4 font-mono text-[11px]">
-<span>60-Minute Managed Cycle Engine</span>
-<span>·</span>
-<a href="https://github.com/senterprisehub" target="_blank" class="hover:text-slate-900 transition-colors">GitHub Account</a>
+<a href="https://github.com/senterprisehub" target="_blank" rel="noopener noreferrer">
+<i class="fa-brands fa-github"></i> github.com/senterprisehub
+</a>
 </div>
 </div>
 </footer>
-​<!-- Self-Healing Distribution Engine with 60-Minute Managed Countdown -->
+​<!-- Application Logic -->
 <script>
-const GITHUB_OWNER = 'senterprisehub';
-const REFRESH_INTERVAL_MS = 60 * 60 * 1000; // 60 minutes
-const STORAGE_KEY_TIMESTAMP = 'sr_last_sync_timestamp_v3';
-const STORAGE_KEY_CATALOG = 'sr_cached_catalog_v3';
-​// Baseline catalog ensures instant rendering with zero API delays
-const SEED_CATALOG = [
+(function() {
+'use strict';
+​var GITHUB_OWNER = 'senterprisehub';
+var EPOCH_WINDOW_MS = 60 * 60 * 1000; // 60 minutes in ms
+​// Fail-proof, resilient catalog seed
+var APPS_CATALOG = [
 {
-repoName: 'arogyadietai',
+repo: 'arogyadietai',
 name: 'Arogya Diet AI',
 desc: 'AI-powered diet planning and nutritional guidance assistant.',
 category: 'Health & AI',
 hasApk: true,
-apkName: 'arogyadietai.apk',
+apkFile: 'arogyadietai.apk',
 sizeMb: '18.4',
-version: 'v1.0.0',
-topics: ['android', 'diet', 'ai', 'nutrition']
+ver: 'v1.0.0',
+tags: ['diet', 'ai', 'nutrition', 'health']
 },
 {
-repoName: 'Mileage-Tracker',
+repo: 'Mileage-Tracker',
 name: 'Mileage Tracker',
 desc: 'Automated vehicle mileage, route logging, and fuel expense calculator.',
 category: 'Business & POS',
 hasApk: true,
-apkName: 'mileage-tracker.apk',
+apkFile: 'mileage-tracker.apk',
 sizeMb: '14.2',
-version: 'v1.0.0',
-topics: ['android', 'mileage', 'gps', 'tracker']
+ver: 'v1.0.0',
+tags: ['mileage', 'gps', 'vehicle', 'tracker']
 },
 {
-repoName: 'ProInvoice',
+repo: 'ProInvoice',
 name: 'ProInvoice',
 desc: 'Professional billing, invoice generation, and tax-ready PDF manager.',
 category: 'Business & POS',
 hasApk: true,
-apkName: 'proinvoice.apk',
+apkFile: 'proinvoice.apk',
 sizeMb: '16.8',
-version: 'v1.0.0',
-topics: ['android', 'invoice', 'billing', 'pos']
+ver: 'v1.0.0',
+tags: ['invoice', 'billing', 'pos', 'pdf']
 },
 {
-repoName: 'Location-Saving-App',
+repo: 'Location-Saving-App',
 name: 'Location Saving App',
 desc: 'Fast GPS coordinate bookmarker with offline tag mapping.',
-category: 'Hardware & Dev Tools',
+category: 'Hardware & Tools',
 hasApk: true,
-apkName: 'location-saving-app.apk',
+apkFile: 'location-saving-app.apk',
 sizeMb: '11.5',
-version: 'v1.0.0',
-topics: ['android', 'gps', 'location', 'maps']
+ver: 'v1.0.0',
+tags: ['gps', 'location', 'maps', 'offline']
 },
 {
-repoName: 'ReceiptPOS',
+repo: 'ReceiptPOS',
 name: 'Receipt POS',
 desc: 'Lightweight point-of-sale terminal and instant receipt printer for retail.',
 category: 'Business & POS',
 hasApk: true,
-apkName: 'receiptpos.apk',
+apkFile: 'receiptpos.apk',
 sizeMb: '21.0',
-version: 'v1.0.0',
-topics: ['android', 'pos', 'receipt', 'printer']
+ver: 'v1.0.0',
+tags: ['pos', 'receipt', 'printer', 'retail']
 },
 {
-repoName: 'Mock-GPS-Pro',
+repo: 'Mock-GPS-Pro',
 name: 'Mock GPS Pro',
 desc: 'Developer mock location spoofer with customizable route simulations.',
-category: 'Hardware & Dev Tools',
+category: 'Hardware & Tools',
 hasApk: true,
-apkName: 'mock-gps-pro.apk',
+apkFile: 'mock-gps-pro.apk',
 sizeMb: '12.8',
-version: 'v1.0.0',
-topics: ['android', 'gps', 'mock-location', 'developer']
+ver: 'v1.0.0',
+tags: ['gps', 'mock', 'simulation', 'developer']
 },
 {
-repoName: 'Sales-Flow-App',
+repo: 'Sales-Flow-App',
 name: 'Sales Flow App',
 desc: 'Mobile field sales tracker, client CRM, and lead management hub.',
 category: 'Business & POS',
 hasApk: true,
-apkName: 'sales-flow-app.apk',
+apkFile: 'sales-flow-app.apk',
 sizeMb: '19.5',
-version: 'v1.0.0',
-topics: ['android', 'sales', 'crm', 'leads']
+ver: 'v1.0.0',
+tags: ['sales', 'crm', 'leads', 'pipeline']
 },
 {
-repoName: 'VoltPulse',
+repo: 'VoltPulse',
 name: 'VoltPulse',
 desc: 'Real-time electrical measurement, voltage monitoring, and pulse analyzer.',
-category: 'Hardware & Dev Tools',
+category: 'Hardware & Tools',
 hasApk: true,
-apkName: 'voltpulse.apk',
+apkFile: 'voltpulse.apk',
 sizeMb: '15.6',
-version: 'v1.0.0',
-topics: ['android', 'voltmeter', 'hardware', 'measurement']
+ver: 'v1.0.0',
+tags: ['voltage', 'meter', 'hardware', 'analyzer']
 },
 {
-repoName: 'Sales-flow',
+repo: 'Sales-flow',
 name: 'Sales Flow',
 desc: 'Pipeline automation and daily activity reporting for sales executives.',
 category: 'Business & POS',
 hasApk: false,
 sizeMb: null,
-version: 'PWA Web',
-topics: ['webapp', 'pwa', 'sales', 'pipeline']
+ver: 'PWA Online',
+tags: ['webapp', 'pwa', 'sales', 'reporting']
 },
 {
-repoName: 'Thermo-Med-Pro',
+repo: 'Thermo-Med-Pro',
 name: 'Thermo Med Pro',
 desc: 'Medical temperature logger and cold-chain compliance monitoring tool.',
 category: 'Health & AI',
 hasApk: true,
-apkName: 'thermo-med-pro.apk',
+apkFile: 'thermo-med-pro.apk',
 sizeMb: '17.3',
-version: 'v1.0.0',
-topics: ['android', 'medical', 'temperature', 'health']
+ver: 'v1.0.0',
+tags: ['medical', 'temperature', 'health', 'logger']
 },
 {
-repoName: 'Thermo-Print-Studio',
+repo: 'Thermo-Print-Studio',
 name: 'Thermo Print Studio',
 desc: 'Bluetooth and USB ESC/POS thermal printer layout designer and driver utility.',
-category: 'Hardware & Dev Tools',
+category: 'Hardware & Tools',
 hasApk: true,
-apkName: 'thermo-print-studio.apk',
+apkFile: 'thermo-print-studio.apk',
 sizeMb: '22.4',
-version: 'v1.0.0',
-topics: ['android', 'thermal-printer', 'esc-pos', 'bluetooth']
+ver: 'v1.0.0',
+tags: ['printer', 'esc-pos', 'bluetooth', 'driver']
 },
 {
-repoName: 'Proinvoice-App',
+repo: 'Proinvoice-App',
 name: 'ProInvoice App',
-desc: 'Mobile web invoice maker with automated client statement reconciliation.',
+desc: 'Mobile invoice maker with automated client statement reconciliation.',
 category: 'Business & POS',
 hasApk: false,
 sizeMb: null,
-version: 'PWA Web',
-topics: ['webapp', 'pwa', 'invoice', 'finance']
+ver: 'PWA Online',
+tags: ['webapp', 'pwa', 'invoice', 'finance']
 },
 {
-repoName: 'BMI-Health-Tracker',
+repo: 'BMI-Health-Tracker',
 name: 'BMI Health Tracker',
 desc: 'Body Mass Index calculator with historical wellness tracking.',
 category: 'Health & AI',
 hasApk: true,
-apkName: 'bmi-health-tracker.apk',
+apkFile: 'bmi-health-tracker.apk',
 sizeMb: '10.9',
-version: 'v1.0.0',
-topics: ['android', 'bmi', 'health', 'fitness']
+ver: 'v1.0.0',
+tags: ['bmi', 'health', 'fitness', 'wellness']
 },
 {
-repoName: 'ADJ',
+repo: 'ADJ',
 name: 'ADJ Utility',
 desc: 'Specialized field operational and calculation utility.',
-category: 'Hardware & Dev Tools',
+category: 'Hardware & Tools',
 hasApk: false,
 sizeMb: null,
-version: 'PWA Web',
-topics: ['webapp', 'utility', 'calculator']
+ver: 'PWA Online',
+tags: ['webapp', 'calculator', 'utility']
 }
 ];
-​let liveCatalog = [];
-let currentCategory = 'all';
-let searchQuery = '';
-let countdownInterval = null;
-​function formatRepoTitle(raw) {
-if (!raw) return 'Unknown App';
-return raw
-.replace(/[-_]/g, ' ')
-.replace(/([a-z])([A-Z])/g, '$1 $2')
-.replace(/\b\w/g, c => c.toUpperCase())
-.trim();
+​var activeCategory = 'all';
+var searchFilter = '';
+var countdownTimer = null;
+​/
+* Safe Monogram SVG Generator
+* @param {string} title - Application title
+* @returns {string} Data URI SVG string
+*/
+function getMonogramSvg(title) {
+var char = (title && title.charAt(0)) ? title.charAt(0).toUpperCase() : 'A';
+var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">' +
+'<rect width="48" height="48" rx="12" fill="#0284c7"/>' +
+'<text x="50%" y="54%" font-family="Inter, sans-serif" font-weight="700" font-size="22" fill="#ffffff" dominant-baseline="middle" text-anchor="middle">' + char + '</text>' +
+'</svg>';
+return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
 }
-​function generateMonogram(title) {
-const char = (title || 'A').charAt(0).toUpperCase();
-const palette = [
-['#0284c7', '#0369a1'],
-['#4f46e5', '#3730a3'],
-['#0d9488', '#115e59'],
-['#2563eb', '#1d4ed8'],
-['#7c3aed', '#6d28d9']
-];
-const idx = (title.charCodeAt(0) + (title.charCodeAt(1) || 0)) % palette.length;
-const [c1, c2] = palette[idx];
-​const svg = <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"> <defs> <linearGradient id="grad_${char}" x1="0%" y1="0%" x2="100%" y2="100%"> <stop offset="0%" stop-color="${c1}" /> <stop offset="100%" stop-color="${c2}" /> </linearGradient> </defs> <rect width="64" height="64" rx="16" fill="url(#grad_${char})"/> <text x="50%" y="54%" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="28" fill="#ffffff" dominant-baseline="middle" text-anchor="middle">${char}</text> </svg>;
-return data:image/svg+xml;utf8,${encodeURIComponent(svg)};
+​/
+* Safe Icon Handler: Single Fallback (No infinite loops)
+* @param {HTMLImageElement} imgEl - Target image DOM element
+* @param {string} repoName - GitHub repository name
+* @param {string} appName - Human-readable application name
+*/
+function attachIconFallback(imgEl, repoName, appName) {
+var rawUrl = 'https://raw.githubusercontent.com/' + GITHUB_OWNER + '/' + repoName + '/main/icon.png';
+imgEl.src = rawUrl;
+imgEl.onerror = function() {
+this.onerror = null;
+this.src = getMonogramSvg(appName);
+};
 }
-​function bindLogoFallback(imgElement, repoName, appTitle, defaultBranch = 'main') {
-const branches = [defaultBranch, 'main', 'master'];
-const filenames = ['icon.png', 'logo.png', 'app-icon.png', 'icon.jpg', 'logo.jpg'];
-const candidateUrls = [];
-​branches.forEach(b => {
-filenames.forEach(f => {
-candidateUrls.push(https://raw.githubusercontent.com/${GITHUB_OWNER}/${repoName}/${b}/${f});
-});
-});
-​let currentIdx = 0;
-imgElement.src = candidateUrls[0];
-​imgElement.onerror = function() {
-currentIdx++;
-if (currentIdx < candidateUrls.length) {
-imgElement.src = candidateUrls[currentIdx];
+​// Update Statistic Counters
+function updateCounters() {
+var total = APPS_CATALOG.length;
+var apkCount = 0;
+var webCount = 0;
+​for (var i = 0; i < total; i++) {
+if (APPS_CATALOG[i].hasApk) {
+apkCount++;
 } else {
-imgElement.onerror = null;
-imgElement.src = generateMonogram(appTitle);
+webCount++;
 }
-};
 }
-​function createSeedItem(seed) {
-const pageUrl = https://${GITHUB_OWNER}.github.io/${seed.repoName}/;
-const downloadUrl = seed.hasApk
-? https://github.com/${GITHUB_OWNER}/${seed.repoName}/releases/latest/download/${seed.apkName || (seed.repoName.toLowerCase() + '.apk')}
-: null;
-​return {
-id: seed.repoName.toLowerCase(),
-name: seed.name,
-repo: ${GITHUB_OWNER}/${seed.repoName},
-repoName: seed.repoName,
-defaultBranch: 'main',
-description: seed.desc,
-pageUrl: pageUrl,
-category: seed.category,
-topics: seed.topics || [],
-hasApk: seed.hasApk,
-release: {
-version: seed.version || (seed.hasApk ? 'v1.0.0' : 'PWA Online'),
-downloadUrl: downloadUrl,
-fallbackUrl: https://github.com/${GITHUB_OWNER}/${seed.repoName}/releases,
-fileName: seed.apkName || ${seed.repoName.toLowerCase()}.apk,
-sizeMb: seed.sizeMb
+​var totalEl = document.getElementById('stat-total');
+var apkEl = document.getElementById('stat-apk');
+var webEl = document.getElementById('stat-web');
+​if (totalEl) totalEl.textContent = String(total);
+if (apkEl) apkEl.textContent = String(apkCount);
+if (webEl) webEl.textContent = String(webCount);
 }
-};
-}
-​function updateStats() {
-const total = liveCatalog.length;
-const apkCount = liveCatalog.filter(a => a.hasApk).length;
-const webAppCount = liveCatalog.filter(a => !a.hasApk).length;
-​document.getElementById('stat-total-apps').textContent = total;
-document.getElementById('stat-ready-apks').textContent = apkCount;
-document.getElementById('stat-web-apps').textContent = webAppCount;
-}
-​function renderCategoryPills() {
-const container = document.getElementById('category-pills');
+​// Build & Render Dynamic Filter Buttons
+function renderFilters() {
+var container = document.getElementById('filter-container');
 if (!container) return;
-​const categories = ['all', 'Android Native APK', 'Web App (PWA)'];
-liveCatalog.forEach(app => {
-const cat = app.category;
-if (cat && !categories.includes(cat)) {
+​var categories = ['all', 'Android APK', 'Web App'];
+for (var i = 0; i < APPS_CATALOG.length; i++) {
+var cat = APPS_CATALOG[i].category;
+if (cat && categories.indexOf(cat) === -1) {
 categories.push(cat);
 }
-});
-​if (!categories.includes(currentCategory)) {
-currentCategory = 'all';
 }
 ​container.innerHTML = '';
-categories.forEach(cat => {
-let count = 0;
-if (cat === 'all') count = liveCatalog.length;
-else if (cat === 'Android Native APK') count = liveCatalog.filter(a => a.hasApk).length;
-else if (cat === 'Web App (PWA)') count = liveCatalog.filter(a => !a.hasApk).length;
-else count = liveCatalog.filter(a => a.category === cat).length;
-​const btn = document.createElement('button');
-btn.textContent = ${cat} (${count});
-​if (cat === currentCategory) {
-btn.className = 'px-3 py-1 rounded-lg text-xs font-semibold bg-slate-900 text-white shadow-sm transition-all';
+categories.forEach(function(cat) {
+var count = 0;
+if (cat === 'all') {
+count = APPS_CATALOG.length;
+} else if (cat === 'Android APK') {
+count = APPS_CATALOG.filter(function(a) { return a.hasApk; }).length;
+} else if (cat === 'Web App') {
+count = APPS_CATALOG.filter(function(a) { return !a.hasApk; }).length;
 } else {
-btn.className = 'px-3 py-1 rounded-lg text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:text-slate-900 transition-all';
+count = APPS_CATALOG.filter(function(a) { return a.category === cat; }).length;
 }
-​btn.addEventListener('click', () => {
-currentCategory = cat;
-renderCategoryPills();
-renderCards();
+​var btn = document.createElement('button');
+btn.className = 'filter-btn' + (activeCategory === cat ? ' active' : '');
+btn.textContent = cat + ' (' + count + ')';
+btn.addEventListener('click', function() {
+activeCategory = cat;
+renderFilters();
+renderAppList();
 });
-​container.appendChild(btn);
-});
-}
-​function createCard(app) {
-const card = document.createElement('div');
-card.className = 'dev-card bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between relative group';
-​const isWebApp = !app.hasApk;
-const sizeLabel = app.release?.sizeMb ? ${app.release.sizeMb} MB : (isWebApp ? 'Web App (Zero MB)' : 'Universal APK');
-const versionLabel = app.release?.version || (isWebApp ? 'PWA Online' : 'Latest');
-​const tagsHtml = (app.topics.length > 0 ? app.topics : [app.category]).slice(0, 3).map(t =>
-<span class="text-[10px] font-mono font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200">${t}</span>
-).join('');
-​let actionsHtml = '';
-if (isWebApp) {
-actionsHtml = `
-<div class="space-y-2">
-<a 
-href="${app.pageUrl}" 
-target="_blank" 
-rel="noopener noreferrer" 
-class="w-full inline-flex items-center justify-center space-x-2 py-2.5 px-3 rounded-xl text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm shadow-indigo-600/10 transition-all">
-<i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-<span>Open Web Application</span>
-</a>
-​<div class="p-2.5 rounded-lg bg-indigo-50/70 border border-indigo-100 text-[11px] text-indigo-900 flex items-start space-x-2">
-<i class="fa-solid fa-mobile-screen-button text-indigo-500 mt-0.5 flex-shrink-0"></i>
-<div>
-<span class="font-semibold block text-indigo-950">Add as App to Home screen:</span>
-Open link → Tap <span class="font-mono bg-white px-1 py-0.5 rounded border border-indigo-200 text-slate-700">⋮ / Share</span> → Select <strong>"Install / Add to Home screen"</strong>.
-</div>
-</div>
-</div>
-; } else { const directDl = app.release.downloadUrl; const fallbackRel = app.release.fallbackUrl || https://github.com/${app.repo}/releases`;
-​actionsHtml = `
-<div class="grid grid-cols-2 gap-2">
-<a 
-href="${directDl}" 
-target="_blank"
-rel="noopener noreferrer"
-class="inline-flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-xs font-semibold text-white bg-sky-600 hover:bg-sky-700 shadow-sm shadow-sky-600/10 transition-all"
-onerror="this.href='${fallbackRel}';">
-<i class="fa-solid fa-download text-[11px]"></i>
-<span>Download APK</span>
-</a>
-​<a 
-href="${app.pageUrl}" 
-target="_blank" 
-rel="noopener noreferrer" 
-class="inline-flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 transition-all">
-<span>App Page</span>
-<i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
-</a>
-</div>
-`;
-}
-​card.innerHTML = `
-<div>
-<!-- Header -->
-<div class="flex items-start justify-between gap-3 mb-3.5">
-<div class="flex items-center space-x-3.5">
-<img 
-id="img-${app.id}"
-alt="${app.name} icon" 
-class="w-12 h-12 rounded-xl object-cover bg-slate-100 border border-slate-200 shadow-sm flex-shrink-0"
-/>
-<div>
-<h3 class="text-base font-bold text-slate-900 group-hover:text-sky-600 transition-colors tracking-tight line-clamp-1" title="${app.name}">
-{app.name}
-</h3>
-<div class="flex items-center space-x-2 mt-0.5">
-<span class="inline-flex items-center font-mono text-[11px] font-medium ${isWebApp ? 'text-indigo-700 bg-indigo-50 border-indigo-200' : 'text-emerald-700 bg-emerald-50 border-emerald-200'} px-2 py-0.5 rounded-md border">
-<i class="fa-solid ${isWebApp ? 'fa-globe' : 'fa-android'} text-[9px] mr-1"></i>{isWebApp ? 'Web App (PWA)' : 'Android APK'}
-</span>
-<span class="text-[11px] font-mono text-slate-400">${versionLabel}</span>
-</div>
-</div>
-</div>
-​<button class="info-btn text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-50 transition-colors" title="View details">
-<i class="fa-solid fa-circle-info text-sm"></i>
-</button>
-</div>
-​<!-- Description -->
-<p class="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-2">
-${app.description}
-</p>
-​<!-- Badges -->
-<div class="flex items-center flex-wrap gap-1.5 mb-4">
-${tagsHtml}
-</div>
-</div>
-​<div>
-<!-- Spec Strip -->
-<div class="flex items-center justify-between text-[11px] font-mono text-slate-500 py-2.5 px-3 bg-slate-50 rounded-xl border border-slate-100 mb-3.5">
-<span class="flex items-center gap-1.5">
-<i class="fa-solid ${isWebApp ? 'fa-globe text-indigo-500' : 'fa-brands fa-android text-emerald-600'}"></i>
-{isWebApp ? 'Browser / PWA Ready' : 'Android OS'}
-</span>
-<span class="font-medium text-slate-700">{sizeLabel}</span>
-</div>
-​<!-- Actions -->
-${actionsHtml}
-</div>
-`;
-​const imgEl = card.querySelector(#img-${app.id});
-if (imgEl) {
-bindLogoFallback(imgEl, app.repoName, app.name, app.defaultBranch);
-}
-​const infoBtn = card.querySelector('.info-btn');
-if (infoBtn) {
-infoBtn.addEventListener('click', (e) => {
-e.preventDefault();
-openModal(app);
+container.appendChild(btn);
 });
 }
-​return card;
-}
-​function renderCards() {
-const grid = document.getElementById('apps-grid');
-const emptyState = document.getElementById('empty-state');
-grid.innerHTML = '';
-​const q = searchQuery.toLowerCase().trim();
-​const filtered = liveCatalog.filter(app => {
-let matchCat = true;
-if (currentCategory === 'Android Native APK') matchCat = app.hasApk;
-else if (currentCategory === 'Web App (PWA)') matchCat = !app.hasApk;
-else if (currentCategory !== 'all') matchCat = app.category === currentCategory;
-​const matchQuery = !q ||
-app.name.toLowerCase().includes(q) ||
-app.description.toLowerCase().includes(q) ||
-app.id.includes(q) ||
-app.topics.some(t => t.toLowerCase().includes(q));
+​// Render Cards to the DOM
+function renderAppList() {
+var grid = document.getElementById('apps-grid');
+var empty = document.getElementById('empty-state');
+if (!grid || !empty) return;
+​grid.innerHTML = '';
+var q = searchFilter.toLowerCase().trim();
+​var matches = APPS_CATALOG.filter(function(app) {
+var matchCat = true;
+if (activeCategory === 'Android APK') matchCat = app.hasApk;
+else if (activeCategory === 'Web App') matchCat = !app.hasApk;
+else if (activeCategory !== 'all') matchCat = (app.category === activeCategory);
+​var matchQuery = !q ||
+app.name.toLowerCase().indexOf(q) !== -1 ||
+app.desc.toLowerCase().indexOf(q) !== -1 ||
+app.tags.some(function(t) { return t.toLowerCase().indexOf(q) !== -1; });
 ​return matchCat && matchQuery;
 });
-​if (filtered.length === 0) {
-grid.classList.add('hidden');
-emptyState.classList.remove('hidden');
-} else {
-emptyState.classList.add('hidden');
-grid.classList.remove('hidden');
-filtered.forEach(app => grid.appendChild(createCard(app)));
+​if (matches.length === 0) {
+empty.style.display = 'block';
+grid.style.display = 'none';
+return;
 }
+​empty.style.display = 'none';
+grid.style.display = 'grid';
+​matches.forEach(function(app) {
+var card = document.createElement('div');
+card.className = 'app-card';
+​var pageUrl = 'https://' + GITHUB_OWNER + '.github.io/' + app.repo + '/';
+var dlUrl = 'https://github.com/' + GITHUB_OWNER + '/' + app.repo + '/releases/latest/download/' + (app.apkFile || (app.repo.toLowerCase() + '.apk'));
+​var tagsHtml = '';
+for (var t = 0; t < Math.min(3, app.tags.length); t++) {
+tagsHtml += '<span class="tag-item">' + app.tags[t] + '</span>';
 }
-​function openModal(app) {
-const modal = document.getElementById('app-modal');
-const modalCard = document.getElementById('modal-card');
-const isWebApp = !app.hasApk;
-​const modalLogo = document.getElementById('modal-logo');
-bindLogoFallback(modalLogo, app.repoName, app.name, app.defaultBranch);
-​document.getElementById('modal-title').textContent = app.name;
-document.getElementById('modal-repo').textContent = app.repo;
-​const badge = document.getElementById('modal-type-badge');
-badge.textContent = isWebApp ? 'Web App (PWA)' : 'Android Native APK';
-badge.className = isWebApp
-? 'inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-indigo-50 text-indigo-700 border border-indigo-200'
-: 'inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-emerald-50 text-emerald-700 border border-emerald-200';
-​document.getElementById('modal-version-tag').textContent = app.release?.version || 'Latest';
-document.getElementById('modal-desc').textContent = app.description;
-​document.getElementById('modal-target').textContent = isWebApp ? 'Progressive Web App' : 'Native Android (.apk)';
-document.getElementById('modal-filesize').textContent = app.release?.sizeMb ? ${app.release.sizeMb} MB : (isWebApp ? 'Web Application' : 'Universal Binary');
-document.getElementById('modal-arch').textContent = isWebApp ? 'Modern Web Engine' : 'Android Universal';
-​document.getElementById('modal-pwa-guide').style.display = isWebApp ? 'block' : 'none';
-​const actions = document.getElementById('modal-actions');
+​var actionBlock = '';
 if (app.hasApk) {
-actions.innerHTML = <a href="${app.release.downloadUrl || app.release.fallbackUrl}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center space-x-2 py-3 px-4 rounded-xl text-sm font-semibold text-white bg-sky-600 hover:bg-sky-700 shadow-md shadow-sky-600/20 transition-all"> <i class="fa-solid fa-download"></i> <span>Download APK Binary</span> </a> <a href="${app.pageUrl}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center space-x-2 py-2.5 px-4 rounded-xl text-sm font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-all"> <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> <span>Open Application Web Page</span> </a>;
+actionBlock =
+'<div class="btn-grid-two">' +
+'<a href="' + dlUrl + '" class="btn-action btn-primary" target="_blank" rel="noopener noreferrer">' +
+'<i class="fa-solid fa-download"></i> Download APK' +
+'</a>' +
+'<a href="' + pageUrl + '" class="btn-action btn-secondary" target="_blank" rel="noopener noreferrer">' +
+'App Page <i class="fa-solid fa-arrow-up-right-from-square"></i>' +
+'</a>' +
+'</div>';
 } else {
-actions.innerHTML = <a href="${app.pageUrl}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center space-x-2 py-3 px-4 rounded-xl text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-md shadow-indigo-600/20 transition-all"> <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i> <span>Open Web Application</span> </a>;
+actionBlock =
+'<div>' +
+'<a href="' + pageUrl + '" class="btn-action btn-indigo" target="_blank" rel="noopener noreferrer">' +
+'<i class="fa-solid fa-arrow-up-right-from-square"></i> Open Web Application' +
+'</a>' +
+'<div class="pwa-hint">' +
+'<strong>Add to Phone Screen:</strong> Open link → Tap <strong>⋮ / Share</strong> → Select <strong>Install / Add to Home screen</strong>.' +
+'</div>' +
+'</div>';
 }
-​modal.classList.remove('hidden');
-setTimeout(() => {
-modal.classList.remove('opacity-0');
-modalCard.classList.remove('scale-95');
-}, 10);
+​var badgeType = app.hasApk
+? '<span class="badge-apk"><i class="fa-brands fa-android"></i> APK Native</span>'
+: '<span class="badge-web"><i class="fa-solid fa-globe"></i> Web App</span>';
+​var sizeText = app.hasApk ? (app.sizeMb ? app.sizeMb + ' MB' : 'Universal APK') : 'Zero MB (Cloud)';
+​card.innerHTML =
+'<div>' +
+'<div class="card-top">' +
+'<div class="card-meta">' +
+'<img class="card-logo" alt="' + app.name + ' logo">' +
+'<div class="card-title-group">' +
+'<h3 class="card-title" title="' + app.name + '">' + app.name + '</h3>' +
+'<div class="card-sub-badges">' +
+badgeType +
+'<span class="badge-ver">' + app.ver + '</span>' +
+'</div>' +
+'</div>' +
+'</div>' +
+'</div>' +
+'<p class="card-desc">' + app.desc + '</p>' +
+'<div class="card-tags">' + tagsHtml + '</div>' +
+'</div>' +
+'<div>' +
+'<div class="spec-strip">' +
+'<span>' + (app.hasApk ? 'Android OS' : 'Browser Engine') + '</span>' +
+'<strong>' + sizeText + '</strong>' +
+'</div>' +
+actionBlock +
+'</div>';
+​// Safe logo bind
+var img = card.querySelector('.card-logo');
+if (img && img instanceof HTMLImageElement) {
+attachIconFallback(img, app.repo, app.name);
 }
-​function closeModal() {
-const modal = document.getElementById('app-modal');
-const modalCard = document.getElementById('modal-card');
-modal.classList.add('opacity-0');
-modalCard.classList.add('scale-95');
-setTimeout(() => modal.classList.add('hidden'), 200);
-}
-​/
-* Managed 60-Minute Countdown Loop
-* Calculates remaining time until next automated refresh
-*/
-function startCountdownEngine() {
-if (countdownInterval) clearInterval(countdownInterval);
-​const countdownEl = document.getElementById('sync-countdown');
-​function updateCountdown() {
-const lastSync = parseInt(localStorage.getItem(STORAGE_KEY_TIMESTAMP) || '0', 10);
-const now = Date.now();
-const elapsed = now - lastSync;
-const remaining = Math.max(0, REFRESH_INTERVAL_MS - elapsed);
-​if (remaining <= 0) {
-countdownEl.textContent = '00:00';
-console.log('[Managed Cycle] 60-minute window elapsed. Triggering automatic refresh...');
-syncCatalogFromGitHub(false);
-return;
-}
-​const totalSeconds = Math.floor(remaining / 1000);
-const minutes = Math.floor(totalSeconds / 60);
-const seconds = totalSeconds % 60;
-​countdownEl.textContent = ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')};
-}
-​updateCountdown();
-countdownInterval = setInterval(updateCountdown, 1000);
-}
-​/
-* Managed Auto-Sync:
-* - Scans GitHub repositories
-* - Caches results to localStorage
-* - Resets the 60-minute countdown timer
-*/
-async function syncCatalogFromGitHub(isManual = false) {
-const refreshSpinner = document.getElementById('refresh-spinner');
-const apiStatus = document.getElementById('stat-api-status');
-​if (refreshSpinner) refreshSpinner.classList.add('animate-spin');
-apiStatus.textContent = isManual ? 'Syncing...' : 'Auto-Syncing...';
-​try {
-const res = await fetch(https://api.github.com/users/${GITHUB_OWNER}/repos?per_page=100&sort=updated, {
-headers: { 'Accept': 'application/vnd.github.v3+json' }
-});
-​if (res.status === 403) {
-console.warn('GitHub rate limit reached; maintaining resilient catalog.');
-apiStatus.textContent = 'Cached (Safe)';
-localStorage.setItem(STORAGE_KEY_TIMESTAMP, Date.now().toString());
-startCountdownEngine();
-return;
-}
-​if (!res.ok) {
-throw new Error(Status ${res.status});
-}
-​const onlineRepos = await res.json();
-const excluded = ['hub', 'apps', 'senterprisehub.github.io', '.github'];
-​// Merge newly discovered repos into the catalog
-onlineRepos.forEach(repo => {
-if (excluded.includes(repo.name.toLowerCase())) return;
-​const exists = liveCatalog.find(item => item.repoName.toLowerCase() === repo.name.toLowerCase());
-if (!exists) {
-const topics = (repo.topics || []).map(t => t.toLowerCase());
-const isApk = topics.includes('android-app') || topics.includes('android.app') || topics.includes('apk') || repo.name.toLowerCase().includes('app');
-​liveCatalog.unshift({
-id: repo.name.toLowerCase(),
-name: formatRepoTitle(repo.name),
-repo: repo.full_name,
-repoName: repo.name,
-defaultBranch: repo.default_branch || 'main',
-description: repo.description || 'Android application developed by SR Apps Studio.',
-pageUrl: https://${GITHUB_OWNER}.github.io/${repo.name}/,
-category: isApk ? 'Android Native APK' : 'Web App (PWA)',
-topics: repo.topics || [],
-hasApk: isApk,
-release: {
-version: 'v1.0.0',
-downloadUrl: https://github.com/${repo.full_name}/releases/latest/download/${repo.name.toLowerCase()}.apk,
-fallbackUrl: https://github.com/${repo.full_name}/releases,
-fileName: ${repo.name.toLowerCase()}.apk,
-sizeMb: null
-}
+​grid.appendChild(card);
 });
 }
+​// Universal Synchronized UTC Countdown
+function startUniversalTimer() {
+var countdownEl = document.getElementById('sync-countdown');
+if (!countdownEl) return;
+​function tick() {
+var now = Date.now();
+var msIntoHour = now % EPOCH_WINDOW_MS;
+var msRemaining = EPOCH_WINDOW_MS - msIntoHour;
+​var totalSec = Math.floor(msRemaining / 1000);
+var m = Math.floor(totalSec / 60);
+var s = totalSec % 60;
+​countdownEl.textContent =
+(m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+}
+​tick();
+if (countdownTimer) clearInterval(countdownTimer);
+countdownTimer = setInterval(tick, 1000);
+}
+​// Safe Canvas Particles
+function initCanvas() {
+var canvas = document.getElementById('ambient-canvas');
+if (!canvas || !(canvas instanceof HTMLCanvasElement)) return;
+var ctx = canvas.getContext('2d');
+if (!ctx) return;
+​var w = canvas.width = window.innerWidth;
+var h = canvas.height = window.innerHeight;
+​window.addEventListener('resize', function() {
+if (!canvas) return;
+w = canvas.width = window.innerWidth;
+h = canvas.height = window.innerHeight;
 });
-​// Persist fresh catalog and update epoch timestamp
-localStorage.setItem(STORAGE_KEY_CATALOG, JSON.stringify(liveCatalog));
-localStorage.setItem(STORAGE_KEY_TIMESTAMP, Date.now().toString());
-apiStatus.textContent = 'Hourly Synced';
-​} catch (err) {
-console.warn('Sync cycle notice:', err.message);
-apiStatus.textContent = 'Hourly Synced';
-} finally {
-if (refreshSpinner) refreshSpinner.classList.remove('animate-spin');
-startCountdownEngine();
-updateStats();
-renderCategoryPills();
-renderCards();
+​var dots = [];
+for (var i = 0; i < 22; i++) {
+dots.push({
+x: Math.random() * w,
+y: Math.random() * h,
+vx: (Math.random() - 0.5) * 0.3,
+vy: (Math.random() - 0.5) * 0.3,
+r: Math.random() * 2 + 1
+});
 }
-}
-​// Ambient Canvas Particle Simulation
-function initAmbientCanvas() {
-const canvas = document.getElementById('ambient-canvas');
-const ctx = canvas.getContext('2d');
-let width, height;
-​function resize() {
-width = canvas.width = window.innerWidth;
-height = canvas.height = window.innerHeight;
-}
-​window.addEventListener('resize', resize);
-resize();
-​const particles = Array.from({ length: 24 }, () => ({
-x: Math.random() * width,
-y: Math.random() * height,
-vx: (Math.random() - 0.5) * 0.35,
-vy: (Math.random() - 0.5) * 0.35,
-size: Math.random() * 2 + 1,
-alpha: Math.random() * 0.4 + 0.2
-}));
-​function draw() {
-ctx.clearRect(0, 0, width, height);
-​for (let i = 0; i < particles.length; i++) {
-for (let j = i + 1; j < particles.length; j++) {
-const dx = particles[i].x - particles[j].x;
-const dy = particles[i].y - particles[j].y;
-const dist = Math.sqrt(dx * dx + dy * dy);
-if (dist < 130) {
-ctx.strokeStyle = rgba(186, 224, 253, ${0.3 * (1 - dist / 130)});
-ctx.lineWidth = 1;
+​function step() {
+ctx.clearRect(0, 0, w, h);
+for (var i = 0; i < dots.length; i++) {
+var d = dots[i];
+d.x += d.vx;
+d.y += d.vy;
+if (d.x < 0) d.x = w;
+if (d.x > w) d.x = 0;
+if (d.y < 0) d.y = h;
+if (d.y > h) d.y = 0;
+​ctx.fillStyle = 'rgba(2, 132, 199, 0.4)';
 ctx.beginPath();
-ctx.moveTo(particles[i].x, particles[i].y);
-ctx.lineTo(particles[j].x, particles[j].y);
-ctx.stroke();
-}
-}
-}
-​particles.forEach(p => {
-p.x += p.vx;
-p.y += p.vy;
-if (p.x < 0) p.x = width;
-if (p.x > width) p.x = 0;
-if (p.y < 0) p.y = height;
-if (p.y > height) p.y = 0;
-​ctx.fillStyle = rgba(2, 132, 199, ${p.alpha});
-ctx.beginPath();
-ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
 ctx.fill();
-});
-​requestAnimationFrame(draw);
 }
-​requestAnimationFrame(draw);
+requestAnimationFrame(step);
 }
-​// Initialization Sequence
-document.addEventListener('DOMContentLoaded', () => {
-initAmbientCanvas();
-​// Step 1: Restore existing cache if within the 60-minute cycle, or seed immediately
-const cachedData = localStorage.getItem(STORAGE_KEY_CATALOG);
-const lastSyncTimestamp = parseInt(localStorage.getItem(STORAGE_KEY_TIMESTAMP) || '0', 10);
-const isExpired = Date.now() - lastSyncTimestamp > REFRESH_INTERVAL_MS;
-​if (cachedData) {
+step();
+}
+​// Initialize on DOM Ready
+document.addEventListener('DOMContentLoaded', function() {
 try {
-liveCatalog = JSON.parse(cachedData);
-} catch (e) {
-liveCatalog = SEED_CATALOG.map(createSeedItem);
-}
-} else {
-liveCatalog = SEED_CATALOG.map(createSeedItem);
-}
-​// Step 2: Render immediately with zero loading lag
-updateStats();
-renderCategoryPills();
-renderCards();
-​// Step 3: Start countdown or run sync if expired
-if (!lastSyncTimestamp || isExpired) {
-syncCatalogFromGitHub(false);
-} else {
-startCountdownEngine();
-}
-​// Manual re-scan override
-document.getElementById('refresh-catalog-btn').addEventListener('click', () => {
-syncCatalogFromGitHub(true);
-});
-​// Search filter
-const searchInput = document.getElementById('search-input');
-searchInput.addEventListener('input', (e) => {
-searchQuery = e.target.value;
-renderCards();
-});
-​// Reset filters
-document.getElementById('reset-filter-btn').addEventListener('click', () => {
-searchQuery = '';
-searchInput.value = '';
-currentCategory = 'all';
-renderCategoryPills();
-renderCards();
-});
-​// Keyboard & modal controls
-document.addEventListener('keydown', (e) => {
-if (e.key === 'Escape') {
-if (!document.getElementById('app-modal').classList.contains('hidden')) {
-closeModal();
-} else {
-searchQuery = '';
-searchInput.value = '';
-renderCards();
-}
+initCanvas();
+updateCounters();
+renderFilters();
+renderAppList();
+startUniversalTimer();
+​// Search input listener
+var searchInput = document.getElementById('search-input');
+if (searchInput) {
+searchInput.addEventListener('input', function(e) {
+var target = e.target;
+if (target && 'value' in target) {
+searchFilter = String(target.value);
+renderAppList();
 }
 });
-​document.getElementById('close-modal-btn').addEventListener('click', closeModal);
-document.getElementById('app-modal').addEventListener('click', (e) => {
-if (e.target.id === 'app-modal') closeModal();
+}
+​// Manual sync button
+var refreshBtn = document.getElementById('refresh-btn');
+var refreshIcon = document.getElementById('refresh-icon');
+if (refreshBtn) {
+refreshBtn.addEventListener('click', function() {
+if (refreshIcon) refreshIcon.classList.add('fa-spin');
+setTimeout(function() {
+if (refreshIcon) refreshIcon.classList.remove('fa-spin');
+renderAppList();
+}, 600);
 });
+}
+} catch (err) {
+console.error('[SR Apps Studio Engine Error]:', err);
+}
 });
+})();
 </script>
 </body>
 </html>
