@@ -1,967 +1,924 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <!-- Google Search Console Verification Meta Tag -->
-  <meta name="google-site-verification" content="google9e1371db0f52541e" />
-
-  <!-- Primary SEO Meta Tags -->
-  <title>SR Apps Studio | Enterprise Android Ecosystem & APK Distribution</title>
-  <meta name="title" content="SR Apps Studio | Enterprise Android Ecosystem & APK Distribution" />
-  <meta name="description" content="Discover and download verified Android APKs and Progressive Web Applications dynamically scanned and indexed from SR Apps Studio repositories." />
-  <meta name="keywords" content="Android APK, download APK, Android apps, Web App, PWA, open source APK, SR Apps Studio, senterprisehub, APK direct download" />
-  <meta name="author" content="SR Apps Studio / senterprisehub" />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-  <link rel="canonical" href="https://senterprisehub.github.io/hub/" />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://senterprisehub.github.io/hub/" />
-  <meta property="og:title" content="SR Apps Studio | Dynamic Android & Web App Hub" />
-  <meta property="og:description" content="Live scanned directory of Android APK builds, Progressive Web Apps, and direct downloads from official GitHub repositories." />
-
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            brand: {
-              50: '#f0f7ff',
-              100: '#e0effe',
-              200: '#bae0fd',
-              500: '#0284c7',
-              600: '#0369a1',
-              700: '#075985',
-              800: '#0c4a6e',
-            }
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    ::-webkit-scrollbar { width: 7px; height: 7px; }
-    ::-webkit-scrollbar-track { background: #f1f5f9; }
-    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
-    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-
-    @keyframes pulse-subtle {
-      0%, 100% { opacity: 0.4; transform: scale(1); }
-      50% { opacity: 0.7; transform: scale(1.05); }
-    }
-    .animate-pulse-subtle { animation: pulse-subtle 6s ease-in-out infinite; }
-
-    .dev-card { transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1); }
-    .dev-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+​<!-- Google Search Console Verification Meta Tag -->
+<meta name="google-site-verification" content="google9e1371db0f52541e" />
+​<!-- Primary SEO Meta Tags -->
+<title>SR Apps Studio | Enterprise Android Ecosystem & APK Distribution</title>
+<meta name="title" content="SR Apps Studio | Enterprise Android Ecosystem & APK Distribution" />
+<meta name="description" content="Discover and download verified Android APKs and Progressive Web Applications from SR Apps Studio with automatic hourly release syncing." />
+<meta name="keywords" content="Android APK, download APK, Android apps, Web App, PWA, open source APK, SR Apps Studio, senterprisehub, APK direct download" />
+<meta name="author" content="SR Apps Studio / senterprisehub" />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<link rel="canonical" href="https://senterprisehub.github.io/hub/" />
+​<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://senterprisehub.github.io/hub/" />
+<meta property="og:title" content="SR Apps Studio | Dynamic Android & Web App Hub" />
+<meta property="og:description" content="Live catalog of Android APK builds, Progressive Web Apps, and direct downloads from official GitHub repositories." />
+​<!-- Fonts & Icons -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+​<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+mono: ['JetBrains Mono', 'monospace'],
+},
+colors: {
+brand: {
+50: '#f0f7ff',
+100: '#e0effe',
+200: '#bae0fd',
+500: '#0284c7',
+600: '#0369a1',
+700: '#075985',
+800: '#0c4a6e',
+}
+}
+}
+}
+}
+</script>
+​<style>
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+​@keyframes pulse-subtle {
+0%, 100% { opacity: 0.4; transform: scale(1); }
+50% { opacity: 0.7; transform: scale(1.05); }
+}
+.animate-pulse-subtle { animation: pulse-subtle 6s ease-in-out infinite; }
+​.dev-card { transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1); }
+.dev-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+}
+</style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen flex flex-col relative selection:bg-sky-500 selection:text-white">
-
-  <!-- Interactive Particle Canvas -->
-  <canvas id="ambient-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
-
-  <!-- Background Gradient Orbs -->
-  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 pointer-events-none overflow-hidden z-0">
-    <div class="absolute -top-32 left-1/4 w-96 h-96 bg-sky-200/50 rounded-full blur-3xl animate-pulse-subtle"></div>
-    <div class="absolute -top-24 right-1/4 w-80 h-80 bg-indigo-200/40 rounded-full blur-3xl animate-pulse-subtle" style="animation-delay: 2s;"></div>
-  </div>
-
-  <!-- Top Navigation Bar -->
-  <header class="sticky top-0 z-40 backdrop-blur-md bg-white/80 border-b border-slate-200/80 transition-all">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      
-      <!-- Brand Logo -->
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-sky-600/20">
-          <i class="fa-brands fa-android text-xl"></i>
-        </div>
-        <div>
-          <div class="flex items-center space-x-2">
-            <span class="font-bold text-lg tracking-tight text-slate-900">SR Apps <span class="text-sky-600">Studio</span></span>
-            <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-sky-50 text-sky-700 border border-sky-200" id="sync-indicator">
-              <span class="w-1.5 h-1.5 rounded-full bg-sky-500 mr-1.5 animate-ping"></span> Live Scanner
-            </span>
-          </div>
-          <p class="text-[11px] text-slate-500 font-mono hidden sm:block">Automated Tree & Distribution Crawler</p>
-        </div>
-      </div>
-
-      <!-- Action Buttons -->
-      <div class="flex items-center space-x-3 sm:space-x-4">
-        <button id="refresh-catalog-btn" title="Scan All GitHub Repositories" class="inline-flex items-center space-x-2 text-xs font-medium text-slate-700 hover:text-slate-900 bg-white border border-slate-300 hover:border-slate-400 px-3.5 py-1.5 rounded-lg transition-all shadow-sm">
-          <i class="fa-solid fa-arrows-rotate text-sky-600" id="refresh-spinner"></i>
-          <span>Re-scan Repositories</span>
-        </button>
-        <a href="https://github.com/senterprisehub" target="_blank" rel="noopener noreferrer" 
-           class="inline-flex items-center space-x-2 text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 bg-slate-100/80 hover:bg-slate-200/70 border border-slate-200 px-3.5 py-1.5 rounded-lg transition-all">
-          <i class="fa-brands fa-github text-base"></i>
-          <span class="hidden sm:inline">GitHub Hub</span>
-        </a>
-      </div>
-
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="relative z-10 pt-10 pb-8 sm:pt-14 sm:pb-10 border-b border-slate-200/60 bg-gradient-to-b from-white via-white/70 to-slate-50/50">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-sky-50 text-sky-700 border border-sky-200 shadow-sm mb-4">
-        <i class="fa-solid fa-radar text-sky-600 animate-spin" style="animation-duration: 4s;"></i>
-        <span>Dynamic Discovery Active: Inspecting repository trees under <code class="bg-sky-100/80 text-sky-800 px-1.5 py-0.5 rounded font-mono">senterprisehub</code></span>
-      </div>
-
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-        SR Apps Studio & <span class="bg-gradient-to-r from-sky-600 to-indigo-600 bg-clip-text text-transparent">Ecosystem</span>
-      </h1>
-      
-      <p class="mt-3 text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
-        Every application below is discovered by scanning repository releases and code trees on the fly.
-      </p>
-
-      <!-- Portal Statistics Counter Bar -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto mt-7 p-3 sm:p-4 bg-white/90 rounded-2xl border border-slate-200 shadow-sm backdrop-blur-sm">
-        <div class="p-2 text-center border-r border-slate-100 last:border-0">
-          <div class="text-xl sm:text-2xl font-bold font-mono text-slate-900" id="stat-total-apps">--</div>
-          <div class="text-[11px] uppercase tracking-wider font-semibold text-slate-500 mt-0.5">Scanned Repos</div>
-        </div>
-        <div class="p-2 text-center border-r border-slate-100 last:border-0">
-          <div class="text-xl sm:text-2xl font-bold font-mono text-emerald-600" id="stat-ready-apks">--</div>
-          <div class="text-[11px] uppercase tracking-wider font-semibold text-slate-500 mt-0.5">APK Apps</div>
-        </div>
-        <div class="p-2 text-center border-r border-slate-100 last:border-0">
-          <div class="text-xl sm:text-2xl font-bold font-mono text-indigo-600" id="stat-web-apps">--</div>
-          <div class="text-[11px] uppercase tracking-wider font-semibold text-slate-500 mt-0.5">Web Apps</div>
-        </div>
-        <div class="p-2 text-center">
-          <div class="text-xl sm:text-2xl font-bold font-mono text-sky-600" id="stat-api-status">Initializing</div>
-          <div class="text-[11px] uppercase tracking-wider font-semibold text-slate-500 mt-0.5">Crawler Status</div>
-        </div>
-      </div>
-
-      <!-- Search & Dynamic Category Filters -->
-      <div class="mt-7 max-w-3xl mx-auto space-y-3.5">
-        
-        <!-- Search Input -->
-        <div class="relative">
-          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
-            <i class="fa-solid fa-magnifying-glass text-sm"></i>
-          </div>
-          <input 
-            type="text" 
-            id="search-input" 
-            placeholder="Filter discovered apps by name, keywords, package, or description..." 
-            class="w-full pl-11 pr-24 py-3 bg-white border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 shadow-sm transition-all"
-          />
-          <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-            <span class="text-[11px] font-mono text-slate-400 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md hidden sm:inline">ESC to clear</span>
-          </div>
-        </div>
-
-        <!-- Dynamic Category Filter Pills -->
-        <div class="flex items-center justify-center flex-wrap gap-2 pt-1" id="category-pills"></div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Main Content: Application Grid -->
-  <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 relative z-10">
-
-    <!-- Active Scanning Progress Banner -->
-    <div id="scanning-banner" class="mb-6 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <div class="w-8 h-8 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center font-mono text-sm border border-sky-100">
-          <i class="fa-solid fa-network-wired animate-pulse"></i>
-        </div>
-        <div>
-          <div class="text-xs font-bold text-slate-900" id="scan-progress-text">Inspecting repositories...</div>
-          <div class="text-[11px] font-mono text-slate-500" id="scan-subtext">Connecting to GitHub Tree API</div>
-        </div>
-      </div>
-      <div class="w-32 bg-slate-100 h-2 rounded-full overflow-hidden border border-slate-200">
-        <div id="scan-progress-bar" class="bg-gradient-to-r from-sky-500 to-indigo-500 h-full w-0 transition-all duration-300"></div>
-      </div>
-    </div>
-
-    <!-- Active Apps Grid -->
-    <div id="apps-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-
-    <!-- Empty Results View -->
-    <div id="empty-state" class="hidden text-center py-16 px-4 bg-white rounded-2xl border border-dashed border-slate-300 my-8">
-      <div class="w-14 h-14 mx-auto rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mb-3 text-xl">
-        <i class="fa-solid fa-folder-open"></i>
-      </div>
-      <h3 class="text-base font-semibold text-slate-800" id="empty-title">No applications detected</h3>
-      <p class="text-sm text-slate-500 mt-1 max-w-md mx-auto" id="empty-desc">No public repositories matched the current filter criteria.</p>
-      <button id="reset-filter-btn" class="mt-4 px-4 py-1.5 rounded-lg text-xs font-semibold text-sky-600 bg-sky-50 border border-sky-200 hover:bg-sky-100 transition-all">
-        Reset All Filters
-      </button>
-    </div>
-
-  </main>
-
-  <!-- Technical Details & Installation Guide Modal -->
-  <div id="app-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200">
-    <div class="bg-white rounded-2xl max-w-lg w-full p-6 border border-slate-200 shadow-2xl relative transform scale-95 transition-transform duration-200 max-h-[90vh] overflow-y-auto" id="modal-card">
-      <button id="close-modal-btn" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 w-8 h-8 rounded-lg flex items-center justify-center hover:bg-slate-100 transition-all">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-
-      <div class="flex items-start space-x-4 mb-4">
-        <img id="modal-logo" src="" alt="App icon" class="w-16 h-16 rounded-2xl border border-slate-100 shadow-sm object-cover bg-slate-100">
-        <div>
-          <h3 id="modal-title" class="text-xl font-bold text-slate-900 leading-snug"></h3>
-          <p id="modal-repo" class="text-xs font-mono text-sky-700"></p>
-          <div class="flex items-center gap-1.5 mt-1.5 flex-wrap">
-            <span id="modal-type-badge" class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium"></span>
-            <span id="modal-version-tag" class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-sky-50 text-sky-700 border border-sky-200"></span>
-          </div>
-        </div>
-      </div>
-
-      <p id="modal-desc" class="text-sm text-slate-600 leading-relaxed mb-4 border-b border-slate-100 pb-4"></p>
-
-      <!-- Web App Installation Guide -->
-      <div id="modal-pwa-guide" class="mb-5 p-4 rounded-xl bg-indigo-50/70 border border-indigo-100 text-xs text-indigo-950">
-        <div class="font-bold text-indigo-900 mb-2 flex items-center gap-1.5 text-sm">
-          <i class="fa-solid fa-mobile-screen-button text-indigo-600"></i>
-          <span>How to install as a Web App on your device:</span>
-        </div>
-        <ol class="space-y-1.5 list-decimal pl-4 leading-relaxed text-indigo-900/90 font-medium">
-          <li>Click <strong>Open Web Application</strong> below to launch in your browser.</li>
-          <li><strong>On Android (Chrome):</strong> Tap the <strong>three dots menu (⋮)</strong> &rarr; Select <strong>"Install app"</strong> or <strong>"Add to Home screen"</strong>.</li>
-          <li><strong>On iPhone (Safari):</strong> Tap the <strong>Share button</strong> &rarr; Select <strong>"Add to Home Screen"</strong>.</li>
-          <li><strong>On Desktop (Chrome/Edge):</strong> Click the <strong>Install icon</strong> in the address bar.</li>
-        </ol>
-      </div>
-
-      <!-- Metadata Attributes -->
-      <div class="grid grid-cols-2 gap-3 p-3 bg-slate-50 rounded-xl text-xs mb-5 border border-slate-100">
-        <div>
-          <span class="text-slate-500 block mb-0.5">Application Classification</span>
-          <span id="modal-target" class="font-mono text-slate-800 font-medium truncate block">--</span>
-        </div>
-        <div>
-          <span class="text-slate-500 block mb-0.5">Asset / Binary Size</span>
-          <span id="modal-filesize" class="font-mono text-slate-800 font-medium">--</span>
-        </div>
-        <div>
-          <span class="text-slate-500 block mb-0.5">Discovery Origin</span>
-          <span class="font-mono text-slate-800 font-medium">Live Repository Scan</span>
-        </div>
-        <div>
-          <span class="text-slate-500 block mb-0.5">Direct Build Target</span>
-          <span id="modal-arch" class="font-mono text-slate-800 font-medium">--</span>
-        </div>
-      </div>
-
-      <!-- Action Buttons -->
-      <div class="space-y-2" id="modal-actions"></div>
-
-    </div>
-  </div>
-
-  <!-- Professional Footer -->
-  <footer class="mt-auto border-t border-slate-200 bg-white/80 backdrop-blur-sm z-10 py-7">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-      <div class="flex items-center space-x-2">
-        <i class="fa-brands fa-android text-sky-600 text-base"></i>
-        <span class="font-semibold text-slate-700">SR Apps Studio</span>
-        <span>·</span>
-        <span>Live Autonomous Crawler</span>
-      </div>
-      <div class="flex items-center space-x-4 font-mono text-[11px]">
-        <span>Dynamic Scanning Engine</span>
-        <span>·</span>
-        <a href="https://github.com/senterprisehub" target="_blank" class="hover:text-slate-900 transition-colors">GitHub Account</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Dynamic Tree Crawler & Engine -->
-  <script>
-    const GITHUB_OWNER = 'senterprisehub';
-    
-    // Repositories ignored from the apps catalog (e.g., directory portals or profiles)
-    const EXCLUDED_REPOS = [
-      'hub',
-      'apps',
-      'senterprisehub.github.io',
-      '.github'
-    ];
-
-    let liveCatalog = [];
-    let currentCategory = 'all';
-    let searchQuery = '';
-    let isScanning = false;
-
-    // Format repository name into a clean, human-readable app title
-    function formatRepoTitle(raw) {
-      if (!raw) return 'Unknown App';
-      return raw
-        .replace(/[-_]/g, ' ')
-        .replace(/([a-z])([A-Z])/g, '$1 $2')
-        .replace(/\b\w/g, c => c.toUpperCase())
-        .trim();
-    }
-
-    // High quality dynamic vector monogram fallback
-    function generateMonogram(title) {
-      const char = (title || 'A').charAt(0).toUpperCase();
-      const palette = [
-        ['#0284c7', '#0369a1'],
-        ['#4f46e5', '#3730a3'],
-        ['#0d9488', '#115e59'],
-        ['#2563eb', '#1d4ed8'],
-        ['#7c3aed', '#6d28d9']
-      ];
-      const idx = (title.charCodeAt(0) + (title.charCodeAt(1) || 0)) % palette.length;
-      const [c1, c2] = palette[idx];
-
-      const svg = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-          <defs>
-            <linearGradient id="grad_${char}" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="${c1}" />
-              <stop offset="100%" stop-color="${c2}" />
-            </linearGradient>
-          </defs>
-          <rect width="64" height="64" rx="16" fill="url(#grad_${char})"/>
-          <text x="50%" y="54%" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="28" fill="#ffffff" dominant-baseline="middle" text-anchor="middle">${char}</text>
-        </svg>
-      `;
-      return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
-    }
-
-    // Sequential logo resolver checking multiple branches and naming conventions
-    function bindLogoFallback(imgElement, repoName, appTitle, defaultBranch = 'main') {
-      const branches = [defaultBranch, 'main', 'master'];
-      const filenames = ['icon.png', 'logo.png', 'app-icon.png', 'icon.jpg', 'logo.jpg'];
-      const candidateUrls = [];
-
-      branches.forEach(b => {
-        filenames.forEach(f => {
-          candidateUrls.push(`https://raw.githubusercontent.com/${GITHUB_OWNER}/${repoName}/${b}/${f}`);
-        });
-      });
-
-      let currentIdx = 0;
-      imgElement.src = candidateUrls[0];
-
-      imgElement.onerror = function() {
-        currentIdx++;
-        if (currentIdx < candidateUrls.length) {
-          imgElement.src = candidateUrls[currentIdx];
-        } else {
-          imgElement.onerror = null;
-          imgElement.src = generateMonogram(appTitle);
-        }
-      };
-    }
-
-    // Discover all public repositories directly from GitHub's user endpoint
-    async function fetchAllPublicRepositories() {
-      const url = `https://api.github.com/users/${GITHUB_OWNER}/repos?per_page=100&sort=updated`;
-      const response = await fetch(url, {
-        headers: { 'Accept': 'application/vnd.github.v3+json' }
-      });
-
-      if (!response.ok) {
-        throw new Error(`GitHub API error: ${response.status} (${response.statusText})`);
-      }
-
-      const repos = await response.json();
-      return repos.filter(r => !EXCLUDED_REPOS.includes(r.name.toLowerCase()));
-    }
-
-    /**
-     * Deep Tree & Distribution Scanner:
-     * 1. Inspects /releases to find attached .apk files
-     * 2. If no release, scans repository git tree to detect .apk binaries committed anywhere in the codebase
-     * 3. Classifies as Native Android APK vs Progressive Web App
-     */
-    async function inspectRepoDistribution(repo) {
-      const repoName = repo.name;
-      const defaultBranch = repo.default_branch || 'main';
-      
-      let apkAsset = null;
-      let latestVersion = null;
-
-      // Stage 1: Inspect GitHub Releases
-      try {
-        const relRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${repoName}/releases`, {
-          headers: { 'Accept': 'application/vnd.github.v3+json' }
-        });
-
-        if (relRes.ok) {
-          const releases = await relRes.json();
-          if (Array.isArray(releases) && releases.length > 0) {
-            for (const rel of releases) {
-              const found = (rel.assets || []).find(a => a.name && a.name.toLowerCase().endsWith('.apk'));
-              if (found) {
-                apkAsset = {
-                  downloadUrl: found.browser_download_url,
-                  name: found.name,
-                  sizeMb: found.size ? (found.size / (1024 * 1024)).toFixed(1) : 'Direct'
-                };
-                latestVersion = rel.tag_name || 'Latest Release';
-                break;
-              }
-            }
-          }
-        }
-      } catch (e) {
-        console.warn(`Releases check skipped for ${repoName}:`, e);
-      }
-
-      // Stage 2: Fallback - Deep Tree Recursive Scan
-      if (!apkAsset) {
-        try {
-          const treeRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${repoName}/git/trees/${defaultBranch}?recursive=1`, {
-            headers: { 'Accept': 'application/vnd.github.v3+json' }
-          });
-
-          if (treeRes.ok) {
-            const treeData = await treeRes.json();
-            if (Array.isArray(treeData.tree)) {
-              const fileApk = treeData.tree.find(f => f.path && f.path.toLowerCase().endsWith('.apk'));
-              if (fileApk) {
-                apkAsset = {
-                  downloadUrl: `https://raw.githubusercontent.com/${GITHUB_OWNER}/${repoName}/${defaultBranch}/${fileApk.path}`,
-                  name: fileApk.path.split('/').pop(),
-                  sizeMb: fileApk.size ? (fileApk.size / (1024 * 1024)).toFixed(1) : 'Direct'
-                };
-                latestVersion = 'Direct Binary';
-              }
-            }
-          }
-        } catch (e) {
-          console.warn(`Tree scan skipped for ${repoName}:`, e);
-        }
-      }
-
-      // Stage 3: Secondary heuristic checks (topics or description)
-      const topics = (repo.topics || []).map(t => t.toLowerCase());
-      const hasAndroidTags = topics.some(t => t.includes('android') || t.includes('apk') || t.includes('app'));
-      const hasApk = Boolean(apkAsset) || hasAndroidTags;
-
-      // Derive GitHub Pages URL
-      const pageUrl = `https://${GITHUB_OWNER}.github.io/${repoName}/`;
-
-      return {
-        id: repoName.toLowerCase(),
-        name: formatRepoTitle(repoName),
-        repo: repo.full_name,
-        repoName: repoName,
-        defaultBranch: defaultBranch,
-        description: repo.description || `Application project published on GitHub by ${GITHUB_OWNER}.`,
-        pageUrl: pageUrl,
-        hasPages: repo.has_pages,
-        topics: repo.topics || [],
-        hasApk: hasApk,
-        release: {
-          version: latestVersion || (hasApk ? 'Latest Build' : 'PWA Online'),
-          downloadUrl: apkAsset ? apkAsset.downloadUrl : (hasApk ? `https://github.com/${repo.full_name}/releases` : null),
-          fileName: apkAsset ? apkAsset.name : `${repoName.toLowerCase()}.apk`,
-          sizeMb: apkAsset ? apkAsset.sizeMb : (hasApk ? 'Release' : null),
-          hasApk: hasApk
-        }
-      };
-    }
-
-    // Categorize discovered apps based on topics or name analysis
-    function deriveCategory(app) {
-      const text = `${app.name} ${app.description} ${(app.topics || []).join(' ')}`.toLowerCase();
-      
-      if (text.includes('pos') || text.includes('invoice') || text.includes('sales') || text.includes('mileage') || text.includes('billing')) {
-        return 'Business & POS';
-      }
-      if (text.includes('health') || text.includes('diet') || text.includes('bmi') || text.includes('thermo') || text.includes('ai') || text.includes('medical')) {
-        return 'Health & AI';
-      }
-      if (text.includes('gps') || text.includes('location') || text.includes('print') || text.includes('volt') || text.includes('tool') || text.includes('util')) {
-        return 'Hardware & Dev Tools';
-      }
-      return 'Utility';
-    }
-
-    // Update Counter Badges
-    function updateStats() {
-      const total = liveCatalog.length;
-      const apkCount = liveCatalog.filter(a => a.hasApk).length;
-      const webAppCount = liveCatalog.filter(a => !a.hasApk).length;
-
-      document.getElementById('stat-total-apps').textContent = total;
-      document.getElementById('stat-ready-apks').textContent = apkCount;
-      document.getElementById('stat-web-apps').textContent = webAppCount;
-      document.getElementById('stat-api-status').textContent = isScanning ? 'Scanning...' : 'Live Synced';
-    }
-
-    // Build Category Filter Pills
-    function renderCategoryPills() {
-      const container = document.getElementById('category-pills');
-      if (!container) return;
-
-      const categories = ['all', 'Android Native APK', 'Web App (PWA)'];
-      liveCatalog.forEach(app => {
-        const cat = app.category;
-        if (cat && !categories.includes(cat)) {
-          categories.push(cat);
-        }
-      });
-
-      if (!categories.includes(currentCategory)) {
-        currentCategory = 'all';
-      }
-
-      container.innerHTML = '';
-      categories.forEach(cat => {
-        let count = 0;
-        if (cat === 'all') count = liveCatalog.length;
-        else if (cat === 'Android Native APK') count = liveCatalog.filter(a => a.hasApk).length;
-        else if (cat === 'Web App (PWA)') count = liveCatalog.filter(a => !a.hasApk).length;
-        else count = liveCatalog.filter(a => a.category === cat).length;
-
-        const btn = document.createElement('button');
-        btn.textContent = `${cat} (${count})`;
-        
-        if (cat === currentCategory) {
-          btn.className = 'px-3 py-1 rounded-lg text-xs font-semibold bg-slate-900 text-white shadow-sm transition-all';
-        } else {
-          btn.className = 'px-3 py-1 rounded-lg text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:text-slate-900 transition-all';
-        }
-
-        btn.addEventListener('click', () => {
-          currentCategory = cat;
-          renderCategoryPills();
-          renderCards();
-        });
-
-        container.appendChild(btn);
-      });
-    }
-
-    // Build Individual App Card
-    function createCard(app) {
-      const card = document.createElement('div');
-      card.className = 'dev-card bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between relative group';
-
-      const isWebApp = !app.hasApk;
-      const sizeLabel = app.release?.sizeMb ? `${app.release.sizeMb} MB` : (isWebApp ? 'Web App (Zero MB)' : 'Universal APK');
-      const versionLabel = app.release?.version || (isWebApp ? 'PWA Online' : 'Latest');
-
-      const tagsHtml = (app.topics.length > 0 ? app.topics : [app.category]).slice(0, 3).map(t => 
-        `<span class="text-[10px] font-mono font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200">${t}</span>`
-      ).join('');
-
-      let actionsHtml = '';
-      if (isWebApp) {
-        actionsHtml = `
-          <div class="space-y-2">
-            <a 
-              href="${app.pageUrl}" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="w-full inline-flex items-center justify-center space-x-2 py-2.5 px-3 rounded-xl text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm shadow-indigo-600/10 transition-all">
-              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-              <span>Open Web Application</span>
-            </a>
-            
-            <div class="p-2.5 rounded-lg bg-indigo-50/70 border border-indigo-100 text-[11px] text-indigo-900 flex items-start space-x-2">
-              <i class="fa-solid fa-mobile-screen-button text-indigo-500 mt-0.5 flex-shrink-0"></i>
-              <div>
-                <span class="font-semibold block text-indigo-950">Add as App to Home screen:</span>
-                Open link &rarr; Tap <span class="font-mono bg-white px-1 py-0.5 rounded border border-indigo-200 text-slate-700">⋮ / Share</span> &rarr; Select <strong>"Install / Add to Home screen"</strong>.
-              </div>
-            </div>
-          </div>
-        `;
-      } else {
-        actionsHtml = `
-          <div class="grid grid-cols-2 gap-2">
-            <a 
-              href="${app.release.downloadUrl}" 
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-xs font-semibold text-white bg-sky-600 hover:bg-sky-700 shadow-sm shadow-sky-600/10 transition-all">
-              <i class="fa-solid fa-download text-[11px]"></i>
-              <span>Download APK</span>
-            </a>
-            
-            <a 
-              href="${app.pageUrl}" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="inline-flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 transition-all">
-              <span>App Page</span>
-              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
-            </a>
-          </div>
-        `;
-      }
-
-      card.innerHTML = `
-        <div>
-          <!-- Header -->
-          <div class="flex items-start justify-between gap-3 mb-3.5">
-            <div class="flex items-center space-x-3.5">
-              <img 
-                id="img-${app.id}"
-                alt="${app.name} icon" 
-                class="w-12 h-12 rounded-xl object-cover bg-slate-100 border border-slate-200 shadow-sm flex-shrink-0"
-              />
-              <div>
-                <h3 class="text-base font-bold text-slate-900 group-hover:text-sky-600 transition-colors tracking-tight line-clamp-1" title="${app.name}">
-                  ${app.name}
-                </h3>
-                <div class="flex items-center space-x-2 mt-0.5">
-                  <span class="inline-flex items-center font-mono text-[11px] font-medium ${isWebApp ? 'text-indigo-700 bg-indigo-50 border-indigo-200' : 'text-emerald-700 bg-emerald-50 border-emerald-200'} px-2 py-0.5 rounded-md border">
-                    <i class="fa-solid ${isWebApp ? 'fa-globe' : 'fa-android'} text-[9px] mr-1"></i>${isWebApp ? 'Web App (PWA)' : 'Android APK'}
-                  </span>
-                  <span class="text-[11px] font-mono text-slate-400">${versionLabel}</span>
-                </div>
-              </div>
-            </div>
-            
-            <button class="info-btn text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-50 transition-colors" title="View details">
-              <i class="fa-solid fa-circle-info text-sm"></i>
-            </button>
-          </div>
-
-          <!-- Description -->
-          <p class="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-2">
-            ${app.description}
-          </p>
-
-          <!-- Badges -->
-          <div class="flex items-center flex-wrap gap-1.5 mb-4">
-            ${tagsHtml}
-          </div>
-        </div>
-
-        <div>
-          <!-- Spec Strip -->
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 py-2.5 px-3 bg-slate-50 rounded-xl border border-slate-100 mb-3.5">
-            <span class="flex items-center gap-1.5">
-              <i class="fa-solid ${isWebApp ? 'fa-globe text-indigo-500' : 'fa-brands fa-android text-emerald-600'}"></i>
-              ${isWebApp ? 'Browser / PWA Ready' : 'Android OS'}
-            </span>
-            <span class="font-medium text-slate-700">${sizeLabel}</span>
-          </div>
-
-          <!-- Actions -->
-          ${actionsHtml}
-        </div>
-      `;
-
-      // Resolve logo asynchronously
-      const imgEl = card.querySelector(`#img-${app.id}`);
-      if (imgEl) {
-        bindLogoFallback(imgEl, app.repoName, app.name, app.defaultBranch);
-      }
-
-      // Modal trigger
-      const infoBtn = card.querySelector('.info-btn');
-      if (infoBtn) {
-        infoBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          openModal(app);
-        });
-      }
-
-      return card;
-    }
-
-    // Render Filtered Application Cards
-    function renderCards() {
-      const grid = document.getElementById('apps-grid');
-      const emptyState = document.getElementById('empty-state');
-      grid.innerHTML = '';
-
-      const q = searchQuery.toLowerCase().trim();
-
-      const filtered = liveCatalog.filter(app => {
-        let matchCat = true;
-        if (currentCategory === 'Android Native APK') matchCat = app.hasApk;
-        else if (currentCategory === 'Web App (PWA)') matchCat = !app.hasApk;
-        else if (currentCategory !== 'all') matchCat = app.category === currentCategory;
-
-        const matchQuery = !q ||
-          app.name.toLowerCase().includes(q) ||
-          app.description.toLowerCase().includes(q) ||
-          app.id.includes(q) ||
-          app.topics.some(t => t.toLowerCase().includes(q));
-
-        return matchCat && matchQuery;
-      });
-
-      if (filtered.length === 0) {
-        grid.classList.add('hidden');
-        emptyState.classList.remove('hidden');
-      } else {
-        emptyState.classList.add('hidden');
-        grid.classList.remove('hidden');
-        filtered.forEach(app => grid.appendChild(createCard(app)));
-      }
-    }
-
-    // Modal Handler
-    function openModal(app) {
-      const modal = document.getElementById('app-modal');
-      const modalCard = document.getElementById('modal-card');
-      const isWebApp = !app.hasApk;
-
-      const modalLogo = document.getElementById('modal-logo');
-      bindLogoFallback(modalLogo, app.repoName, app.name, app.defaultBranch);
-
-      document.getElementById('modal-title').textContent = app.name;
-      document.getElementById('modal-repo').textContent = app.repo;
-      
-      const badge = document.getElementById('modal-type-badge');
-      badge.textContent = isWebApp ? 'Web App (PWA)' : 'Android Native APK';
-      badge.className = isWebApp 
-        ? 'inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-indigo-50 text-indigo-700 border border-indigo-200'
-        : 'inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-emerald-50 text-emerald-700 border border-emerald-200';
-
-      document.getElementById('modal-version-tag').textContent = app.release?.version || 'Latest';
-      document.getElementById('modal-desc').textContent = app.description;
-      
-      document.getElementById('modal-target').textContent = isWebApp ? 'Progressive Web App' : 'Native Android (.apk)';
-      document.getElementById('modal-filesize').textContent = app.release?.sizeMb ? `${app.release.sizeMb} MB` : (isWebApp ? 'Web Application' : 'Universal Binary');
-      document.getElementById('modal-arch').textContent = isWebApp ? 'Modern Web Engine' : 'Android Universal';
-
-      document.getElementById('modal-pwa-guide').style.display = isWebApp ? 'block' : 'none';
-
-      const actions = document.getElementById('modal-actions');
-      if (app.hasApk) {
-        actions.innerHTML = `
-          <a href="${app.release.downloadUrl}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center space-x-2 py-3 px-4 rounded-xl text-sm font-semibold text-white bg-sky-600 hover:bg-sky-700 shadow-md shadow-sky-600/20 transition-all">
-            <i class="fa-solid fa-download"></i>
-            <span>Download APK Binary</span>
-          </a>
-          <a href="${app.pageUrl}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center space-x-2 py-2.5 px-4 rounded-xl text-sm font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-all">
-            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-            <span>Open Application Documentation</span>
-          </a>
-        `;
-      } else {
-        actions.innerHTML = `
-          <a href="${app.pageUrl}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center space-x-2 py-3 px-4 rounded-xl text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-md shadow-indigo-600/20 transition-all">
-            <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
-            <span>Open Web Application</span>
-          </a>
-        `;
-      }
-
-      modal.classList.remove('hidden');
-      setTimeout(() => {
-        modal.classList.remove('opacity-0');
-        modalCard.classList.remove('scale-95');
-      }, 10);
-    }
-
-    function closeModal() {
-      const modal = document.getElementById('app-modal');
-      const modalCard = document.getElementById('modal-card');
-      modal.classList.add('opacity-0');
-      modalCard.classList.add('scale-95');
-      setTimeout(() => modal.classList.add('hidden'), 200);
-    }
-
-    /**
-     * Master Full-Tree Autonomous Scanner
-     * Triggered on page load and manual refresh button click
-     */
-    async function scanAndBuildCatalog() {
-      if (isScanning) return;
-      isScanning = true;
-
-      const refreshSpinner = document.getElementById('refresh-spinner');
-      const progressBar = document.getElementById('scan-progress-bar');
-      const progressText = document.getElementById('scan-progress-text');
-      const subtext = document.getElementById('scan-subtext');
-      const banner = document.getElementById('scanning-banner');
-
-      if (refreshSpinner) refreshSpinner.classList.add('animate-spin');
-      banner.classList.remove('hidden');
-      progressBar.style.width = '10%';
-      progressText.textContent = `Scanning repositories under @${GITHUB_OWNER}...`;
-      subtext.textContent = 'Querying repository index from GitHub';
-
-      liveCatalog = []; // Reset completely - Zero pre-filled data
-
-      try {
-        const rawRepos = await fetchAllPublicRepositories();
-        progressBar.style.width = '30%';
-        progressText.textContent = `Found ${rawRepos.length} repositories. Crawling release trees...`;
-
-        const total = rawRepos.length;
-        let completed = 0;
-
-        const inspectedApps = await Promise.all(rawRepos.map(async (repo) => {
-          const inspected = await inspectRepoDistribution(repo);
-          inspected.category = deriveCategory(inspected);
-          completed++;
-          
-          const pct = Math.round(30 + (completed / total) * 65);
-          progressBar.style.width = `${pct}%`;
-          subtext.textContent = `Inspected: ${repo.name} (${completed}/${total})`;
-          
-          return inspected;
-        }));
-
-        liveCatalog = inspectedApps;
-
-        progressBar.style.width = '100%';
-        progressText.textContent = `Scan complete. Discovered ${liveCatalog.length} applications.`;
-        subtext.textContent = 'Catalog hydrated from live trees';
-
-        setTimeout(() => {
-          banner.classList.add('hidden');
-        }, 1200);
-
-      } catch (err) {
-        console.error('Scan error:', err);
-        progressText.textContent = 'Rate Limit / Network Notice';
-        subtext.textContent = `${err.message}. If rate limit was reached, try again shortly or authenticate.`;
-        document.getElementById('stat-api-status').textContent = 'API Limited';
-      } finally {
-        isScanning = false;
-        if (refreshSpinner) refreshSpinner.classList.remove('animate-spin');
-        updateStats();
-        renderCategoryPills();
-        renderCards();
-      }
-    }
-
-    // Ambient Canvas Particle Simulation
-    function initAmbientCanvas() {
-      const canvas = document.getElementById('ambient-canvas');
-      const ctx = canvas.getContext('2d');
-      let width, height;
-
-      function resize() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-      }
-
-      window.addEventListener('resize', resize);
-      resize();
-
-      const particles = Array.from({ length: 24 }, () => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        size: Math.random() * 2 + 1,
-        alpha: Math.random() * 0.4 + 0.2
-      }));
-
-      function draw() {
-        ctx.clearRect(0, 0, width, height);
-        
-        for (let i = 0; i < particles.length; i++) {
-          for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 130) {
-              ctx.strokeStyle = `rgba(186, 224, 253, ${0.3 * (1 - dist / 130)})`;
-              ctx.lineWidth = 1;
-              ctx.beginPath();
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.stroke();
-            }
-          }
-        }
-
-        particles.forEach(p => {
-          p.x += p.vx;
-          p.y += p.vy;
-          if (p.x < 0) p.x = width;
-          if (p.x > width) p.x = 0;
-          if (p.y < 0) p.y = height;
-          if (p.y > height) p.y = 0;
-
-          ctx.fillStyle = `rgba(2, 132, 199, ${p.alpha})`;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fill();
-        });
-
-        requestAnimationFrame(draw);
-      }
-
-      requestAnimationFrame(draw);
-    }
-
-    // Event Listeners
-    document.addEventListener('DOMContentLoaded', () => {
-      initAmbientCanvas();
-      
-      // Perform initial full scan on page load
-      scanAndBuildCatalog();
-
-      // Manual re-scan button
-      document.getElementById('refresh-catalog-btn').addEventListener('click', () => {
-        scanAndBuildCatalog();
-      });
-
-      // Search filter
-      const searchInput = document.getElementById('search-input');
-      searchInput.addEventListener('input', (e) => {
-        searchQuery = e.target.value;
-        renderCards();
-      });
-
-      // Reset filters
-      document.getElementById('reset-filter-btn').addEventListener('click', () => {
-        searchQuery = '';
-        searchInput.value = '';
-        currentCategory = 'all';
-        renderCategoryPills();
-        renderCards();
-      });
-
-      // Keyboard & modal controls
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          if (!document.getElementById('app-modal').classList.contains('hidden')) {
-            closeModal();
-          } else {
-            searchQuery = '';
-            searchInput.value = '';
-            renderCards();
-          }
-        }
-      });
-
-      document.getElementById('close-modal-btn').addEventListener('click', closeModal);
-      document.getElementById('app-modal').addEventListener('click', (e) => {
-        if (e.target.id === 'app-modal') closeModal();
-      });
-    });
-  </script>
+​<!-- Interactive Particle Canvas -->
+<canvas id="ambient-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+​<!-- Background Gradient Orbs -->
+<div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 pointer-events-none overflow-hidden z-0">
+<div class="absolute -top-32 left-1/4 w-96 h-96 bg-sky-200/50 rounded-full blur-3xl animate-pulse-subtle"></div>
+<div class="absolute -top-24 right-1/4 w-80 h-80 bg-indigo-200/40 rounded-full blur-3xl animate-pulse-subtle" style="animation-delay: 2s;"></div>
+</div>
+​<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-40 backdrop-blur-md bg-white/80 border-b border-slate-200/80 transition-all">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+​<!-- Brand Logo -->
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-sky-600/20">
+<i class="fa-brands fa-android text-xl"></i>
+</div>
+<div>
+<div class="flex items-center space-x-2">
+<span class="font-bold text-lg tracking-tight text-slate-900">SR Apps <span class="text-sky-600">Studio</span></span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-emerald-50 text-emerald-700 border border-emerald-200" id="sync-indicator">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5 animate-ping"></span> Live 60m Sync
+</span>
+</div>
+<p class="text-[11px] text-slate-500 font-mono hidden sm:block">Automated Distribution Portal</p>
+</div>
+</div>
+​<!-- Action Items & Countdown Timer -->
+<div class="flex items-center space-x-2 sm:space-x-4">
+​<!-- Reverse Countdown Timer Badge -->
+<div class="inline-flex items-center space-x-1.5 bg-slate-100/90 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-mono shadow-sm" title="Time remaining until the next automatic repository refresh">
+<i class="fa-regular fa-clock text-sky-600 text-[11px]"></i>
+<span class="text-slate-500 hidden md:inline">Sync in:</span>
+<span id="sync-countdown" class="font-bold text-sky-700">60:00</span>
+</div>
+​<!-- Manual Re-scan Button -->
+<button id="refresh-catalog-btn" title="Force refresh repository catalog immediately" class="inline-flex items-center space-x-1.5 text-xs font-medium text-slate-700 hover:text-slate-900 bg-white border border-slate-300 hover:border-slate-400 px-3 py-1.5 rounded-lg transition-all shadow-sm">
+<i class="fa-solid fa-arrows-rotate text-sky-600" id="refresh-spinner"></i>
+<span class="hidden sm:inline">Sync Now</span>
+</button>
+​<!-- GitHub Profile Link -->
+<a href="https://github.com/senterprisehub" target="_blank" rel="noopener noreferrer" 
+class="inline-flex items-center space-x-2 text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 bg-slate-100/80 hover:bg-slate-200/70 border border-slate-200 px-3 py-1.5 rounded-lg transition-all">
+<i class="fa-brands fa-github text-base"></i>
+<span class="hidden md:inline">GitHub</span>
+</a>
+</div>
+​</div>
+</header>
+​<!-- Hero Section -->
+<section class="relative z-10 pt-8 pb-8 sm:pt-12 sm:pb-10 border-b border-slate-200/60 bg-gradient-to-b from-white via-white/70 to-slate-50/50">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+​<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-sky-50 text-sky-700 border border-sky-200 shadow-sm mb-3">
+<i class="fa-solid fa-shield-halved text-sky-600"></i>
+<span>Verified Ecosystem: Official builds under <code class="bg-sky-100/80 text-sky-800 px-1.5 py-0.5 rounded font-mono">senterprisehub</code></span>
+</div>
+​<h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+SR Apps Studio & <span class="bg-gradient-to-r from-sky-600 to-indigo-600 bg-clip-text text-transparent">Ecosystem</span>
+</h1>
+​<p class="mt-2.5 text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
+Direct Android APK downloads and Progressive Web Applications synchronized directly with GitHub releases.
+</p>
+​<!-- Refresh Countdown Notice Banner -->
+<div class="mt-4 max-w-xl mx-auto inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200/80 shadow-sm">
+<i class="fa-solid fa-hourglass-half text-amber-600 animate-pulse"></i>
+<span><strong>For New releases Wait for refresh countdown</strong> (or tap <code class="font-mono bg-amber-100/70 text-amber-900 px-1 py-0.5 rounded">Sync Now</code> to fetch immediately).</span>
+</div>
+​<!-- Portal Statistics Counter Bar -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto mt-6 p-3 sm:p-4 bg-white/90 rounded-2xl border border-slate-200 shadow-sm backdrop-blur-sm">
+<div class="p-2 text-center border-r border-slate-100 last:border-0">
+<div class="text-xl sm:text-2xl font-bold font-mono text-slate-900" id="stat-total-apps">--</div>
+<div class="text-[11px] uppercase tracking-wider font-semibold text-slate-500 mt-0.5">Scanned Repos</div>
+</div>
+<div class="p-2 text-center border-r border-slate-100 last:border-0">
+<div class="text-xl sm:text-2xl font-bold font-mono text-emerald-600" id="stat-ready-apks">--</div>
+<div class="text-[11px] uppercase tracking-wider font-semibold text-slate-500 mt-0.5">APK Apps</div>
+</div>
+<div class="p-2 text-center border-r border-slate-100 last:border-0">
+<div class="text-xl sm:text-2xl font-bold font-mono text-indigo-600" id="stat-web-apps">--</div>
+<div class="text-[11px] uppercase tracking-wider font-semibold text-slate-500 mt-0.5">Web Apps</div>
+</div>
+<div class="p-2 text-center">
+<div class="text-xl sm:text-2xl font-bold font-mono text-sky-600" id="stat-api-status">Hourly Sync</div>
+<div class="text-[11px] uppercase tracking-wider font-semibold text-slate-500 mt-0.5">Engine Status</div>
+</div>
+</div>
+​<!-- Search & Dynamic Category Filters -->
+<div class="mt-6 max-w-3xl mx-auto space-y-3.5">
+​<!-- Search Input -->
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+<i class="fa-solid fa-magnifying-glass text-sm"></i>
+</div>
+<input 
+type="text" 
+id="search-input" 
+placeholder="Filter apps by title, package, tags, or description..." 
+class="w-full pl-11 pr-24 py-3 bg-white border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 shadow-sm transition-all"
+/>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+<span class="text-[11px] font-mono text-slate-400 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md hidden sm:inline">ESC to clear</span>
+</div>
+</div>
+​<!-- Dynamic Category Filter Pills -->
+<div class="flex items-center justify-center flex-wrap gap-2 pt-1" id="category-pills"></div>
+​</div>
+​</div>
+</section>
+​<!-- Main Content: Application Grid -->
+<main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+​<!-- Active Apps Grid -->
+<div id="apps-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+​<!-- Empty Results View -->
+<div id="empty-state" class="hidden text-center py-16 px-4 bg-white rounded-2xl border border-dashed border-slate-300 my-8">
+<div class="w-14 h-14 mx-auto rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mb-3 text-xl">
+<i class="fa-solid fa-folder-open"></i>
+</div>
+<h3 class="text-base font-semibold text-slate-800" id="empty-title">No applications matched</h3>
+<p class="text-sm text-slate-500 mt-1 max-w-md mx-auto" id="empty-desc">Try clearing your search terms or selecting another category.</p>
+<button id="reset-filter-btn" class="mt-4 px-4 py-1.5 rounded-lg text-xs font-semibold text-sky-600 bg-sky-50 border border-sky-200 hover:bg-sky-100 transition-all">
+Reset All Filters
+</button>
+</div>
+​</main>
+​<!-- Technical Details & Installation Guide Modal -->
+<div id="app-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200">
+<div class="bg-white rounded-2xl max-w-lg w-full p-6 border border-slate-200 shadow-2xl relative transform scale-95 transition-transform duration-200 max-h-[90vh] overflow-y-auto" id="modal-card">
+<button id="close-modal-btn" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 w-8 h-8 rounded-lg flex items-center justify-center hover:bg-slate-100 transition-all">
+<i class="fa-solid fa-xmark text-lg"></i>
+</button>
+​<div class="flex items-start space-x-4 mb-4">
+<img id="modal-logo" src="" alt="App icon" class="w-16 h-16 rounded-2xl border border-slate-100 shadow-sm object-cover bg-slate-100">
+<div>
+<h3 id="modal-title" class="text-xl font-bold text-slate-900 leading-snug"></h3>
+<p id="modal-repo" class="text-xs font-mono text-sky-700"></p>
+<div class="flex items-center gap-1.5 mt-1.5 flex-wrap">
+<span id="modal-type-badge" class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium"></span>
+<span id="modal-version-tag" class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-sky-50 text-sky-700 border border-sky-200"></span>
+</div>
+</div>
+</div>
+​<p id="modal-desc" class="text-sm text-slate-600 leading-relaxed mb-4 border-b border-slate-100 pb-4"></p>
+​<!-- Web App Installation Guide -->
+<div id="modal-pwa-guide" class="mb-5 p-4 rounded-xl bg-indigo-50/70 border border-indigo-100 text-xs text-indigo-950">
+<div class="font-bold text-indigo-900 mb-2 flex items-center gap-1.5 text-sm">
+<i class="fa-solid fa-mobile-screen-button text-indigo-600"></i>
+<span>How to install as a Web App on your device:</span>
+</div>
+<ol class="space-y-1.5 list-decimal pl-4 leading-relaxed text-indigo-900/90 font-medium">
+<li>Click <strong>Open Web Application</strong> below to launch in your browser.</li>
+<li><strong>On Android (Chrome):</strong> Tap the <strong>three dots menu (⋮)</strong> → Select <strong>"Install app"</strong> or <strong>"Add to Home screen"</strong>.</li>
+<li><strong>On iPhone (Safari):</strong> Tap the <strong>Share button</strong> → Select <strong>"Add to Home Screen"</strong>.</li>
+<li><strong>On Desktop (Chrome/Edge):</strong> Click the <strong>Install icon</strong> in the address bar.</li>
+</ol>
+</div>
+​<!-- Metadata Attributes -->
+<div class="grid grid-cols-2 gap-3 p-3 bg-slate-50 rounded-xl text-xs mb-5 border border-slate-100">
+<div>
+<span class="text-slate-500 block mb-0.5">Application Classification</span>
+<span id="modal-target" class="font-mono text-slate-800 font-medium truncate block">--</span>
+</div>
+<div>
+<span class="text-slate-500 block mb-0.5">Asset / Binary Size</span>
+<span id="modal-filesize" class="font-mono text-slate-800 font-medium">--</span>
+</div>
+<div>
+<span class="text-slate-500 block mb-0.5">Distribution Channel</span>
+<span class="font-mono text-slate-800 font-medium">GitHub Releases / CDN</span>
+</div>
+<div>
+<span class="text-slate-500 block mb-0.5">Platform Target</span>
+<span id="modal-arch" class="font-mono text-slate-800 font-medium">--</span>
+</div>
+</div>
+​<!-- Action Buttons -->
+<div class="space-y-2" id="modal-actions"></div>
+​</div>
+</div>
+​<!-- Professional Footer -->
+<footer class="mt-auto border-t border-slate-200 bg-white/80 backdrop-blur-sm z-10 py-7">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+<div class="flex items-center space-x-2">
+<i class="fa-brands fa-android text-sky-600 text-base"></i>
+<span class="font-semibold text-slate-700">SR Apps Studio</span>
+<span>·</span>
+<span>Distribution Ecosystem</span>
+</div>
+<div class="flex items-center space-x-4 font-mono text-[11px]">
+<span>60-Minute Managed Cycle Engine</span>
+<span>·</span>
+<a href="https://github.com/senterprisehub" target="_blank" class="hover:text-slate-900 transition-colors">GitHub Account</a>
+</div>
+</div>
+</footer>
+​<!-- Self-Healing Distribution Engine with 60-Minute Managed Countdown -->
+<script>
+const GITHUB_OWNER = 'senterprisehub';
+const REFRESH_INTERVAL_MS = 60 * 60 * 1000; // 60 minutes
+const STORAGE_KEY_TIMESTAMP = 'sr_last_sync_timestamp_v3';
+const STORAGE_KEY_CATALOG = 'sr_cached_catalog_v3';
+​// Baseline catalog ensures instant rendering with zero API delays
+const SEED_CATALOG = [
+{
+repoName: 'arogyadietai',
+name: 'Arogya Diet AI',
+desc: 'AI-powered diet planning and nutritional guidance assistant.',
+category: 'Health & AI',
+hasApk: true,
+apkName: 'arogyadietai.apk',
+sizeMb: '18.4',
+version: 'v1.0.0',
+topics: ['android', 'diet', 'ai', 'nutrition']
+},
+{
+repoName: 'Mileage-Tracker',
+name: 'Mileage Tracker',
+desc: 'Automated vehicle mileage, route logging, and fuel expense calculator.',
+category: 'Business & POS',
+hasApk: true,
+apkName: 'mileage-tracker.apk',
+sizeMb: '14.2',
+version: 'v1.0.0',
+topics: ['android', 'mileage', 'gps', 'tracker']
+},
+{
+repoName: 'ProInvoice',
+name: 'ProInvoice',
+desc: 'Professional billing, invoice generation, and tax-ready PDF manager.',
+category: 'Business & POS',
+hasApk: true,
+apkName: 'proinvoice.apk',
+sizeMb: '16.8',
+version: 'v1.0.0',
+topics: ['android', 'invoice', 'billing', 'pos']
+},
+{
+repoName: 'Location-Saving-App',
+name: 'Location Saving App',
+desc: 'Fast GPS coordinate bookmarker with offline tag mapping.',
+category: 'Hardware & Dev Tools',
+hasApk: true,
+apkName: 'location-saving-app.apk',
+sizeMb: '11.5',
+version: 'v1.0.0',
+topics: ['android', 'gps', 'location', 'maps']
+},
+{
+repoName: 'ReceiptPOS',
+name: 'Receipt POS',
+desc: 'Lightweight point-of-sale terminal and instant receipt printer for retail.',
+category: 'Business & POS',
+hasApk: true,
+apkName: 'receiptpos.apk',
+sizeMb: '21.0',
+version: 'v1.0.0',
+topics: ['android', 'pos', 'receipt', 'printer']
+},
+{
+repoName: 'Mock-GPS-Pro',
+name: 'Mock GPS Pro',
+desc: 'Developer mock location spoofer with customizable route simulations.',
+category: 'Hardware & Dev Tools',
+hasApk: true,
+apkName: 'mock-gps-pro.apk',
+sizeMb: '12.8',
+version: 'v1.0.0',
+topics: ['android', 'gps', 'mock-location', 'developer']
+},
+{
+repoName: 'Sales-Flow-App',
+name: 'Sales Flow App',
+desc: 'Mobile field sales tracker, client CRM, and lead management hub.',
+category: 'Business & POS',
+hasApk: true,
+apkName: 'sales-flow-app.apk',
+sizeMb: '19.5',
+version: 'v1.0.0',
+topics: ['android', 'sales', 'crm', 'leads']
+},
+{
+repoName: 'VoltPulse',
+name: 'VoltPulse',
+desc: 'Real-time electrical measurement, voltage monitoring, and pulse analyzer.',
+category: 'Hardware & Dev Tools',
+hasApk: true,
+apkName: 'voltpulse.apk',
+sizeMb: '15.6',
+version: 'v1.0.0',
+topics: ['android', 'voltmeter', 'hardware', 'measurement']
+},
+{
+repoName: 'Sales-flow',
+name: 'Sales Flow',
+desc: 'Pipeline automation and daily activity reporting for sales executives.',
+category: 'Business & POS',
+hasApk: false,
+sizeMb: null,
+version: 'PWA Web',
+topics: ['webapp', 'pwa', 'sales', 'pipeline']
+},
+{
+repoName: 'Thermo-Med-Pro',
+name: 'Thermo Med Pro',
+desc: 'Medical temperature logger and cold-chain compliance monitoring tool.',
+category: 'Health & AI',
+hasApk: true,
+apkName: 'thermo-med-pro.apk',
+sizeMb: '17.3',
+version: 'v1.0.0',
+topics: ['android', 'medical', 'temperature', 'health']
+},
+{
+repoName: 'Thermo-Print-Studio',
+name: 'Thermo Print Studio',
+desc: 'Bluetooth and USB ESC/POS thermal printer layout designer and driver utility.',
+category: 'Hardware & Dev Tools',
+hasApk: true,
+apkName: 'thermo-print-studio.apk',
+sizeMb: '22.4',
+version: 'v1.0.0',
+topics: ['android', 'thermal-printer', 'esc-pos', 'bluetooth']
+},
+{
+repoName: 'Proinvoice-App',
+name: 'ProInvoice App',
+desc: 'Mobile web invoice maker with automated client statement reconciliation.',
+category: 'Business & POS',
+hasApk: false,
+sizeMb: null,
+version: 'PWA Web',
+topics: ['webapp', 'pwa', 'invoice', 'finance']
+},
+{
+repoName: 'BMI-Health-Tracker',
+name: 'BMI Health Tracker',
+desc: 'Body Mass Index calculator with historical wellness tracking.',
+category: 'Health & AI',
+hasApk: true,
+apkName: 'bmi-health-tracker.apk',
+sizeMb: '10.9',
+version: 'v1.0.0',
+topics: ['android', 'bmi', 'health', 'fitness']
+},
+{
+repoName: 'ADJ',
+name: 'ADJ Utility',
+desc: 'Specialized field operational and calculation utility.',
+category: 'Hardware & Dev Tools',
+hasApk: false,
+sizeMb: null,
+version: 'PWA Web',
+topics: ['webapp', 'utility', 'calculator']
+}
+];
+​let liveCatalog = [];
+let currentCategory = 'all';
+let searchQuery = '';
+let countdownInterval = null;
+​function formatRepoTitle(raw) {
+if (!raw) return 'Unknown App';
+return raw
+.replace(/[-_]/g, ' ')
+.replace(/([a-z])([A-Z])/g, '$1 $2')
+.replace(/\b\w/g, c => c.toUpperCase())
+.trim();
+}
+​function generateMonogram(title) {
+const char = (title || 'A').charAt(0).toUpperCase();
+const palette = [
+['#0284c7', '#0369a1'],
+['#4f46e5', '#3730a3'],
+['#0d9488', '#115e59'],
+['#2563eb', '#1d4ed8'],
+['#7c3aed', '#6d28d9']
+];
+const idx = (title.charCodeAt(0) + (title.charCodeAt(1) || 0)) % palette.length;
+const [c1, c2] = palette[idx];
+​const svg = <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"> <defs> <linearGradient id="grad_${char}" x1="0%" y1="0%" x2="100%" y2="100%"> <stop offset="0%" stop-color="${c1}" /> <stop offset="100%" stop-color="${c2}" /> </linearGradient> </defs> <rect width="64" height="64" rx="16" fill="url(#grad_${char})"/> <text x="50%" y="54%" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="28" fill="#ffffff" dominant-baseline="middle" text-anchor="middle">${char}</text> </svg>;
+return data:image/svg+xml;utf8,${encodeURIComponent(svg)};
+}
+​function bindLogoFallback(imgElement, repoName, appTitle, defaultBranch = 'main') {
+const branches = [defaultBranch, 'main', 'master'];
+const filenames = ['icon.png', 'logo.png', 'app-icon.png', 'icon.jpg', 'logo.jpg'];
+const candidateUrls = [];
+​branches.forEach(b => {
+filenames.forEach(f => {
+candidateUrls.push(https://raw.githubusercontent.com/${GITHUB_OWNER}/${repoName}/${b}/${f});
+});
+});
+​let currentIdx = 0;
+imgElement.src = candidateUrls[0];
+​imgElement.onerror = function() {
+currentIdx++;
+if (currentIdx < candidateUrls.length) {
+imgElement.src = candidateUrls[currentIdx];
+} else {
+imgElement.onerror = null;
+imgElement.src = generateMonogram(appTitle);
+}
+};
+}
+​function createSeedItem(seed) {
+const pageUrl = https://${GITHUB_OWNER}.github.io/${seed.repoName}/;
+const downloadUrl = seed.hasApk
+? https://github.com/${GITHUB_OWNER}/${seed.repoName}/releases/latest/download/${seed.apkName || (seed.repoName.toLowerCase() + '.apk')}
+: null;
+​return {
+id: seed.repoName.toLowerCase(),
+name: seed.name,
+repo: ${GITHUB_OWNER}/${seed.repoName},
+repoName: seed.repoName,
+defaultBranch: 'main',
+description: seed.desc,
+pageUrl: pageUrl,
+category: seed.category,
+topics: seed.topics || [],
+hasApk: seed.hasApk,
+release: {
+version: seed.version || (seed.hasApk ? 'v1.0.0' : 'PWA Online'),
+downloadUrl: downloadUrl,
+fallbackUrl: https://github.com/${GITHUB_OWNER}/${seed.repoName}/releases,
+fileName: seed.apkName || ${seed.repoName.toLowerCase()}.apk,
+sizeMb: seed.sizeMb
+}
+};
+}
+​function updateStats() {
+const total = liveCatalog.length;
+const apkCount = liveCatalog.filter(a => a.hasApk).length;
+const webAppCount = liveCatalog.filter(a => !a.hasApk).length;
+​document.getElementById('stat-total-apps').textContent = total;
+document.getElementById('stat-ready-apks').textContent = apkCount;
+document.getElementById('stat-web-apps').textContent = webAppCount;
+}
+​function renderCategoryPills() {
+const container = document.getElementById('category-pills');
+if (!container) return;
+​const categories = ['all', 'Android Native APK', 'Web App (PWA)'];
+liveCatalog.forEach(app => {
+const cat = app.category;
+if (cat && !categories.includes(cat)) {
+categories.push(cat);
+}
+});
+​if (!categories.includes(currentCategory)) {
+currentCategory = 'all';
+}
+​container.innerHTML = '';
+categories.forEach(cat => {
+let count = 0;
+if (cat === 'all') count = liveCatalog.length;
+else if (cat === 'Android Native APK') count = liveCatalog.filter(a => a.hasApk).length;
+else if (cat === 'Web App (PWA)') count = liveCatalog.filter(a => !a.hasApk).length;
+else count = liveCatalog.filter(a => a.category === cat).length;
+​const btn = document.createElement('button');
+btn.textContent = ${cat} (${count});
+​if (cat === currentCategory) {
+btn.className = 'px-3 py-1 rounded-lg text-xs font-semibold bg-slate-900 text-white shadow-sm transition-all';
+} else {
+btn.className = 'px-3 py-1 rounded-lg text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:text-slate-900 transition-all';
+}
+​btn.addEventListener('click', () => {
+currentCategory = cat;
+renderCategoryPills();
+renderCards();
+});
+​container.appendChild(btn);
+});
+}
+​function createCard(app) {
+const card = document.createElement('div');
+card.className = 'dev-card bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between relative group';
+​const isWebApp = !app.hasApk;
+const sizeLabel = app.release?.sizeMb ? ${app.release.sizeMb} MB : (isWebApp ? 'Web App (Zero MB)' : 'Universal APK');
+const versionLabel = app.release?.version || (isWebApp ? 'PWA Online' : 'Latest');
+​const tagsHtml = (app.topics.length > 0 ? app.topics : [app.category]).slice(0, 3).map(t =>
+<span class="text-[10px] font-mono font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200">${t}</span>
+).join('');
+​let actionsHtml = '';
+if (isWebApp) {
+actionsHtml = `
+<div class="space-y-2">
+<a 
+href="${app.pageUrl}" 
+target="_blank" 
+rel="noopener noreferrer" 
+class="w-full inline-flex items-center justify-center space-x-2 py-2.5 px-3 rounded-xl text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm shadow-indigo-600/10 transition-all">
+<i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+<span>Open Web Application</span>
+</a>
+​<div class="p-2.5 rounded-lg bg-indigo-50/70 border border-indigo-100 text-[11px] text-indigo-900 flex items-start space-x-2">
+<i class="fa-solid fa-mobile-screen-button text-indigo-500 mt-0.5 flex-shrink-0"></i>
+<div>
+<span class="font-semibold block text-indigo-950">Add as App to Home screen:</span>
+Open link → Tap <span class="font-mono bg-white px-1 py-0.5 rounded border border-indigo-200 text-slate-700">⋮ / Share</span> → Select <strong>"Install / Add to Home screen"</strong>.
+</div>
+</div>
+</div>
+; } else { const directDl = app.release.downloadUrl; const fallbackRel = app.release.fallbackUrl || https://github.com/${app.repo}/releases`;
+​actionsHtml = `
+<div class="grid grid-cols-2 gap-2">
+<a 
+href="${directDl}" 
+target="_blank"
+rel="noopener noreferrer"
+class="inline-flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-xs font-semibold text-white bg-sky-600 hover:bg-sky-700 shadow-sm shadow-sky-600/10 transition-all"
+onerror="this.href='${fallbackRel}';">
+<i class="fa-solid fa-download text-[11px]"></i>
+<span>Download APK</span>
+</a>
+​<a 
+href="${app.pageUrl}" 
+target="_blank" 
+rel="noopener noreferrer" 
+class="inline-flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 transition-all">
+<span>App Page</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+</a>
+</div>
+`;
+}
+​card.innerHTML = `
+<div>
+<!-- Header -->
+<div class="flex items-start justify-between gap-3 mb-3.5">
+<div class="flex items-center space-x-3.5">
+<img 
+id="img-${app.id}"
+alt="${app.name} icon" 
+class="w-12 h-12 rounded-xl object-cover bg-slate-100 border border-slate-200 shadow-sm flex-shrink-0"
+/>
+<div>
+<h3 class="text-base font-bold text-slate-900 group-hover:text-sky-600 transition-colors tracking-tight line-clamp-1" title="${app.name}">
+{app.name}
+</h3>
+<div class="flex items-center space-x-2 mt-0.5">
+<span class="inline-flex items-center font-mono text-[11px] font-medium ${isWebApp ? 'text-indigo-700 bg-indigo-50 border-indigo-200' : 'text-emerald-700 bg-emerald-50 border-emerald-200'} px-2 py-0.5 rounded-md border">
+<i class="fa-solid ${isWebApp ? 'fa-globe' : 'fa-android'} text-[9px] mr-1"></i>{isWebApp ? 'Web App (PWA)' : 'Android APK'}
+</span>
+<span class="text-[11px] font-mono text-slate-400">${versionLabel}</span>
+</div>
+</div>
+</div>
+​<button class="info-btn text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-50 transition-colors" title="View details">
+<i class="fa-solid fa-circle-info text-sm"></i>
+</button>
+</div>
+​<!-- Description -->
+<p class="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-2">
+${app.description}
+</p>
+​<!-- Badges -->
+<div class="flex items-center flex-wrap gap-1.5 mb-4">
+${tagsHtml}
+</div>
+</div>
+​<div>
+<!-- Spec Strip -->
+<div class="flex items-center justify-between text-[11px] font-mono text-slate-500 py-2.5 px-3 bg-slate-50 rounded-xl border border-slate-100 mb-3.5">
+<span class="flex items-center gap-1.5">
+<i class="fa-solid ${isWebApp ? 'fa-globe text-indigo-500' : 'fa-brands fa-android text-emerald-600'}"></i>
+{isWebApp ? 'Browser / PWA Ready' : 'Android OS'}
+</span>
+<span class="font-medium text-slate-700">{sizeLabel}</span>
+</div>
+​<!-- Actions -->
+${actionsHtml}
+</div>
+`;
+​const imgEl = card.querySelector(#img-${app.id});
+if (imgEl) {
+bindLogoFallback(imgEl, app.repoName, app.name, app.defaultBranch);
+}
+​const infoBtn = card.querySelector('.info-btn');
+if (infoBtn) {
+infoBtn.addEventListener('click', (e) => {
+e.preventDefault();
+openModal(app);
+});
+}
+​return card;
+}
+​function renderCards() {
+const grid = document.getElementById('apps-grid');
+const emptyState = document.getElementById('empty-state');
+grid.innerHTML = '';
+​const q = searchQuery.toLowerCase().trim();
+​const filtered = liveCatalog.filter(app => {
+let matchCat = true;
+if (currentCategory === 'Android Native APK') matchCat = app.hasApk;
+else if (currentCategory === 'Web App (PWA)') matchCat = !app.hasApk;
+else if (currentCategory !== 'all') matchCat = app.category === currentCategory;
+​const matchQuery = !q ||
+app.name.toLowerCase().includes(q) ||
+app.description.toLowerCase().includes(q) ||
+app.id.includes(q) ||
+app.topics.some(t => t.toLowerCase().includes(q));
+​return matchCat && matchQuery;
+});
+​if (filtered.length === 0) {
+grid.classList.add('hidden');
+emptyState.classList.remove('hidden');
+} else {
+emptyState.classList.add('hidden');
+grid.classList.remove('hidden');
+filtered.forEach(app => grid.appendChild(createCard(app)));
+}
+}
+​function openModal(app) {
+const modal = document.getElementById('app-modal');
+const modalCard = document.getElementById('modal-card');
+const isWebApp = !app.hasApk;
+​const modalLogo = document.getElementById('modal-logo');
+bindLogoFallback(modalLogo, app.repoName, app.name, app.defaultBranch);
+​document.getElementById('modal-title').textContent = app.name;
+document.getElementById('modal-repo').textContent = app.repo;
+​const badge = document.getElementById('modal-type-badge');
+badge.textContent = isWebApp ? 'Web App (PWA)' : 'Android Native APK';
+badge.className = isWebApp
+? 'inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-indigo-50 text-indigo-700 border border-indigo-200'
+: 'inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-emerald-50 text-emerald-700 border border-emerald-200';
+​document.getElementById('modal-version-tag').textContent = app.release?.version || 'Latest';
+document.getElementById('modal-desc').textContent = app.description;
+​document.getElementById('modal-target').textContent = isWebApp ? 'Progressive Web App' : 'Native Android (.apk)';
+document.getElementById('modal-filesize').textContent = app.release?.sizeMb ? ${app.release.sizeMb} MB : (isWebApp ? 'Web Application' : 'Universal Binary');
+document.getElementById('modal-arch').textContent = isWebApp ? 'Modern Web Engine' : 'Android Universal';
+​document.getElementById('modal-pwa-guide').style.display = isWebApp ? 'block' : 'none';
+​const actions = document.getElementById('modal-actions');
+if (app.hasApk) {
+actions.innerHTML = <a href="${app.release.downloadUrl || app.release.fallbackUrl}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center space-x-2 py-3 px-4 rounded-xl text-sm font-semibold text-white bg-sky-600 hover:bg-sky-700 shadow-md shadow-sky-600/20 transition-all"> <i class="fa-solid fa-download"></i> <span>Download APK Binary</span> </a> <a href="${app.pageUrl}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center space-x-2 py-2.5 px-4 rounded-xl text-sm font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-all"> <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> <span>Open Application Web Page</span> </a>;
+} else {
+actions.innerHTML = <a href="${app.pageUrl}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center space-x-2 py-3 px-4 rounded-xl text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-md shadow-indigo-600/20 transition-all"> <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i> <span>Open Web Application</span> </a>;
+}
+​modal.classList.remove('hidden');
+setTimeout(() => {
+modal.classList.remove('opacity-0');
+modalCard.classList.remove('scale-95');
+}, 10);
+}
+​function closeModal() {
+const modal = document.getElementById('app-modal');
+const modalCard = document.getElementById('modal-card');
+modal.classList.add('opacity-0');
+modalCard.classList.add('scale-95');
+setTimeout(() => modal.classList.add('hidden'), 200);
+}
+​/
+* Managed 60-Minute Countdown Loop
+* Calculates remaining time until next automated refresh
+*/
+function startCountdownEngine() {
+if (countdownInterval) clearInterval(countdownInterval);
+​const countdownEl = document.getElementById('sync-countdown');
+​function updateCountdown() {
+const lastSync = parseInt(localStorage.getItem(STORAGE_KEY_TIMESTAMP) || '0', 10);
+const now = Date.now();
+const elapsed = now - lastSync;
+const remaining = Math.max(0, REFRESH_INTERVAL_MS - elapsed);
+​if (remaining <= 0) {
+countdownEl.textContent = '00:00';
+console.log('[Managed Cycle] 60-minute window elapsed. Triggering automatic refresh...');
+syncCatalogFromGitHub(false);
+return;
+}
+​const totalSeconds = Math.floor(remaining / 1000);
+const minutes = Math.floor(totalSeconds / 60);
+const seconds = totalSeconds % 60;
+​countdownEl.textContent = ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')};
+}
+​updateCountdown();
+countdownInterval = setInterval(updateCountdown, 1000);
+}
+​/
+* Managed Auto-Sync:
+* - Scans GitHub repositories
+* - Caches results to localStorage
+* - Resets the 60-minute countdown timer
+*/
+async function syncCatalogFromGitHub(isManual = false) {
+const refreshSpinner = document.getElementById('refresh-spinner');
+const apiStatus = document.getElementById('stat-api-status');
+​if (refreshSpinner) refreshSpinner.classList.add('animate-spin');
+apiStatus.textContent = isManual ? 'Syncing...' : 'Auto-Syncing...';
+​try {
+const res = await fetch(https://api.github.com/users/${GITHUB_OWNER}/repos?per_page=100&sort=updated, {
+headers: { 'Accept': 'application/vnd.github.v3+json' }
+});
+​if (res.status === 403) {
+console.warn('GitHub rate limit reached; maintaining resilient catalog.');
+apiStatus.textContent = 'Cached (Safe)';
+localStorage.setItem(STORAGE_KEY_TIMESTAMP, Date.now().toString());
+startCountdownEngine();
+return;
+}
+​if (!res.ok) {
+throw new Error(Status ${res.status});
+}
+​const onlineRepos = await res.json();
+const excluded = ['hub', 'apps', 'senterprisehub.github.io', '.github'];
+​// Merge newly discovered repos into the catalog
+onlineRepos.forEach(repo => {
+if (excluded.includes(repo.name.toLowerCase())) return;
+​const exists = liveCatalog.find(item => item.repoName.toLowerCase() === repo.name.toLowerCase());
+if (!exists) {
+const topics = (repo.topics || []).map(t => t.toLowerCase());
+const isApk = topics.includes('android-app') || topics.includes('android.app') || topics.includes('apk') || repo.name.toLowerCase().includes('app');
+​liveCatalog.unshift({
+id: repo.name.toLowerCase(),
+name: formatRepoTitle(repo.name),
+repo: repo.full_name,
+repoName: repo.name,
+defaultBranch: repo.default_branch || 'main',
+description: repo.description || 'Android application developed by SR Apps Studio.',
+pageUrl: https://${GITHUB_OWNER}.github.io/${repo.name}/,
+category: isApk ? 'Android Native APK' : 'Web App (PWA)',
+topics: repo.topics || [],
+hasApk: isApk,
+release: {
+version: 'v1.0.0',
+downloadUrl: https://github.com/${repo.full_name}/releases/latest/download/${repo.name.toLowerCase()}.apk,
+fallbackUrl: https://github.com/${repo.full_name}/releases,
+fileName: ${repo.name.toLowerCase()}.apk,
+sizeMb: null
+}
+});
+}
+});
+​// Persist fresh catalog and update epoch timestamp
+localStorage.setItem(STORAGE_KEY_CATALOG, JSON.stringify(liveCatalog));
+localStorage.setItem(STORAGE_KEY_TIMESTAMP, Date.now().toString());
+apiStatus.textContent = 'Hourly Synced';
+​} catch (err) {
+console.warn('Sync cycle notice:', err.message);
+apiStatus.textContent = 'Hourly Synced';
+} finally {
+if (refreshSpinner) refreshSpinner.classList.remove('animate-spin');
+startCountdownEngine();
+updateStats();
+renderCategoryPills();
+renderCards();
+}
+}
+​// Ambient Canvas Particle Simulation
+function initAmbientCanvas() {
+const canvas = document.getElementById('ambient-canvas');
+const ctx = canvas.getContext('2d');
+let width, height;
+​function resize() {
+width = canvas.width = window.innerWidth;
+height = canvas.height = window.innerHeight;
+}
+​window.addEventListener('resize', resize);
+resize();
+​const particles = Array.from({ length: 24 }, () => ({
+x: Math.random() * width,
+y: Math.random() * height,
+vx: (Math.random() - 0.5) * 0.35,
+vy: (Math.random() - 0.5) * 0.35,
+size: Math.random() * 2 + 1,
+alpha: Math.random() * 0.4 + 0.2
+}));
+​function draw() {
+ctx.clearRect(0, 0, width, height);
+​for (let i = 0; i < particles.length; i++) {
+for (let j = i + 1; j < particles.length; j++) {
+const dx = particles[i].x - particles[j].x;
+const dy = particles[i].y - particles[j].y;
+const dist = Math.sqrt(dx * dx + dy * dy);
+if (dist < 130) {
+ctx.strokeStyle = rgba(186, 224, 253, ${0.3 * (1 - dist / 130)});
+ctx.lineWidth = 1;
+ctx.beginPath();
+ctx.moveTo(particles[i].x, particles[i].y);
+ctx.lineTo(particles[j].x, particles[j].y);
+ctx.stroke();
+}
+}
+}
+​particles.forEach(p => {
+p.x += p.vx;
+p.y += p.vy;
+if (p.x < 0) p.x = width;
+if (p.x > width) p.x = 0;
+if (p.y < 0) p.y = height;
+if (p.y > height) p.y = 0;
+​ctx.fillStyle = rgba(2, 132, 199, ${p.alpha});
+ctx.beginPath();
+ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+ctx.fill();
+});
+​requestAnimationFrame(draw);
+}
+​requestAnimationFrame(draw);
+}
+​// Initialization Sequence
+document.addEventListener('DOMContentLoaded', () => {
+initAmbientCanvas();
+​// Step 1: Restore existing cache if within the 60-minute cycle, or seed immediately
+const cachedData = localStorage.getItem(STORAGE_KEY_CATALOG);
+const lastSyncTimestamp = parseInt(localStorage.getItem(STORAGE_KEY_TIMESTAMP) || '0', 10);
+const isExpired = Date.now() - lastSyncTimestamp > REFRESH_INTERVAL_MS;
+​if (cachedData) {
+try {
+liveCatalog = JSON.parse(cachedData);
+} catch (e) {
+liveCatalog = SEED_CATALOG.map(createSeedItem);
+}
+} else {
+liveCatalog = SEED_CATALOG.map(createSeedItem);
+}
+​// Step 2: Render immediately with zero loading lag
+updateStats();
+renderCategoryPills();
+renderCards();
+​// Step 3: Start countdown or run sync if expired
+if (!lastSyncTimestamp || isExpired) {
+syncCatalogFromGitHub(false);
+} else {
+startCountdownEngine();
+}
+​// Manual re-scan override
+document.getElementById('refresh-catalog-btn').addEventListener('click', () => {
+syncCatalogFromGitHub(true);
+});
+​// Search filter
+const searchInput = document.getElementById('search-input');
+searchInput.addEventListener('input', (e) => {
+searchQuery = e.target.value;
+renderCards();
+});
+​// Reset filters
+document.getElementById('reset-filter-btn').addEventListener('click', () => {
+searchQuery = '';
+searchInput.value = '';
+currentCategory = 'all';
+renderCategoryPills();
+renderCards();
+});
+​// Keyboard & modal controls
+document.addEventListener('keydown', (e) => {
+if (e.key === 'Escape') {
+if (!document.getElementById('app-modal').classList.contains('hidden')) {
+closeModal();
+} else {
+searchQuery = '';
+searchInput.value = '';
+renderCards();
+}
+}
+});
+​document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+document.getElementById('app-modal').addEventListener('click', (e) => {
+if (e.target.id === 'app-modal') closeModal();
+});
+});
+</script>
 </body>
 </html>
