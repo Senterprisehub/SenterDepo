@@ -2,557 +2,407 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="google9e1371db0f52541e">
 <title>SR Apps Studio | Android Ecosystem & APK Distribution</title>
 <meta name="description" content="Discover and download verified Android APKs and Progressive Web Applications from SR Apps Studio with synchronized global hourly release cycles.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://senterprisehub.github.io/hub/">
-​<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 ​<style>
-*, *::before, *::after {
+* {
 box-sizing: border-box;
 margin: 0;
 padding: 0;
 }
-​:root {
---bg: #f8fafc;
---surface: #ffffff;
---surface-hover: #f1f5f9;
---border: #e2e8f0;
---border-focus: #0284c7;
---text-main: #0f172a;
---text-muted: #64748b;
---text-subtle: #94a3b8;
---primary: #0284c7;
---primary-hover: #0369a1;
---primary-soft: #f0f9ff;
---emerald: #059669;
---emerald-soft: #ecfdf5;
---indigo: #4f46e5;
---indigo-soft: #eef2ff;
---amber: #d97706;
---amber-soft: #fffbeb;
---radius-sm: 8px;
---radius-md: 12px;
---radius-lg: 16px;
---shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
---shadow-hover: 0 12px 24px -4px rgba(15, 23, 42, 0.1);
-}
 ​body {
-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-background-color: var(--bg);
-color: var(--text-main);
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+background-color: #f8fafc;
+color: #0f172a;
 line-height: 1.5;
 min-height: 100vh;
 display: flex;
 flex-direction: column;
-position: relative;
-overflow-x: hidden;
--webkit-font-smoothing: antialiased;
-}
-​#ambient-canvas {
-position: fixed;
-inset: 0;
-width: 100%;
-height: 100%;
-pointer-events: none;
-z-index: 0;
-opacity: 0.5;
-}
-​.ambient-glow {
-position: fixed;
-top: -100px;
-left: 50%;
-transform: translateX(-50%);
-width: 600px;
-height: 350px;
-background: radial-gradient(circle, rgba(186, 224, 253, 0.45) 0%, rgba(238, 242, 255, 0.3) 50%, transparent 70%);
-filter: blur(50px);
-pointer-events: none;
-z-index: 0;
 }
 ​header {
 position: sticky;
 top: 0;
-z-index: 40;
-background: rgba(255, 255, 255, 0.9);
-backdrop-filter: blur(12px);
--webkit-backdrop-filter: blur(12px);
-border-bottom: 1px solid var(--border);
+z-index: 100;
+background: #ffffff;
+border-bottom: 1px solid #e2e8f0;
+padding: 12px 16px;
 }
 ​.header-inner {
 max-width: 1200px;
 margin: 0 auto;
-padding: 0.75rem 1rem;
 display: flex;
 align-items: center;
 justify-content: space-between;
-gap: 1rem;
+gap: 12px;
 }
-​.brand-group {
+​.brand-wrap {
 display: flex;
 align-items: center;
-gap: 0.75rem;
+gap: 10px;
 }
-​.brand-icon {
-width: 38px;
-height: 38px;
-border-radius: var(--radius-md);
-background: linear-gradient(135deg, #0284c7, #4f46e5);
-color: #ffffff;
+​.brand-logo {
+width: 36px;
+height: 36px;
+border-radius: 8px;
+background: #0284c7;
 display: flex;
 align-items: center;
 justify-content: center;
-font-size: 1.15rem;
-box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+color: #ffffff;
+flex-shrink: 0;
+}
+​.brand-logo svg {
+width: 22px;
+height: 22px;
+fill: currentColor;
 }
 ​.brand-title {
 font-size: 1.1rem;
 font-weight: 800;
-color: var(--text-main);
-line-height: 1.2;
+color: #0f172a;
 letter-spacing: -0.02em;
 }
 ​.brand-title span {
-color: var(--primary);
+color: #0284c7;
 }
 ​.brand-badge {
-display: inline-flex;
-align-items: center;
-gap: 0.35rem;
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.68rem;
+font-size: 0.7rem;
 font-weight: 600;
-padding: 0.15rem 0.45rem;
+color: #059669;
+background: #ecfdf5;
+border: 1px solid #a7f3d0;
+padding: 2px 6px;
 border-radius: 4px;
-background: var(--emerald-soft);
-color: var(--emerald);
-border: 1px solid rgba(5, 150, 105, 0.2);
-}
-​.brand-badge .ping-dot {
-width: 6px;
-height: 6px;
-border-radius: 50%;
-background: var(--emerald);
 display: inline-block;
 }
-​.header-controls {
+​.header-actions {
 display: flex;
 align-items: center;
-gap: 0.5rem;
+gap: 8px;
 }
-​.timer-badge {
+​.timer-pill {
 display: inline-flex;
 align-items: center;
-gap: 0.4rem;
-background: var(--surface);
-border: 1px solid var(--border);
-padding: 0.4rem 0.65rem;
-border-radius: var(--radius-sm);
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.78rem;
-font-weight: 600;
-color: var(--primary);
-box-shadow: var(--shadow-sm);
+gap: 6px;
+background: #f1f5f9;
+border: 1px solid #cbd5e1;
+padding: 6px 10px;
+border-radius: 6px;
+font-family: Courier, monospace;
+font-size: 0.8rem;
+font-weight: 700;
+color: #0284c7;
 }
 ​.btn-sync {
 display: inline-flex;
 align-items: center;
-gap: 0.4rem;
-font-size: 0.78rem;
+gap: 6px;
+background: #0284c7;
+color: #ffffff;
+border: none;
+padding: 7px 12px;
+border-radius: 6px;
+font-size: 0.8rem;
 font-weight: 600;
-color: var(--text-main);
-background: var(--surface);
-border: 1px solid var(--border);
-padding: 0.45rem 0.75rem;
-border-radius: var(--radius-sm);
 cursor: pointer;
-box-shadow: var(--shadow-sm);
 }
 ​.btn-sync:hover {
-background: var(--surface-hover);
-border-color: #cbd5e1;
+background: #0369a1;
 }
 ​.hero {
-position: relative;
-z-index: 10;
-padding: 2.5rem 1rem 1.5rem;
 text-align: center;
+padding: 32px 16px 20px;
 max-width: 900px;
 margin: 0 auto;
 }
-​.verified-pill {
-display: inline-flex;
-align-items: center;
-gap: 0.4rem;
-padding: 0.35rem 0.85rem;
-border-radius: 9999px;
+​.pill-notice {
+display: inline-block;
 font-size: 0.75rem;
-font-weight: 600;
-background: var(--primary-soft);
-color: var(--primary);
-border: 1px solid rgba(2, 132, 199, 0.2);
-margin-bottom: 0.75rem;
-}
-​.verified-pill code {
-font-family: 'JetBrains Mono', monospace;
 font-weight: 700;
+color: #0284c7;
+background: #e0f2fe;
+border: 1px solid #bae6fd;
+padding: 4px 10px;
+border-radius: 9999px;
+margin-bottom: 12px;
 }
-​.hero-title {
-font-size: 2.2rem;
+​.hero-h1 {
+font-size: 2.1rem;
 font-weight: 800;
+color: #0f172a;
 letter-spacing: -0.03em;
-line-height: 1.15;
-color: var(--text-main);
-margin-bottom: 0.5rem;
+line-height: 1.2;
+margin-bottom: 8px;
 }
-​.gradient-text {
-background: linear-gradient(135deg, #0284c7, #4f46e5);
--webkit-background-clip: text;
-background-clip: text;
--webkit-text-fill-color: transparent;
+​.hero-h1 span {
+color: #0284c7;
 }
-​.hero-desc {
+​.hero-p {
+color: #64748b;
 font-size: 0.95rem;
-color: var(--text-muted);
-max-width: 580px;
-margin: 0 auto 1rem;
-line-height: 1.5;
+max-width: 600px;
+margin: 0 auto 16px;
 }
 ​.notice-box {
-display: inline-flex;
-align-items: center;
-gap: 0.5rem;
-padding: 0.5rem 1rem;
-border-radius: var(--radius-md);
-background: var(--amber-soft);
-color: var(--amber);
-border: 1px solid rgba(217, 119, 6, 0.25);
-font-size: 0.78rem;
-font-weight: 500;
-margin-bottom: 1.5rem;
+display: inline-block;
+background: #fffbeb;
+border: 1px solid #fde68a;
+color: #b45309;
+font-size: 0.8rem;
+font-weight: 600;
+padding: 8px 14px;
+border-radius: 8px;
+margin-bottom: 24px;
 }
-​.stats-bar {
+​.stats-row {
 display: grid;
 grid-template-columns: repeat(4, 1fr);
-gap: 0.75rem;
-background: var(--surface);
-border: 1px solid var(--border);
-border-radius: var(--radius-lg);
-padding: 0.85rem 0.5rem;
-box-shadow: var(--shadow-sm);
-margin-bottom: 1.75rem;
+gap: 10px;
+background: #ffffff;
+border: 1px solid #e2e8f0;
+border-radius: 12px;
+padding: 12px 8px;
+margin-bottom: 24px;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
-​.stat-item {
+​.stat-box {
 text-align: center;
-border-right: 1px solid var(--border);
+border-right: 1px solid #f1f5f9;
 }
-​.stat-item:last-child {
+​.stat-box:last-child {
 border-right: none;
 }
-​.stat-val {
-font-family: 'JetBrains Mono', monospace;
-font-size: 1.4rem;
-font-weight: 700;
-color: var(--text-main);
+​.stat-number {
+font-size: 1.5rem;
+font-weight: 800;
+color: #0f172a;
 line-height: 1.1;
 }
-​.stat-val.emerald { color: var(--emerald); }
-.stat-val.indigo { color: var(--indigo); }
-.stat-val.sky { color: var(--primary); }
-​.stat-lbl {
-font-size: 0.68rem;
+​.stat-number.green { color: #059669; }
+.stat-number.blue { color: #4f46e5; }
+.stat-number.sky { color: #0284c7; }
+​.stat-label {
+font-size: 0.7rem;
 font-weight: 700;
+color: #94a3b8;
 text-transform: uppercase;
 letter-spacing: 0.05em;
-color: var(--text-subtle);
-margin-top: 0.2rem;
+margin-top: 4px;
 }
-​.controls-wrap {
-display: flex;
-flex-direction: column;
-gap: 0.75rem;
-max-width: 750px;
-margin: 0 auto;
+​.search-wrap {
+max-width: 700px;
+margin: 0 auto 12px;
 }
-​.search-box {
-position: relative;
+​.search-input {
 width: 100%;
-}
-​.search-box i {
-position: absolute;
-left: 1rem;
-top: 50%;
-transform: translateY(-50%);
-color: var(--text-subtle);
-font-size: 0.9rem;
-}
-​.search-box input {
-width: 100%;
-padding: 0.75rem 1rem 0.75rem 2.6rem;
-font-size: 0.9rem;
-border: 1px solid var(--border);
-border-radius: var(--radius-md);
-background: var(--surface);
-color: var(--text-main);
+padding: 12px 16px;
+border-radius: 8px;
+border: 1px solid #cbd5e1;
+font-size: 0.95rem;
+background: #ffffff;
+color: #0f172a;
 outline: none;
-box-shadow: var(--shadow-sm);
 }
-​.search-box input:focus {
-border-color: var(--border-focus);
+​.search-input:focus {
+border-color: #0284c7;
 box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
 }
-​.filter-pills {
+​.filter-row {
 display: flex;
-align-items: center;
-justify-content: center;
 flex-wrap: wrap;
-gap: 0.4rem;
+justify-content: center;
+gap: 6px;
+max-width: 700px;
+margin: 0 auto 28px;
 }
 ​.filter-btn {
-font-size: 0.75rem;
+background: #ffffff;
+border: 1px solid #cbd5e1;
+padding: 6px 12px;
+font-size: 0.78rem;
 font-weight: 600;
-padding: 0.35rem 0.75rem;
-border-radius: var(--radius-sm);
-border: 1px solid var(--border);
-background: var(--surface);
-color: var(--text-muted);
+color: #475569;
+border-radius: 6px;
 cursor: pointer;
 }
 ​.filter-btn.active {
-background: var(--text-main);
+background: #0f172a;
 color: #ffffff;
-border-color: var(--text-main);
+border-color: #0f172a;
 }
 ​main {
-position: relative;
-z-index: 10;
 max-width: 1200px;
 width: 100%;
 margin: 0 auto;
-padding: 1rem 1rem 3rem;
+padding: 0 16px 40px;
 flex: 1;
 }
 ​.apps-grid {
 display: grid;
 grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-gap: 1.25rem;
+gap: 16px;
 }
 ​.app-card {
-background: var(--surface);
-border: 1px solid var(--border);
-border-radius: var(--radius-lg);
-padding: 1.25rem;
+background: #ffffff;
+border: 1px solid #e2e8f0;
+border-radius: 12px;
+padding: 16px;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
-gap: 1rem;
-box-shadow: var(--shadow-sm);
+gap: 12px;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 ​.app-card:hover {
-box-shadow: var(--shadow-hover);
 border-color: #cbd5e1;
+box-shadow: 0 8px 16px -2px rgba(15, 23, 42, 0.08);
 }
-​.card-top {
-display: flex;
-align-items: flex-start;
-justify-content: space-between;
-gap: 0.75rem;
-}
-​.card-meta {
+​.card-head {
 display: flex;
 align-items: center;
-gap: 0.85rem;
-min-width: 0;
+gap: 12px;
 }
-​.card-logo {
+​.app-icon {
 width: 48px;
 height: 48px;
-border-radius: var(--radius-md);
-object-fit: cover;
-background: var(--bg);
-border: 1px solid var(--border);
+border-radius: 10px;
+background: #0284c7;
+color: #ffffff;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 800;
+font-size: 1.25rem;
 flex-shrink: 0;
+overflow: hidden;
 }
-​.card-title-group {
+​.app-icon img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+​.card-titles {
 min-width: 0;
 }
-​.card-title {
-font-size: 1rem;
+​.app-name {
+font-size: 1.05rem;
 font-weight: 700;
-color: var(--text-main);
+color: #0f172a;
 white-space: nowrap;
 overflow: hidden;
 text-overflow: ellipsis;
-line-height: 1.2;
 }
-​.card-sub-badges {
+​.badge-wrap {
 display: flex;
 align-items: center;
-gap: 0.4rem;
-margin-top: 0.25rem;
-flex-wrap: wrap;
+gap: 6px;
+margin-top: 3px;
 }
-​.badge-apk {
-display: inline-flex;
-align-items: center;
-gap: 0.25rem;
-font-family: 'JetBrains Mono', monospace;
+​.type-badge {
 font-size: 0.65rem;
-font-weight: 600;
-padding: 0.15rem 0.4rem;
+font-weight: 700;
+padding: 2px 6px;
 border-radius: 4px;
-background: var(--emerald-soft);
-color: var(--emerald);
-border: 1px solid rgba(5, 150, 105, 0.2);
+text-transform: uppercase;
+font-family: Courier, monospace;
 }
-​.badge-web {
-display: inline-flex;
-align-items: center;
-gap: 0.25rem;
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.65rem;
-font-weight: 600;
-padding: 0.15rem 0.4rem;
-border-radius: 4px;
-background: var(--indigo-soft);
-color: var(--indigo);
-border: 1px solid rgba(79, 70, 229, 0.2);
+​.type-badge.apk {
+background: #ecfdf5;
+color: #059669;
+border: 1px solid #a7f3d0;
 }
-​.badge-ver {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.65rem;
-color: var(--text-subtle);
+​.type-badge.web {
+background: #eef2ff;
+color: #4f46e5;
+border: 1px solid #c7d2fe;
 }
-​.card-desc {
-font-size: 0.82rem;
-color: var(--text-muted);
+​.app-desc {
+font-size: 0.85rem;
+color: #475569;
 line-height: 1.45;
-display: -webkit-box;
--webkit-line-clamp: 2;
-line-clamp: 2;
--webkit-box-orient: vertical;
-overflow: hidden;
-margin-top: 0.5rem;
+min-height: 38px;
 }
-​.card-tags {
+​.spec-bar {
 display: flex;
-flex-wrap: wrap;
-gap: 0.3rem;
-margin-top: 0.6rem;
-}
-​.tag-item {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.62rem;
-padding: 0.15rem 0.4rem;
-border-radius: 4px;
-background: var(--surface-hover);
-color: var(--text-muted);
-border: 1px solid var(--border);
-}
-​.spec-strip {
-display: flex;
-align-items: center;
 justify-content: space-between;
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.7rem;
-color: var(--text-subtle);
-padding: 0.45rem 0.75rem;
-background: var(--bg);
-border: 1px solid var(--border);
-border-radius: var(--radius-sm);
-margin-bottom: 0.75rem;
+font-size: 0.75rem;
+font-family: Courier, monospace;
+color: #64748b;
+padding: 6px 10px;
+background: #f8fafc;
+border-radius: 6px;
+border: 1px solid #f1f5f9;
 }
-​.spec-strip strong {
-color: var(--text-main);
+​.spec-bar strong {
+color: #0f172a;
 }
-​.btn-grid-two {
+​.actions-two {
 display: grid;
 grid-template-columns: 1.2fr 1fr;
-gap: 0.5rem;
+gap: 8px;
 }
 ​.btn-action {
 display: inline-flex;
 align-items: center;
 justify-content: center;
-gap: 0.4rem;
-padding: 0.55rem 0.75rem;
-font-size: 0.78rem;
+padding: 8px 12px;
+font-size: 0.82rem;
 font-weight: 600;
-border-radius: var(--radius-sm);
+border-radius: 6px;
 text-decoration: none;
-cursor: pointer;
-border: 1px solid transparent;
 text-align: center;
+border: 1px solid transparent;
 }
-​.btn-primary {
-background: var(--primary);
+​.btn-download {
+background: #0284c7;
 color: #ffffff;
 }
-​.btn-primary:hover {
-background: var(--primary-hover);
+​.btn-download:hover {
+background: #0369a1;
 }
-​.btn-secondary {
-background: var(--surface);
-color: var(--text-main);
-border-color: var(--border);
-}
-​.btn-secondary:hover {
-background: var(--surface-hover);
+​.btn-page {
+background: #ffffff;
+color: #0f172a;
 border-color: #cbd5e1;
 }
-​.btn-indigo {
-background: var(--indigo);
+​.btn-page:hover {
+background: #f8fafc;
+}
+​.btn-webapp {
+background: #4f46e5;
 color: #ffffff;
 width: 100%;
 }
-​.btn-indigo:hover {
+​.btn-webapp:hover {
 background: #4338ca;
 }
-​.pwa-hint {
-margin-top: 0.5rem;
-padding: 0.5rem 0.75rem;
-border-radius: var(--radius-sm);
-background: var(--indigo-soft);
-border: 1px solid rgba(79, 70, 229, 0.15);
-font-size: 0.68rem;
-color: var(--indigo);
+​.pwa-guide {
+margin-top: 6px;
+padding: 6px 10px;
+border-radius: 6px;
+background: #f5f3ff;
+border: 1px solid #ddd6fe;
+font-size: 0.72rem;
+color: #5b21b6;
 line-height: 1.35;
 }
-​.empty-box {
+​.empty-alert {
 text-align: center;
-padding: 4rem 1rem;
-background: var(--surface);
-border: 1px dashed var(--border);
-border-radius: var(--radius-lg);
+padding: 40px 16px;
+background: #ffffff;
+border: 1px dashed #cbd5e1;
+border-radius: 12px;
 display: none;
 }
-​.empty-box i {
-font-size: 2.5rem;
-color: var(--text-subtle);
-margin-bottom: 0.75rem;
-}
-​.empty-box h3 {
-font-size: 1rem;
-font-weight: 700;
-color: var(--text-main);
-}
-​.empty-box p {
-font-size: 0.82rem;
-color: var(--text-muted);
-margin-top: 0.25rem;
-}
 ​footer {
-border-top: 1px solid var(--border);
-background: var(--surface);
-padding: 1.5rem 1rem;
+border-top: 1px solid #e2e8f0;
+background: #ffffff;
+padding: 20px 16px;
 margin-top: auto;
-position: relative;
-z-index: 10;
 }
 ​.footer-inner {
 max-width: 1200px;
@@ -561,532 +411,526 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 flex-wrap: wrap;
-gap: 0.75rem;
-font-size: 0.78rem;
-color: var(--text-muted);
+gap: 10px;
+font-size: 0.8rem;
+color: #64748b;
 }
 ​.footer-inner a {
-color: var(--text-main);
+color: #0284c7;
 text-decoration: none;
 font-weight: 600;
 }
 ​@media (max-width: 640px) {
-.stats-bar {
+.stats-row {
 grid-template-columns: repeat(2, 1fr);
-gap: 0.5rem;
 }
-.stat-item:nth-child(2) {
+.stat-box:nth-child(2) {
 border-right: none;
 }
-.stat-item:nth-child(3) {
-border-top: 1px solid var(--border);
+.stat-box:nth-child(3),
+.stat-box:nth-child(4) {
+border-top: 1px solid #f1f5f9;
 }
-.stat-item:nth-child(4) {
-border-top: 1px solid var(--border);
-}
-.header-controls .btn-sync span {
+.header-actions span.btn-text {
 display: none;
 }
 }
 </style>
 </head>
 <body>
-​<div class="ambient-glow"></div>
-<canvas id="ambient-canvas"></canvas>
 ​<header>
 <div class="header-inner">
-<div class="brand-group">
-<div class="brand-icon">
-<i class="fa-brands fa-android"></i>
+<div class="brand-wrap">
+<div class="brand-logo">
+<svg viewBox="0 0 24 24"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0002s.4482-1.0002.9993-1.0002c.5516 0 .9998.4486.9998 1.0002s-.4482 1.0002-.9998 1.0002m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0002s.4482-1.0002.9993-1.0002c.5516 0 .9998.4486.9998 1.0002s-.4482 1.0002-.9998 1.0002m11.4045-6.02l1.9963-3.4578c.1146-.1988.0464-.4529-.1523-.5676-.1989-.1146-.4533-.0465-.568.1523l-2.0223 3.503C15.5898 8.4116 13.8566 8 12 8s-3.5898.4116-5.1352.9513L4.8425 5.4483c-.1147-.1988-.3691-.2669-.568-.1523-.1987.1147-.2669.3688-.1523.5676l1.9963 3.4578C2.6888 11.2863.3435 15.3435 0 20.0002h24c-.3435-4.6567-2.6888-8.7139-6.1185-10.6788"/></svg>
 </div>
 <div>
 <div class="brand-title">SR Apps <span>Studio</span></div>
-<div class="brand-badge">
-<span class="ping-dot"></span> Universal Epoch Sync
+<div class="brand-badge">● Universal Sync</div>
 </div>
 </div>
+​<div class="header-actions">
+<div class="timer-pill" title="Next global hourly sync countdown">
+⏲ <span id="sync-timer">59:59</span>
 </div>
-​<div class="header-controls">
-<div class="timer-badge" title="Universal sync countdown: synchronized across all visitors">
-<i class="fa-regular fa-clock"></i>
-<span id="sync-countdown">--:--</span>
-</div>
-<button id="refresh-btn" class="btn-sync" title="Sync repository catalog immediately">
-<i class="fa-solid fa-arrows-rotate" id="refresh-icon"></i>
-<span>Sync Now</span>
+<button id="btn-sync-action" class="btn-sync" onclick="location.reload()">
+↻ <span class="btn-text">Sync Now</span>
 </button>
 </div>
 </div>
 </header>
 ​<section class="hero">
-<div class="verified-pill">
-<i class="fa-solid fa-shield-halved"></i>
-<span>Official Portal: <code>senterprisehub</code></span>
-</div>
-​<h1 class="hero-title">
-Verified Android APKs & <span class="gradient-text">Web Apps</span>
-</h1>
-​<p class="hero-desc">
-Direct-download builds and Progressive Web Applications synchronized globally on a fixed 60-minute cycle.
-</p>
+<div class="pill-notice">✓ Official Portal: senterprisehub</div>
+<h1 class="hero-h1">Verified Android APKs & <span>Web Apps</span></h1>
+<p class="hero-p">Direct APK release binaries and web applications synchronized with senterprisehub repositories.</p>
 ​<div class="notice-box">
-<i class="fa-solid fa-hourglass-half"></i>
-<span><strong>For new releases wait for refresh countdown</strong> (or tap Sync Now).</span>
+⏳ <strong>For new releases wait for refresh countdown</strong> (or click Sync Now).
 </div>
-​<div class="stats-bar">
-<div class="stat-item">
-<div class="stat-val" id="stat-total">--</div>
-<div class="stat-lbl">Total Apps</div>
+​<div class="stats-row">
+<div class="stat-box">
+<div class="stat-number" id="count-total">14</div>
+<div class="stat-label">Total Apps</div>
 </div>
-<div class="stat-item">
-<div class="stat-val emerald" id="stat-apk">--</div>
-<div class="stat-lbl">APK Apps</div>
+<div class="stat-box">
+<div class="stat-number green" id="count-apk">11</div>
+<div class="stat-label">APK Apps</div>
 </div>
-<div class="stat-item">
-<div class="stat-val indigo" id="stat-web">--</div>
-<div class="stat-lbl">Web Apps</div>
+<div class="stat-box">
+<div class="stat-number blue" id="count-web">3</div>
+<div class="stat-label">Web Apps</div>
 </div>
-<div class="stat-item">
-<div class="stat-val sky" id="stat-status">Active</div>
-<div class="stat-lbl">Status</div>
+<div class="stat-box">
+<div class="stat-number sky">Live</div>
+<div class="stat-label">Status</div>
 </div>
 </div>
-​<div class="controls-wrap">
-<div class="search-box">
-<i class="fa-solid fa-magnifying-glass"></i>
-<input type="text" id="search-input" placeholder="Search applications, tags, or features..." autocomplete="off">
+​<div class="search-wrap">
+<input type="text" id="search-input" class="search-input" placeholder="Search applications, tools, or keywords...">
 </div>
-<div class="filter-pills" id="filter-container"></div>
+​<div class="filter-row" id="filter-bar">
+<button class="filter-btn active" data-filter="all">All (14)</button>
+<button class="filter-btn" data-filter="apk">Android APK (11)</button>
+<button class="filter-btn" data-filter="web">Web App (3)</button>
+<button class="filter-btn" data-filter="Business &amp; POS">Business & POS (5)</button>
+<button class="filter-btn" data-filter="Hardware &amp; Tools">Hardware & Tools (5)</button>
+<button class="filter-btn" data-filter="Health &amp; AI">Health & AI (4)</button>
 </div>
 </section>
 ​<main>
-<div class="apps-grid" id="apps-grid"></div>
-​<div class="empty-box" id="empty-state">
-<i class="fa-solid fa-folder-open"></i>
+<div class="apps-grid" id="apps-container">
+​<!-- 1. Arogya Diet AI -->
+<div class="app-card" data-category="Health &amp; AI" data-type="apk" data-keywords="arogya diet ai nutrition health">
+<div>
+<div class="card-head">
+<div class="app-icon"><img src="https://raw.githubusercontent.com/senterprisehub/arogyadietai/main/icon.png" alt="Arogya Diet AI" onerror="this.onerror=null;this.parentNode.innerHTML='A'"></div>
+<div class="card-titles">
+<h3 class="app-name">Arogya Diet AI</h3>
+<div class="badge-wrap">
+<span class="type-badge apk">APK Native</span>
+</div>
+</div>
+</div>
+<p class="app-desc">AI-powered diet planning and nutritional guidance assistant.</p>
+</div>
+<div>
+<div class="spec-bar">
+<span>Android OS</span>
+<strong>18.4 MB</strong>
+</div>
+<div class="actions-two">
+<a href="https://github.com/senterprisehub/arogyadietai/releases/latest/download/arogyadietai.apk" class="btn-action btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/arogyadietai/" class="btn-action btn-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+</div>
+</div>
+</div>
+​<!-- 2. Mileage Tracker -->
+<div class="app-card" data-category="Business &amp; POS" data-type="apk" data-keywords="mileage tracker gps vehicle fuel expense">
+<div>
+<div class="card-head">
+<div class="app-icon"><img src="https://raw.githubusercontent.com/senterprisehub/Mileage-Tracker/main/icon.png" alt="Mileage Tracker" onerror="this.onerror=null;this.parentNode.innerHTML='M'"></div>
+<div class="card-titles">
+<h3 class="app-name">Mileage Tracker</h3>
+<div class="badge-wrap">
+<span class="type-badge apk">APK Native</span>
+</div>
+</div>
+</div>
+<p class="app-desc">Automated vehicle mileage, route logging, and fuel expense calculator.</p>
+</div>
+<div>
+<div class="spec-bar">
+<span>Android OS</span>
+<strong>14.2 MB</strong>
+</div>
+<div class="actions-two">
+<a href="https://github.com/senterprisehub/Mileage-Tracker/releases/latest/download/mileage-tracker.apk" class="btn-action btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/Mileage-Tracker/" class="btn-action btn-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+</div>
+</div>
+</div>
+​<!-- 3. ProInvoice -->
+<div class="app-card" data-category="Business &amp; POS" data-type="apk" data-keywords="proinvoice billing invoice pdf tax manager">
+<div>
+<div class="card-head">
+<div class="app-icon"><img src="https://raw.githubusercontent.com/senterprisehub/ProInvoice/main/icon.png" alt="ProInvoice" onerror="this.onerror=null;this.parentNode.innerHTML='P'"></div>
+<div class="card-titles">
+<h3 class="app-name">ProInvoice</h3>
+<div class="badge-wrap">
+<span class="type-badge apk">APK Native</span>
+</div>
+</div>
+</div>
+<p class="app-desc">Professional billing, invoice generation, and tax-ready PDF manager.</p>
+</div>
+<div>
+<div class="spec-bar">
+<span>Android OS</span>
+<strong>16.8 MB</strong>
+</div>
+<div class="actions-two">
+<a href="https://github.com/senterprisehub/ProInvoice/releases/latest/download/proinvoice.apk" class="btn-action btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/ProInvoice/" class="btn-action btn-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+</div>
+</div>
+</div>
+​<!-- 4. Location Saving App -->
+<div class="app-card" data-category="Hardware &amp; Tools" data-type="apk" data-keywords="location saving app gps coordinates maps offline">
+<div>
+<div class="card-head">
+<div class="app-icon"><img src="https://raw.githubusercontent.com/senterprisehub/Location-Saving-App/main/icon.png" alt="Location Saving App" onerror="this.onerror=null;this.parentNode.innerHTML='L'"></div>
+<div class="card-titles">
+<h3 class="app-name">Location Saving App</h3>
+<div class="badge-wrap">
+<span class="type-badge apk">APK Native</span>
+</div>
+</div>
+</div>
+<p class="app-desc">Fast GPS coordinate bookmarker with offline tag mapping.</p>
+</div>
+<div>
+<div class="spec-bar">
+<span>Android OS</span>
+<strong>11.5 MB</strong>
+</div>
+<div class="actions-two">
+<a href="https://github.com/senterprisehub/Location-Saving-App/releases/latest/download/location-saving-app.apk" class="btn-action btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/Location-Saving-App/" class="btn-action btn-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+</div>
+</div>
+</div>
+​<!-- 5. ReceiptPOS -->
+<div class="app-card" data-category="Business &amp; POS" data-type="apk" data-keywords="receiptpos pos point of sale receipt printer retail">
+<div>
+<div class="card-head">
+<div class="app-icon"><img src="https://raw.githubusercontent.com/senterprisehub/ReceiptPOS/main/icon.png" alt="ReceiptPOS" onerror="this.onerror=null;this.parentNode.innerHTML='R'"></div>
+<div class="card-titles">
+<h3 class="app-name">Receipt POS</h3>
+<div class="badge-wrap">
+<span class="type-badge apk">APK Native</span>
+</div>
+</div>
+</div>
+<p class="app-desc">Lightweight point-of-sale terminal and instant receipt printer for retail.</p>
+</div>
+<div>
+<div class="spec-bar">
+<span>Android OS</span>
+<strong>21.0 MB</strong>
+</div>
+<div class="actions-two">
+<a href="https://github.com/senterprisehub/ReceiptPOS/releases/latest/download/receiptpos.apk" class="btn-action btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/ReceiptPOS/" class="btn-action btn-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+</div>
+</div>
+</div>
+​<!-- 6. Mock GPS Pro -->
+<div class="app-card" data-category="Hardware &amp; Tools" data-type="apk" data-keywords="mock gps pro developer spoofer route simulation">
+<div>
+<div class="card-head">
+<div class="app-icon"><img src="https://raw.githubusercontent.com/senterprisehub/Mock-GPS-Pro/main/icon.png" alt="Mock GPS Pro" onerror="this.onerror=null;this.parentNode.innerHTML='M'"></div>
+<div class="card-titles">
+<h3 class="app-name">Mock GPS Pro</h3>
+<div class="badge-wrap">
+<span class="type-badge apk">APK Native</span>
+</div>
+</div>
+</div>
+<p class="app-desc">Developer mock location spoofer with customizable route simulations.</p>
+</div>
+<div>
+<div class="spec-bar">
+<span>Android OS</span>
+<strong>12.8 MB</strong>
+</div>
+<div class="actions-two">
+<a href="https://github.com/senterprisehub/Mock-GPS-Pro/releases/latest/download/mock-gps-pro.apk" class="btn-action btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/Mock-GPS-Pro/" class="btn-action btn-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+</div>
+</div>
+</div>
+​<!-- 7. Sales Flow App -->
+<div class="app-card" data-category="Business &amp; POS" data-type="apk" data-keywords="sales flow app crm leads field tracker pipeline">
+<div>
+<div class="card-head">
+<div class="app-icon"><img src="https://raw.githubusercontent.com/senterprisehub/Sales-Flow-App/main/icon.png" alt="Sales Flow App" onerror="this.onerror=null;this.parentNode.innerHTML='S'"></div>
+<div class="card-titles">
+<h3 class="app-name">Sales Flow App</h3>
+<div class="badge-wrap">
+<span class="type-badge apk">APK Native</span>
+</div>
+</div>
+</div>
+<p class="app-desc">Mobile field sales tracker, client CRM, and lead management hub.</p>
+</div>
+<div>
+<div class="spec-bar">
+<span>Android OS</span>
+<strong>19.5 MB</strong>
+</div>
+<div class="actions-two">
+<a href="https://github.com/senterprisehub/Sales-Flow-App/releases/latest/download/sales-flow-app.apk" class="btn-action btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/Sales-Flow-App/" class="btn-action btn-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+</div>
+</div>
+</div>
+​<!-- 8. VoltPulse -->
+<div class="app-card" data-category="Hardware &amp; Tools" data-type="apk" data-keywords="voltpulse voltage meter electrical pulse analyzer">
+<div>
+<div class="card-head">
+<div class="app-icon"><img src="https://raw.githubusercontent.com/senterprisehub/VoltPulse/main/icon.png" alt="VoltPulse" onerror="this.onerror=null;this.parentNode.innerHTML='V'"></div>
+<div class="card-titles">
+<h3 class="app-name">VoltPulse</h3>
+<div class="badge-wrap">
+<span class="type-badge apk">APK Native</span>
+</div>
+</div>
+</div>
+<p class="app-desc">Real-time electrical measurement, voltage monitoring, and pulse analyzer.</p>
+</div>
+<div>
+<div class="spec-bar">
+<span>Android OS</span>
+<strong>15.6 MB</strong>
+</div>
+<div class="actions-two">
+<a href="https://github.com/senterprisehub/VoltPulse/releases/latest/download/voltpulse.apk" class="btn-action btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/VoltPulse/" class="btn-action btn-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+</div>
+</div>
+</div>
+​<!-- 9. Sales Flow (Web App) -->
+<div class="app-card" data-category="Business &amp; POS" data-type="web" data-keywords="sales flow webapp pwa reporting sales executives">
+<div>
+<div class="card-head">
+<div class="app-icon"><img src="https://raw.githubusercontent.com/senterprisehub/Sales-flow/main/icon.png" alt="Sales Flow" onerror="this.onerror=null;this.parentNode.innerHTML='S'"></div>
+<div class="card-titles">
+<h3 class="app-name">Sales Flow</h3>
+<div class="badge-wrap">
+<span class="type-badge web">Web App</span>
+</div>
+</div>
+</div>
+<p class="app-desc">Pipeline automation and daily activity reporting for sales executives.</p>
+</div>
+<div>
+<div class="spec-bar">
+<span>Browser Engine</span>
+<strong>Cloud App</strong>
+</div>
+<a href="https://senterprisehub.github.io/Sales-flow/" class="btn-action btn-webapp" target="_blank" rel="noopener noreferrer">Open Web Application ↗</a>
+<div class="pwa-guide"><strong>Add to Screen:</strong> Open link → Tap browser menu (⋮) → Select <strong>Install / Add to Home screen</strong>.</div>
+</div>
+</div>
+​<!-- 10. Thermo Med Pro -->
+<div class="app-card" data-category="Health &amp; AI" data-type="apk" data-keywords="thermo med pro medical temperature logger health cold chain">
+<div>
+<div class="card-head">
+<div class="app-icon"><img src="https://raw.githubusercontent.com/senterprisehub/Thermo-Med-Pro/main/icon.png" alt="Thermo Med Pro" onerror="this.onerror=null;this.parentNode.innerHTML='T'"></div>
+<div class="card-titles">
+<h3 class="app-name">Thermo Med Pro</h3>
+<div class="badge-wrap">
+<span class="type-badge apk">APK Native</span>
+</div>
+</div>
+</div>
+<p class="app-desc">Medical temperature logger and cold-chain compliance monitoring tool.</p>
+</div>
+<div>
+<div class="spec-bar">
+<span>Android OS</span>
+<strong>17.3 MB</strong>
+</div>
+<div class="actions-two">
+<a href="https://github.com/senterprisehub/Thermo-Med-Pro/releases/latest/download/thermo-med-pro.apk" class="btn-action btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/Thermo-Med-Pro/" class="btn-action btn-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+</div>
+</div>
+</div>
+​<!-- 11. Thermo Print Studio -->
+<div class="app-card" data-category="Hardware &amp; Tools" data-type="apk" data-keywords="thermo print studio thermal printer bluetooth esc pos driver">
+<div>
+<div class="card-head">
+<div class="app-icon"><img src="https://raw.githubusercontent.com/senterprisehub/Thermo-Print-Studio/main/icon.png" alt="Thermo Print Studio" onerror="this.onerror=null;this.parentNode.innerHTML='T'"></div>
+<div class="card-titles">
+<h3 class="app-name">Thermo Print Studio</h3>
+<div class="badge-wrap">
+<span class="type-badge apk">APK Native</span>
+</div>
+</div>
+</div>
+<p class="app-desc">Bluetooth and USB ESC/POS thermal printer layout designer and driver utility.</p>
+</div>
+<div>
+<div class="spec-bar">
+<span>Android OS</span>
+<strong>22.4 MB</strong>
+</div>
+<div class="actions-two">
+<a href="https://github.com/senterprisehub/Thermo-Print-Studio/releases/latest/download/thermo-print-studio.apk" class="btn-action btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/Thermo-Print-Studio/" class="btn-action btn-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+</div>
+</div>
+</div>
+​<!-- 12. ProInvoice App (Web App) -->
+<div class="app-card" data-category="Business &amp; POS" data-type="web" data-keywords="proinvoice app webapp pwa statement invoice finance">
+<div>
+<div class="card-head">
+<div class="app-icon"><img src="https://raw.githubusercontent.com/senterprisehub/Proinvoice-App/main/icon.png" alt="ProInvoice App" onerror="this.onerror=null;this.parentNode.innerHTML='P'"></div>
+<div class="card-titles">
+<h3 class="app-name">ProInvoice App</h3>
+<div class="badge-wrap">
+<span class="type-badge web">Web App</span>
+</div>
+</div>
+</div>
+<p class="app-desc">Mobile invoice maker with automated client statement reconciliation.</p>
+</div>
+<div>
+<div class="spec-bar">
+<span>Browser Engine</span>
+<strong>Cloud App</strong>
+</div>
+<a href="https://senterprisehub.github.io/Proinvoice-App/" class="btn-action btn-webapp" target="_blank" rel="noopener noreferrer">Open Web Application ↗</a>
+<div class="pwa-guide"><strong>Add to Screen:</strong> Open link → Tap browser menu (⋮) → Select <strong>Install / Add to Home screen</strong>.</div>
+</div>
+</div>
+​<!-- 13. BMI Health Tracker -->
+<div class="app-card" data-category="Health &amp; AI" data-type="apk" data-keywords="bmi health tracker body mass index fitness wellness">
+<div>
+<div class="card-head">
+<div class="app-icon"><img src="https://raw.githubusercontent.com/senterprisehub/BMI-Health-Tracker/main/icon.png" alt="BMI Health Tracker" onerror="this.onerror=null;this.parentNode.innerHTML='B'"></div>
+<div class="card-titles">
+<h3 class="app-name">BMI Health Tracker</h3>
+<div class="badge-wrap">
+<span class="type-badge apk">APK Native</span>
+</div>
+</div>
+</div>
+<p class="app-desc">Body Mass Index calculator with historical wellness tracking.</p>
+</div>
+<div>
+<div class="spec-bar">
+<span>Android OS</span>
+<strong>10.9 MB</strong>
+</div>
+<div class="actions-two">
+<a href="https://github.com/senterprisehub/BMI-Health-Tracker/releases/latest/download/bmi-health-tracker.apk" class="btn-action btn-download" target="_blank" rel="noopener noreferrer">↓ Download APK</a>
+<a href="https://senterprisehub.github.io/BMI-Health-Tracker/" class="btn-action btn-page" target="_blank" rel="noopener noreferrer">App Page ↗</a>
+</div>
+</div>
+</div>
+​<!-- 14. ADJ Utility (Web App) -->
+<div class="app-card" data-category="Hardware &amp; Tools" data-type="web" data-keywords="adj utility webapp field calculation">
+<div>
+<div class="card-head">
+<div class="app-icon"><img src="https://raw.githubusercontent.com/senterprisehub/ADJ/main/icon.png" alt="ADJ Utility" onerror="this.onerror=null;this.parentNode.innerHTML='A'"></div>
+<div class="card-titles">
+<h3 class="app-name">ADJ Utility</h3>
+<div class="badge-wrap">
+<span class="type-badge web">Web App</span>
+</div>
+</div>
+</div>
+<p class="app-desc">Specialized field operational and calculation utility.</p>
+</div>
+<div>
+<div class="spec-bar">
+<span>Browser Engine</span>
+<strong>Cloud App</strong>
+</div>
+<a href="https://senterprisehub.github.io/ADJ/" class="btn-action btn-webapp" target="_blank" rel="noopener noreferrer">Open Web Application ↗</a>
+<div class="pwa-guide"><strong>Add to Screen:</strong> Open link → Tap browser menu (⋮) → Select <strong>Install / Add to Home screen</strong>.</div>
+</div>
+</div>
+​</div>
+​<div class="empty-alert" id="empty-alert">
 <h3>No matching applications found</h3>
-<p>Try clearing your search term or select another category filter.</p>
+<p>Try clearing your search query or selecting a different filter.</p>
 </div>
 </main>
 ​<footer>
 <div class="footer-inner">
 <div>© SR Apps Studio · High-Performance Android & Web Distribution</div>
 <div>
-<a href="https://github.com/senterprisehub" target="_blank" rel="noopener noreferrer">
-<i class="fa-brands fa-github"></i> github.com/senterprisehub
-</a>
+<a href="https://github.com/senterprisehub" target="_blank" rel="noopener noreferrer">github.com/senterprisehub</a>
 </div>
 </div>
 </footer>
 ​<script>
 (function() {
-'use strict';
-​var GITHUB_OWNER = 'senterprisehub';
-var EPOCH_WINDOW_MS = 3600000;
-​var APPS_CATALOG = [
-{
-repo: 'arogyadietai',
-appTitle: 'Arogya Diet AI',
-desc: 'AI-powered diet planning and nutritional guidance assistant.',
-category: 'Health & AI',
-hasApk: true,
-apkFile: 'arogyadietai.apk',
-sizeMb: '18.4',
-ver: 'v1.0.0',
-tags: ['diet', 'ai', 'nutrition', 'health']
-},
-{
-repo: 'Mileage-Tracker',
-appTitle: 'Mileage Tracker',
-desc: 'Automated vehicle mileage, route logging, and fuel expense calculator.',
-category: 'Business & POS',
-hasApk: true,
-apkFile: 'mileage-tracker.apk',
-sizeMb: '14.2',
-ver: 'v1.0.0',
-tags: ['mileage', 'gps', 'vehicle', 'tracker']
-},
-{
-repo: 'ProInvoice',
-appTitle: 'ProInvoice',
-desc: 'Professional billing, invoice generation, and tax-ready PDF manager.',
-category: 'Business & POS',
-hasApk: true,
-apkFile: 'proinvoice.apk',
-sizeMb: '16.8',
-ver: 'v1.0.0',
-tags: ['invoice', 'billing', 'pos', 'pdf']
-},
-{
-repo: 'Location-Saving-App',
-appTitle: 'Location Saving App',
-desc: 'Fast GPS coordinate bookmarker with offline tag mapping.',
-category: 'Hardware & Tools',
-hasApk: true,
-apkFile: 'location-saving-app.apk',
-sizeMb: '11.5',
-ver: 'v1.0.0',
-tags: ['gps', 'location', 'maps', 'offline']
-},
-{
-repo: 'ReceiptPOS',
-appTitle: 'Receipt POS',
-desc: 'Lightweight point-of-sale terminal and instant receipt printer for retail.',
-category: 'Business & POS',
-hasApk: true,
-apkFile: 'receiptpos.apk',
-sizeMb: '21.0',
-ver: 'v1.0.0',
-tags: ['pos', 'receipt', 'printer', 'retail']
-},
-{
-repo: 'Mock-GPS-Pro',
-appTitle: 'Mock GPS Pro',
-desc: 'Developer mock location spoofer with customizable route simulations.',
-category: 'Hardware & Tools',
-hasApk: true,
-apkFile: 'mock-gps-pro.apk',
-sizeMb: '12.8',
-ver: 'v1.0.0',
-tags: ['gps', 'mock', 'simulation', 'developer']
-},
-{
-repo: 'Sales-Flow-App',
-appTitle: 'Sales Flow App',
-desc: 'Mobile field sales tracker, client CRM, and lead management hub.',
-category: 'Business & POS',
-hasApk: true,
-apkFile: 'sales-flow-app.apk',
-sizeMb: '19.5',
-ver: 'v1.0.0',
-tags: ['sales', 'crm', 'leads', 'pipeline']
-},
-{
-repo: 'VoltPulse',
-appTitle: 'VoltPulse',
-desc: 'Real-time electrical measurement, voltage monitoring, and pulse analyzer.',
-category: 'Hardware & Tools',
-hasApk: true,
-apkFile: 'voltpulse.apk',
-sizeMb: '15.6',
-ver: 'v1.0.0',
-tags: ['voltage', 'meter', 'hardware', 'analyzer']
-},
-{
-repo: 'Sales-flow',
-appTitle: 'Sales Flow',
-desc: 'Pipeline automation and daily activity reporting for sales executives.',
-category: 'Business & POS',
-hasApk: false,
-sizeMb: null,
-ver: 'PWA Online',
-tags: ['webapp', 'pwa', 'sales', 'reporting']
-},
-{
-repo: 'Thermo-Med-Pro',
-appTitle: 'Thermo Med Pro',
-desc: 'Medical temperature logger and cold-chain compliance monitoring tool.',
-category: 'Health & AI',
-hasApk: true,
-apkFile: 'thermo-med-pro.apk',
-sizeMb: '17.3',
-ver: 'v1.0.0',
-tags: ['medical', 'temperature', 'health', 'logger']
-},
-{
-repo: 'Thermo-Print-Studio',
-appTitle: 'Thermo Print Studio',
-desc: 'Bluetooth and USB ESC/POS thermal printer layout designer and driver utility.',
-category: 'Hardware & Tools',
-hasApk: true,
-apkFile: 'thermo-print-studio.apk',
-sizeMb: '22.4',
-ver: 'v1.0.0',
-tags: ['printer', 'esc-pos', 'bluetooth', 'driver']
-},
-{
-repo: 'Proinvoice-App',
-appTitle: 'ProInvoice App',
-desc: 'Mobile invoice maker with automated client statement reconciliation.',
-category: 'Business & POS',
-hasApk: false,
-sizeMb: null,
-ver: 'PWA Online',
-tags: ['webapp', 'pwa', 'invoice', 'finance']
-},
-{
-repo: 'BMI-Health-Tracker',
-appTitle: 'BMI Health Tracker',
-desc: 'Body Mass Index calculator with historical wellness tracking.',
-category: 'Health & AI',
-hasApk: true,
-apkFile: 'bmi-health-tracker.apk',
-sizeMb: '10.9',
-ver: 'v1.0.0',
-tags: ['bmi', 'health', 'fitness', 'wellness']
-},
-{
-repo: 'ADJ',
-appTitle: 'ADJ Utility',
-desc: 'Specialized field operational and calculation utility.',
-category: 'Hardware & Tools',
-hasApk: false,
-sizeMb: null,
-ver: 'PWA Online',
-tags: ['webapp', 'calculator', 'utility']
-}
-];
-​var activeCategory = 'all';
-var searchFilter = '';
-var countdownTimer = null;
-​// Generates SVG monogram fallback data URI
-function getMonogramSvg(displayTitle) {
-var firstChar = (displayTitle && displayTitle.length > 0) ? displayTitle.charAt(0).toUpperCase() : 'A';
-var svgXml = '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">' +
-'<rect width="48" height="48" rx="12" fill="#0284c7"/>' +
-'<text x="50%" y="54%" font-family="Inter, sans-serif" font-weight="700" font-size="22" fill="#ffffff" dominant-baseline="middle" text-anchor="middle">' + firstChar + '</text>' +
-'</svg>';
-return 'data:image/svg+xml;utf8,' + encodeURIComponent(svgXml);
-}
-​// Safe image handler that does not cause infinite network loops
-function attachIconFallback(imgElement, repoSlug, displayTitle) {
-var rawUrl = 'https://raw.githubusercontent.com/' + GITHUB_OWNER + '/' + repoSlug + '/main/icon.png';
-imgElement.src = rawUrl;
-imgElement.onerror = function() {
-this.onerror = null;
-this.src = getMonogramSvg(displayTitle);
-};
-}
-​function updateCounters() {
-var total = APPS_CATALOG.length;
-var apkCount = 0;
-var webCount = 0;
-​for (var i = 0; i < total; i++) {
-if (APPS_CATALOG[i].hasApk) {
-apkCount++;
-} else {
-webCount++;
-}
-}
-​var totalEl = document.getElementById('stat-total');
-var apkEl = document.getElementById('stat-apk');
-var webEl = document.getElementById('stat-web');
-​if (totalEl) totalEl.textContent = String(total);
-if (apkEl) apkEl.textContent = String(apkCount);
-if (webEl) webEl.textContent = String(webCount);
-}
-​function renderFilters() {
-var container = document.getElementById('filter-container');
-if (!container) return;
-​var categories = ['all', 'Android APK', 'Web App'];
-for (var i = 0; i < APPS_CATALOG.length; i++) {
-var itemCat = APPS_CATALOG[i].category;
-if (itemCat && categories.indexOf(itemCat) === -1) {
-categories.push(itemCat);
-}
-}
-​container.innerHTML = '';
-categories.forEach(function(cat) {
-var count = 0;
-if (cat === 'all') {
-count = APPS_CATALOG.length;
-} else if (cat === 'Android APK') {
-count = APPS_CATALOG.filter(function(a) { return a.hasApk; }).length;
-} else if (cat === 'Web App') {
-count = APPS_CATALOG.filter(function(a) { return !a.hasApk; }).length;
-} else {
-count = APPS_CATALOG.filter(function(a) { return a.category === cat; }).length;
-}
-​var btn = document.createElement('button');
-btn.className = 'filter-btn' + (activeCategory === cat ? ' active' : '');
-btn.textContent = cat + ' (' + count + ')';
-btn.addEventListener('click', function() {
-activeCategory = cat;
-renderFilters();
-renderAppList();
-});
-container.appendChild(btn);
-});
-}
-​function renderAppList() {
-var grid = document.getElementById('apps-grid');
-var empty = document.getElementById('empty-state');
-if (!grid || !empty) return;
-​grid.innerHTML = '';
-var q = searchFilter.toLowerCase().trim();
-​var matches = APPS_CATALOG.filter(function(app) {
-var matchCat = true;
-if (activeCategory === 'Android APK') matchCat = app.hasApk;
-else if (activeCategory === 'Web App') matchCat = !app.hasApk;
-else if (activeCategory !== 'all') matchCat = (app.category === activeCategory);
-​var matchQuery = !q ||
-app.appTitle.toLowerCase().indexOf(q) !== -1 ||
-app.desc.toLowerCase().indexOf(q) !== -1 ||
-app.tags.some(function(t) { return t.toLowerCase().indexOf(q) !== -1; });
-​return matchCat && matchQuery;
-});
-​if (matches.length === 0) {
-empty.style.display = 'block';
-grid.style.display = 'none';
-return;
-}
-​empty.style.display = 'none';
-grid.style.display = 'grid';
-​matches.forEach(function(app) {
-var card = document.createElement('div');
-card.className = 'app-card';
-​var pageUrl = 'https://' + GITHUB_OWNER + '.github.io/' + app.repo + '/';
-var dlUrl = 'https://github.com/' + GITHUB_OWNER + '/' + app.repo + '/releases/latest/download/' + (app.apkFile || (app.repo.toLowerCase() + '.apk'));
-​var tagsHtml = '';
-for (var t = 0; t < Math.min(3, app.tags.length); t++) {
-tagsHtml += '<span class="tag-item">' + app.tags[t] + '</span>';
-}
-​var actionBlock = '';
-if (app.hasApk) {
-actionBlock =
-'<div class="btn-grid-two">' +
-'<a href="' + dlUrl + '" class="btn-action btn-primary" target="_blank" rel="noopener noreferrer">' +
-'<i class="fa-solid fa-download"></i> Download APK' +
-'</a>' +
-'<a href="' + pageUrl + '" class="btn-action btn-secondary" target="_blank" rel="noopener noreferrer">' +
-'App Page <i class="fa-solid fa-arrow-up-right-from-square"></i>' +
-'</a>' +
-'</div>';
-} else {
-actionBlock =
-'<div>' +
-'<a href="' + pageUrl + '" class="btn-action btn-indigo" target="_blank" rel="noopener noreferrer">' +
-'<i class="fa-solid fa-arrow-up-right-from-square"></i> Open Web Application' +
-'</a>' +
-'<div class="pwa-hint">' +
-'<strong>Add to Phone Screen:</strong> Open link → Tap <strong>⋮ / Share</strong> → Select <strong>Install / Add to Home screen</strong>.' +
-'</div>' +
-'</div>';
-}
-​var badgeType = app.hasApk
-? '<span class="badge-apk"><i class="fa-brands fa-android"></i> APK Native</span>'
-: '<span class="badge-web"><i class="fa-solid fa-globe"></i> Web App</span>';
-​var sizeText = app.hasApk ? (app.sizeMb ? app.sizeMb + ' MB' : 'Universal APK') : 'Zero MB (Cloud)';
-​card.innerHTML =
-'<div>' +
-'<div class="card-top">' +
-'<div class="card-meta">' +
-'<img class="card-logo" alt="' + app.appTitle + ' logo">' +
-'<div class="card-title-group">' +
-'<h3 class="card-title" title="' + app.appTitle + '">' + app.appTitle + '</h3>' +
-'<div class="card-sub-badges">' +
-badgeType +
-'<span class="badge-ver">' + app.ver + '</span>' +
-'</div>' +
-'</div>' +
-'</div>' +
-'</div>' +
-'<p class="card-desc">' + app.desc + '</p>' +
-'<div class="card-tags">' + tagsHtml + '</div>' +
-'</div>' +
-'<div>' +
-'<div class="spec-strip">' +
-'<span>' + (app.hasApk ? 'Android OS' : 'Browser Engine') + '</span>' +
-'<strong>' + sizeText + '</strong>' +
-'</div>' +
-actionBlock +
-'</div>';
-​var img = card.querySelector('.card-logo');
-if (img && img.tagName === 'IMG') {
-attachIconFallback(img, app.repo, app.appTitle);
-}
-​grid.appendChild(card);
-});
-}
-​function startUniversalTimer() {
-var countdownEl = document.getElementById('sync-countdown');
-if (!countdownEl) return;
-​function tick() {
+// 1. Universal Hourly Sync Countdown
+var timerEl = document.getElementById('sync-timer');
+if (timerEl) {
+function updateTimer() {
 var now = Date.now();
-var msIntoHour = now % EPOCH_WINDOW_MS;
-var msRemaining = EPOCH_WINDOW_MS - msIntoHour;
-​var totalSec = Math.floor(msRemaining / 1000);
-var m = Math.floor(totalSec / 60);
-var s = totalSec % 60;
-​countdownEl.textContent =
-(m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+var msIntoHour = now % 3600000;
+var msRemaining = 3600000 - msIntoHour;
+var sec = Math.floor(msRemaining / 1000);
+var m = Math.floor(sec / 60);
+var s = sec % 60;
+timerEl.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
 }
-​tick();
-if (countdownTimer) clearInterval(countdownTimer);
-countdownTimer = setInterval(tick, 1000);
+updateTimer();
+setInterval(updateTimer, 1000);
 }
-​function initCanvas() {
-var canvas = document.getElementById('ambient-canvas');
-if (!canvas || !canvas.getContext) return;
-var ctx = canvas.getContext('2d');
-if (!ctx) return;
-​var w = canvas.width = window.innerWidth;
-var h = canvas.height = window.innerHeight;
-​window.addEventListener('resize', function() {
-if (!canvas) return;
-w = canvas.width = window.innerWidth;
-h = canvas.height = window.innerHeight;
-});
-​var dots = [];
-for (var i = 0; i < 22; i++) {
-dots.push({
-x: Math.random() * w,
-y: Math.random() * h,
-vx: (Math.random() - 0.5) * 0.3,
-vy: (Math.random() - 0.5) * 0.3,
-r: Math.random() * 2 + 1
-});
+​// 2. Search & Category Filter System
+var cards = document.querySelectorAll('.app-card');
+var filterBtns = document.querySelectorAll('.filter-btn');
+var searchInput = document.getElementById('search-input');
+var emptyAlert = document.getElementById('empty-alert');
+var currentFilter = 'all';
+var currentQuery = '';
+​function filterCatalog() {
+var visibleCount = 0;
+var q = currentQuery.toLowerCase().trim();
+​for (var i = 0; i < cards.length; i++) {
+var card = cards[i];
+var cat = card.getAttribute('data-category') || '';
+var type = card.getAttribute('data-type') || '';
+var kw = card.getAttribute('data-keywords') || '';
+var titleEl = card.querySelector('.app-name');
+var title = titleEl ? titleEl.textContent.toLowerCase() : '';
+​var matchCategory = false;
+if (currentFilter === 'all') {
+matchCategory = true;
+} else if (currentFilter === 'apk') {
+matchCategory = (type === 'apk');
+} else if (currentFilter === 'web') {
+matchCategory = (type === 'web');
+} else if (currentFilter === cat) {
+matchCategory = true;
 }
-​function step() {
-ctx.clearRect(0, 0, w, h);
-for (var i = 0; i < dots.length; i++) {
-var d = dots[i];
-d.x += d.vx;
-d.y += d.vy;
-if (d.x < 0) d.x = w;
-if (d.x > w) d.x = 0;
-if (d.y < 0) d.y = h;
-if (d.y > h) d.y = 0;
-​ctx.fillStyle = 'rgba(2, 132, 199, 0.4)';
-ctx.beginPath();
-ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-ctx.fill();
+​var matchSearch = true;
+if (q.length > 0) {
+matchSearch = (title.indexOf(q) !== -1 || kw.indexOf(q) !== -1);
 }
-requestAnimationFrame(step);
+​if (matchCategory && matchSearch) {
+card.style.display = 'flex';
+visibleCount++;
+} else {
+card.style.display = 'none';
 }
-step();
 }
-​document.addEventListener('DOMContentLoaded', function() {
-try {
-initCanvas();
-updateCounters();
-renderFilters();
-renderAppList();
-startUniversalTimer();
-​var searchInput = document.getElementById('search-input');
-if (searchInput) {
-searchInput.addEventListener('input', function(e) {
-var target = e.target;
-if (target && typeof target.value !== 'undefined') {
-searchFilter = String(target.value);
-renderAppList();
+​if (emptyAlert) {
+emptyAlert.style.display = (visibleCount === 0) ? 'block' : 'none';
 }
+}
+​for (var b = 0; b < filterBtns.length; b++) {
+filterBtns[b].addEventListener('click', function() {
+for (var j = 0; j < filterBtns.length; j++) {
+filterBtns[j].classList.remove('active');
+}
+this.classList.add('active');
+currentFilter = this.getAttribute('data-filter') || 'all';
+filterCatalog();
 });
 }
-​var refreshBtn = document.getElementById('refresh-btn');
-var refreshIcon = document.getElementById('refresh-icon');
-if (refreshBtn) {
-refreshBtn.addEventListener('click', function() {
-if (refreshIcon) refreshIcon.classList.add('fa-spin');
-setTimeout(function() {
-if (refreshIcon) refreshIcon.classList.remove('fa-spin');
-renderAppList();
-}, 600);
+​if (searchInput) {
+searchInput.addEventListener('input', function() {
+currentQuery = this.value;
+filterCatalog();
 });
 }
-} catch (err) {
-console.error('SR Apps Studio Engine Error:', err);
-}
-});
 })();
 </script>
 </body>
