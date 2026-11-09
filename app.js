@@ -13,15 +13,16 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
-// Fallback high-contrast vector icon generator
+// Fallback light-theme vector icon generator
 function createSvgPlaceholder(name) {
   const initial = (name || 'A').trim().charAt(0).toUpperCase();
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
-    <rect width="60" height="60" rx="14" fill="#1e293b"/>
-    <text x="50%" y="54%" font-family="system-ui, sans-serif" font-weight="700" font-size="28" fill="#38bdf8" dominant-baseline="middle" text-anchor="middle">${escapeHtml(initial)}</text>
+    <rect width="60" height="60" rx="14" fill="#eff6ff"/>
+    <text x="50%" y="54%" font-family="system-ui, sans-serif" font-weight="700" font-size="28" fill="#2563eb" dominant-baseline="middle" text-anchor="middle">${escapeHtml(initial)}</text>
   </svg>`;
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
+
 
 // Format repo names into readable titles (e.g., "Mock-GPS-Pro" -> "Mock GPS Pro")
 function formatTitle(repoName) {
