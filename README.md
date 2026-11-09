@@ -1,6 +1,6 @@
-# SR Apps Studio
+# SR App Studio
 
-SR Apps Studio is a web-based catalog for discovering Android APKs and Progressive Web Apps from the [Senterprisehub GitHub ecosystem](https://github.com/senterprisehub). The portal links to app pages and GitHub release downloads, and periodically refreshes its catalog from public repositories.
+SR App Studio is a web-based catalog for discovering Android APKs and Progressive Web Apps from the [Senterprisehub GitHub ecosystem](https://github.com/senterprisehub). The portal links to app pages and GitHub release downloads, and periodically refreshes its catalog from public repositories.
 
 ## Features
 
