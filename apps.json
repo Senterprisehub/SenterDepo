@@ -1,0 +1,16 @@
+[
+  {
+    "repo": "your-username/first-app",
+    "name": "First Android App",
+    "icon": "https://raw.githubusercontent.com/your-username/first-app/main/icon.png",
+    "pageUrl": "https://your-username.github.io/first-app/",
+    "description": "Short description of what the first app does."
+  },
+  {
+    "repo": "your-username/second-app",
+    "name": "Second Android App",
+    "icon": "https://raw.githubusercontent.com/your-username/second-app/main/icon.png",
+    "pageUrl": "https://your-username.github.io/second-app/",
+    "description": "Short description of what the second app does."
+  }
+]
