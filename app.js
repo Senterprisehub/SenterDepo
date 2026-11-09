@@ -1,5 +1,5 @@
 const GITHUB_OWNER = 'senterprisehub';
-const APP_TOPIC = 'android-app';
+const TARGET_TOPICS = ['android-app', 'webapp'];
 
 let appCatalog = [];
 
@@ -23,26 +23,38 @@ function createSvgPlaceholder(name) {
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
 
-// Normalize entries from apps-data.json or apps.json into a unified schema
-function normalizeManifestApp(item) {
-  return {
-    id: (item.id || item.name || '').toLowerCase(),
-    name: item.name || 'Unnamed App',
-    description: item.fallbackDesc || item.description || 'Android application developed by SEnterpriseHub.',
-    repoFullName: item.repo,
-    pageUrl: item.pageUrl || `https://${GITHUB_OWNER}.github.io/${(item.repo || '').split('/')[1] || ''}/`,
-    hasPages: Boolean(item.pageUrl),
-    iconUrl: item.defaultIcon || `https://raw.githubusercontent.com/${item.repo}/main/icon.png`,
-    release: item.release || { version: null, downloadUrl: null, sizeMb: null }
-  };
+// Format repo names into readable titles (e.g., "Mock-GPS-Pro" -> "Mock GPS Pro")
+function formatTitle(repoName) {
+  return repoName
+    .replace(/[-_]/g, ' ')
+    .replace(/\b\w/g, char => char.toUpperCase());
 }
 
-// Live fallback: resolve latest release for a single repo if apps-data.json is missing
+// 1. Discover all repos under senterprisehub that have 'android-app' OR 'webapp' in their topics
+async function fetchTaggedRepositories() {
+  // Using /users/:owner/repos returns up to 100 public repos including their topics array in 1 single API call
+  const url = `https://api.github.com/users/${GITHUB_OWNER}/repos?per_page=100&sort=updated`;
+
+  const res = await fetch(url, {
+    headers: { 'Accept': 'application/vnd.github+json' }
+  });
+
+  if (!res.ok) throw new Error(`GitHub API returned status ${res.status}`);
+  const repos = await res.json();
+
+  return (repos || []).filter(repo => {
+    const topics = (repo.topics || []).map(t => t.toLowerCase());
+    return TARGET_TOPICS.some(target => topics.includes(target));
+  });
+}
+
+// 2. Fetch the latest release and APK asset for Android-tagged repos
 async function resolveReleaseData(repoFullName) {
   try {
     const res = await fetch(`https://api.github.com/repos/${repoFullName}/releases/latest`, {
       headers: { 'Accept': 'application/vnd.github+json' }
     });
+
     if (!res.ok) return { version: null, downloadUrl: null, sizeMb: null };
     const data = await res.json();
 
@@ -61,41 +73,18 @@ async function resolveReleaseData(repoFullName) {
   }
 }
 
-// Tiered loader: 1. Pre-built apps-data.json -> 2. Static apps.json -> 3. Live GitHub Search
-async function loadCatalog() {
-  // Tier 1: Try pre-compiled apps-data.json (built by GitHub Action, zero rate-limit)
-  try {
-    const res = await fetch('./apps-data.json', { cache: 'no-cache' });
-    if (res.ok) {
-      const data = await res.json();
-      if (Array.isArray(data) && data.length > 0) {
-        return data.map(normalizeManifestApp);
+// 3. Load optional static overrides from apps.json/apps-data.json
+async function loadCachedManifest() {
+  for (const file of ['./apps-data.json', './apps.json']) {
+    try {
+      const res = await fetch(file, { cache: 'no-cache' });
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data)) return data;
       }
-    }
-  } catch (e) {
-    console.info('Pre-built apps-data.json not available yet, falling back to apps.json...');
+    } catch (_) {}
   }
-
-  // Tier 2: Try static apps.json and resolve releases client-side
-  try {
-    const res = await fetch('./apps.json', { cache: 'no-cache' });
-    if (res.ok) {
-      const data = await res.json();
-      if (Array.isArray(data) && data.length > 0) {
-        return await Promise.all(
-          data.map(async (item) => {
-            const normalized = normalizeManifestApp(item);
-            normalized.release = await resolveReleaseData(item.repo);
-            return normalized;
-          })
-        );
-      }
-    }
-  } catch (e) {
-    console.warn('Fallback to apps.json failed:', e);
-  }
-
-  throw new Error('Unable to load application catalog manifest.');
+  return [];
 }
 
 function renderCards(apps, isSearchActive = false) {
@@ -105,7 +94,7 @@ function renderCards(apps, isSearchActive = false) {
   if (apps.length === 0) {
     const emptyMsg = isSearchActive
       ? 'No applications match your search criteria.'
-      : 'No applications found in the catalog.';
+      : `No repositories tagged with "android-app" or "webapp" found.`;
     grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #64748b; padding: 2rem;">${emptyMsg}</div>`;
     return;
   }
@@ -114,13 +103,62 @@ function renderCards(apps, isSearchActive = false) {
     const card = document.createElement('div');
     card.className = 'app-card';
 
+    const isWebOnly = app.appType === 'webapp';
+    const isHybrid = app.appType === 'hybrid';
     const hasApk = Boolean(app.release && app.release.downloadUrl);
-    const downloadLabel = hasApk ? 'Download APK' : 'APK Pending';
+
     const fallback = createSvgPlaceholder(app.name);
     const safeName = escapeHtml(app.name);
     const safeDesc = escapeHtml(app.description);
-    const safeVersion = escapeHtml(app.release?.version || 'Latest');
-    const safeSize = app.release?.sizeMb ? `${escapeHtml(app.release.sizeMb)} MB` : 'Auto';
+
+    // Badge & Meta display based on topic ('android-app' vs 'webapp')
+    const badgeLabel = isWebOnly
+      ? 'Web App'
+      : escapeHtml(app.release?.version || (isHybrid ? 'APK + Web' : 'Latest'));
+
+    const typeLabel = isHybrid
+      ? 'Android + Web'
+      : (isWebOnly ? 'Web Application' : 'Android APK');
+
+    const sizeOrStatusLabel = isWebOnly
+      ? 'Status: <strong>Online</strong>'
+      : `Size: <strong>${app.release?.sizeMb ? `${escapeHtml(app.release.sizeMb)} MB` : 'Auto'}</strong>`;
+
+    // Action buttons tailored to 'android-app' vs 'webapp'
+    let actionsHtml = '';
+    if (isWebOnly) {
+      actionsHtml = `
+        <a 
+          href="${escapeHtml(app.pageUrl)}" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn btn-download">
+          Launch Web App
+        </a>
+        <a 
+          href="${escapeHtml(app.repoUrl)}" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn btn-page">
+          Source Repo
+        </a>
+      `;
+    } else {
+      const downloadLabel = hasApk ? 'Download APK' : 'APK Pending';
+      const pageLabel = isHybrid ? 'Launch Web App' : (app.hasPages ? 'App Page' : 'No Web Page');
+      actionsHtml = `
+        <a 
+          ${hasApk ? `href="${escapeHtml(app.release.downloadUrl)}" download` : 'role="button" aria-disabled="true" tabindex="-1"'}
+          class="btn btn-download ${!hasApk ? 'disabled' : ''}">
+          ${downloadLabel}
+        </a>
+        <a 
+          ${app.hasPages ? `href="${escapeHtml(app.pageUrl)}" target="_blank" rel="noopener noreferrer"` : 'role="button" aria-disabled="true" tabindex="-1"'}
+          class="btn btn-page ${!app.hasPages ? 'disabled' : ''}">
+          ${pageLabel}
+        </a>
+      `;
+    }
 
     card.innerHTML = `
       <div class="card-header">
@@ -133,28 +171,19 @@ function renderCards(apps, isSearchActive = false) {
         />
         <div class="card-title-group">
           <div class="app-title" title="${safeName}">${safeName}</div>
-          <span class="version-pill">${safeVersion}</span>
+          <span class="version-pill">${badgeLabel}</span>
         </div>
       </div>
       
       <p class="app-desc">${safeDesc}</p>
       
       <div class="meta-stats">
-        <span>Type: <strong>Android APK</strong></span>
-        <span>Size: <strong>${safeSize}</strong></span>
+        <span>Type: <strong>${typeLabel}</strong></span>
+        <span>${sizeOrStatusLabel}</span>
       </div>
 
       <div class="actions-group">
-        <a 
-          ${hasApk ? `href="${escapeHtml(app.release.downloadUrl)}" download` : 'role="button" aria-disabled="true" tabindex="-1"'}
-          class="btn btn-download ${!hasApk ? 'disabled' : ''}">
-          ${downloadLabel}
-        </a>
-        <a 
-          ${app.hasPages ? `href="${escapeHtml(app.pageUrl)}" target="_blank" rel="noopener noreferrer"` : 'role="button" aria-disabled="true" tabindex="-1"'}
-          class="btn btn-page ${!app.hasPages ? 'disabled' : ''}">
-          ${app.hasPages ? 'App Page' : 'No Web Page'}
-        </a>
+        ${actionsHtml}
       </div>
     `;
 
@@ -168,25 +197,83 @@ async function init() {
   const searchInput = document.getElementById('search-input');
 
   try {
-    appCatalog = await loadCatalog();
+    // Load cached manifest first so we have custom names/icons and release cache ready
+    const cachedList = await loadCachedManifest();
+    const cacheMap = new Map(
+      cachedList.map(item => [(item.repo || '').toLowerCase(), item])
+    );
+
+    let repos = [];
+    try {
+      // Live GitHub topic discovery ('android-app' and 'webapp')
+      repos = await fetchTaggedRepositories();
+    } catch (apiErr) {
+      console.warn('Live GitHub API rate-limited or unreachable, using cached manifest:', apiErr);
+    }
+
+    if (repos.length > 0) {
+      appCatalog = await Promise.all(repos.map(async (repo) => {
+        const cached = cacheMap.get(repo.full_name.toLowerCase()) || {};
+        const topics = (repo.topics || []).map(t => t.toLowerCase());
+        const isAndroid = topics.includes('android-app');
+        const isWeb = topics.includes('webapp');
+
+        // Use cached release info if available, otherwise fetch live for Android apps
+        let release = cached.release || { version: null, downloadUrl: null, sizeMb: null };
+        if (isAndroid && (!release || !release.downloadUrl)) {
+          release = await resolveReleaseData(repo.full_name);
+        }
+
+        return {
+          id: repo.name.toLowerCase(),
+          name: cached.name || formatTitle(repo.name),
+          description: repo.description || cached.fallbackDesc || 'Application developed by SEnterpriseHub.',
+          repoFullName: repo.full_name,
+          repoUrl: repo.html_url,
+          appType: isAndroid && isWeb ? 'hybrid' : (isWeb ? 'webapp' : 'android'),
+          topics,
+          pageUrl: cached.pageUrl || repo.homepage || `https://${GITHUB_OWNER}.github.io/${repo.name}/`,
+          hasPages: Boolean(cached.pageUrl || repo.homepage || repo.has_pages || isWeb),
+          iconUrl: cached.defaultIcon || `https://raw.githubusercontent.com/${repo.full_name}/${repo.default_branch || 'main'}/icon.png`,
+          release
+        };
+      }));
+    } else if (cachedList.length > 0) {
+      // Fallback if visitor is rate-limited by GitHub API
+      appCatalog = cachedList.map(item => ({
+        id: (item.id || item.name || '').toLowerCase(),
+        name: item.name,
+        description: item.fallbackDesc || 'Application developed by SEnterpriseHub.',
+        repoFullName: item.repo,
+        repoUrl: item.repoUrl || `https://github.com/${item.repo}`,
+        appType: item.appType || 'android',
+        topics: item.topics || ['android-app'],
+        pageUrl: item.pageUrl,
+        hasPages: true,
+        iconUrl: item.defaultIcon,
+        release: item.release || { version: null, downloadUrl: null, sizeMb: null }
+      }));
+    }
 
     statusContainer.style.display = 'none';
     appGrid.style.display = 'grid';
     renderCards(appCatalog, false);
 
+    // Real-time search across name, description, ID, or topic ('android-app' / 'webapp')
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase().trim();
         const filtered = appCatalog.filter(item =>
           item.name.toLowerCase().includes(term) ||
           item.description.toLowerCase().includes(term) ||
-          item.id.includes(term)
+          item.id.includes(term) ||
+          (item.topics || []).some(t => t.includes(term))
         );
         renderCards(filtered, term.length > 0);
       });
     }
   } catch (err) {
-    statusContainer.innerHTML = `<p style="color: #ef4444;">Failed to load applications: ${escapeHtml(err.message)}</p>`;
+    statusContainer.innerHTML = `<p style="color: #ef4444;">Failed to discover applications: ${escapeHtml(err.message)}</p>`;
     console.error(err);
   }
 }
