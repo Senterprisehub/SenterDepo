@@ -3,75 +3,385 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <!-- ================================================================= -->
-  <!-- GOOGLE SEARCH CONSOLE VERIFICATION TAG (Paste your code below)    -->
-  <!-- ================================================================= -->
-  <meta name="google-site-verification" content="28V1gQDGx_gZvn9bzhC_Wb6TOKw6jtHQeLcLBU97opU" />
-  <!-- ================================================================= -->
 
-  <title>SR Apps Studio — Web Apps & Android APKs</title>
-  <meta name="description" content="Explore and download utility web apps, calculators, and custom Android APKs built by SR Apps Studio." />
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content="28V1gQDGx_gZvn9bzhC_Wb6TOKw6jtHQeLcLBU97opU" />
+
+  <title>SenterDepo — Independent Android APKs & Local-First Web Utilities</title>
+  <meta name="description" content="SenterDepo is an independent software distribution hub offering verified Android APKs, offline-capable web utilities, billing tools, and field productivity applications with zero paywalls." />
+  <meta name="keywords" content="SenterDepo, Senter Depo, SenterDepot, Senter Depot, CenterDepo, Center Depo, CenterDepot, S Enter Depo, SenterDipo, SenterDepo Apps, SEnterpriseHub, Android APK downloads, web utilities" />
   <meta name="theme-color" content="#f8fafc" />
+  <link rel="canonical" href="https://senterdepo.vercel.app/" />
 
   <!-- Open Graph (WhatsApp, Facebook, LinkedIn, Telegram) -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://srappstudio.vercel.app/" />
-  <meta property="og:site_name" content="SR Apps Studio" />
-  <meta property="og:title" content="SR Apps Studio — Web Apps & Android APKs" />
-  <meta property="og:description" content="Explore and download utility web apps, calculators, and custom Android APKs built by SR Apps Studio." />
-  <meta property="og:image" content="https://srappstudio.vercel.app/og-preview.png" />
+  <meta property="og:url" content="https://senterdepo.vercel.app/" />
+  <meta property="og:site_name" content="SenterDepo" />
+  <meta property="og:title" content="SenterDepo — Android APKs & Web Utilities" />
+  <meta property="og:description" content="Explore and download lightweight Android APKs and standalone browser utilities built for reliability, privacy, and zero-friction workflows." />
+  <meta property="og:image" content="https://senterdepo.vercel.app/og-preview.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
   <!-- X (Twitter) -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="SR Apps Studio — Web Apps & Android APKs" />
-  <meta name="twitter:description" content="Explore and download utility web apps, calculators, and custom Android APKs built by SR Apps Studio." />
-  <meta name="twitter:image" content="https://srappstudio.vercel.app/og-preview.png" />
+  <meta name="twitter:title" content="SenterDepo — Android APKs & Web Utilities" />
+  <meta name="twitter:description" content="Explore and download lightweight Android APKs and standalone browser utilities built for reliability, privacy, and zero-friction workflows." />
+  <meta name="twitter:image" content="https://senterdepo.vercel.app/og-preview.png" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "SR Apps Studio",
-    "alternateName": ["SRAppStudio", "SR Apps"],
-    "url": "https://srappstudio.vercel.app/"
+    "name": "SenterDepo",
+    "alternateName": [
+      "Senter Depo",
+      "SenterDepot",
+      "Senter Depot",
+      "CenterDepo",
+      "Center Depo",
+      "CenterDepot",
+      "Center Depot",
+      "S Enter Depo",
+      "SenterDipo",
+      "Senter Dipo",
+      "SentraDepo",
+      "SenterDepo Hub",
+      "SenterDepo Apps",
+      "SEnterpriseHub"
+    ],
+    "url": "https://senterdepo.vercel.app/",
+    "description": "Independent software distribution hub for verified Android APKs and local-first web utility applications."
   }
   </script>
 </head>
 <body>
-  <div class="site-wrapper">
-    <header class="hero">
-      <div class="brand-tag">Application Hub</div>
-      <h1 class="hero-title">SR App Studio Android & Web Applications</h1>
-      <p class="hero-subtitle">Direct browser APK downloads and dedicated web utilities.</p>
-      
-      <div class="search-container">
-        <input 
-          type="search" 
-          id="search-input" 
-          aria-label="Search applications"
-          placeholder="Search apps by name, description, or keyword..." 
-          autocomplete="off"
-        />
-      </div>
-    </header>
+  <!-- Sticky Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="brand-lockup" aria-label="SenterDepo Home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </span>
+        <span class="brand-name">Senter<span class="brand-accent">Depo</span></span>
+      </a>
 
-    <main class="catalog-section">
+      <div class="nav-links">
+        <a href="#catalog">Catalog</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#install-guide">Install Guide</a>
+        <a href="#about">About</a>
+      </div>
+
+      <div class="nav-status" title="Edge-cached release pipeline active">
+        <span class="pulse-dot"></span>
+        <span>Edge Live</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Live Interactive Motion Canvas -->
+  <header class="hero">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-grid-overlay" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <polyline points="9 12 11 14 15 10"></polyline>
+        </svg>
+        <span>Direct Release Distribution · Zero Paywalls</span>
+      </div>
+
+      <h1 class="hero-title">
+        Precision Software &amp; <span class="text-gradient">Verified Android APKs</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        SenterDepo is an independent engineering depot for lightweight Android utilities, billing terminals, field trackers, and offline-ready web applications. Built for speed, local data privacy, and instant browser deployment.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#catalog" class="btn btn-primary btn-lg">
+          <span>Explore Catalog</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <a href="#architecture" class="btn btn-outline btn-lg">
+          <span>Platform Architecture</span>
+        </a>
+      </div>
+
+      <!-- Live Animated Metrics Bar -->
+      <div class="metrics-strip">
+        <div class="metric-item">
+          <span class="metric-value" id="stat-total">--</span>
+          <span class="metric-label">Published Apps</span>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric-item">
+          <span class="metric-value" id="stat-android">--</span>
+          <span class="metric-label">Android APKs</span>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric-item">
+          <span class="metric-value" id="stat-web">--</span>
+          <span class="metric-label">Web Utilities</span>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric-item">
+          <span class="metric-value">100%</span>
+          <span class="metric-label">Free &amp; Local-First</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Application Catalog Section -->
+    <section id="catalog" class="section container">
+      <div class="section-header">
+        <div>
+          <span class="section-eyebrow">Software Directory</span>
+          <h2 class="section-title">Application Catalog</h2>
+        </div>
+        <p class="section-desc">
+          Every build listed below is automatically synchronized with our official release pipeline. Filter by platform or search by tool capability.
+        </p>
+      </div>
+
+      <!-- Interactive Controls Bar -->
+      <div class="controls-bar">
+        <div class="search-box">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input
+            type="search"
+            id="search-input"
+            aria-label="Search applications"
+            placeholder="Search by app name, category, or function..."
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="filter-controls">
+          <div class="filter-pills" role="tablist" aria-label="Filter applications by platform">
+            <button type="button" class="filter-pill active" data-filter="all" role="tab" aria-selected="true">All</button>
+            <button type="button" class="filter-pill" data-filter="android" role="tab" aria-selected="false">Android APK</button>
+            <button type="button" class="filter-pill" data-filter="webapp" role="tab" aria-selected="false">Web Apps</button>
+            <button type="button" class="filter-pill" data-filter="hybrid" role="tab" aria-selected="false">Hybrid</button>
+          </div>
+
+          <select id="sort-select" class="sort-select" aria-label="Sort applications">
+            <option value="default">Sort: Featured</option>
+            <option value="az">Sort: A to Z</option>
+            <option value="za">Sort: Z to A</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="results-meta" class="results-meta" style="display: none;"></div>
+
       <div id="status-container" class="status-container" role="status" aria-live="polite">
         <div class="spinner"></div>
-        <p>Loading application catalog...</p>
+        <p>Synchronizing live catalog from edge network...</p>
       </div>
-      <div id="app-grid" class="app-grid" style="display: none;"></div>
-    </main>
 
-    <footer class="site-footer">
-      <p>© SEnterpriseHub · All APKs verified directly from official releases</p>
-    </footer>
+      <div id="app-grid" class="app-grid" style="display: none;"></div>
+    </section>
+
+    <!-- Architecture & Engineering Principles -->
+    <section id="architecture" class="section section-alt">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-eyebrow">Engineering Standards</span>
+          <h2 class="section-title">Built for Speed, Privacy, and Zero Friction</h2>
+          <p class="section-desc">
+            Unlike ad-heavy app aggregators, SenterDepo delivers first-party software directly from source builds with transparent architecture.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card reveal">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="M9 12l2 2 4-4"></path>
+              </svg>
+            </div>
+            <h3>Verified Release Binaries</h3>
+            <p>Every Android APK is fetched directly from official versioned release channels with zero third-party repackaging, injected adware, or modified signatures.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <h3>Local-First Data Ownership</h3>
+            <p>Our web utilities and mobile tools store operational records locally on your device. No forced account sign-ups, subscription walls, or hidden cloud tracking.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3>Edge-Cached Distribution</h3>
+            <p>Catalog metadata is served through a globally distributed edge proxy, ensuring sub-second page loads and reliable availability even under peak traffic.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+            </div>
+            <h3>Field-Ready Responsive UI</h3>
+            <p>Engineered for everyday field operations, retail POS workflows, and quick calculations across Android smartphones, tablets, and desktop browsers.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- APK Installation Guide -->
+    <section id="install-guide" class="section container">
+      <div class="section-header centered reveal">
+        <span class="section-eyebrow">Quick Setup</span>
+        <h2 class="section-title">How to Install Android APKs</h2>
+        <p class="section-desc">
+          Installing direct releases from SenterDepo takes less than a minute on any modern Android device.
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card reveal">
+          <div class="step-number">01</div>
+          <h3>Download Official Build</h3>
+          <p>Select your required utility from the catalog above and tap <strong>Download APK</strong> to fetch the latest compiled package directly to your device.</p>
+        </div>
+
+        <div class="step-card reveal">
+          <div class="step-number">02</div>
+          <h3>Permit Browser Install</h3>
+          <p>Open the downloaded <code>.apk</code> file. If prompted by Android, enable <em>Install unknown apps</em> for your browser in system settings.</p>
+        </div>
+
+        <div class="step-card reveal">
+          <div class="step-number">03</div>
+          <h3>Launch &amp; Work Offline</h3>
+          <p>Complete the installation and launch the app immediately. Most SenterDepo utilities operate fully offline with instant local storage.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About SenterDepo -->
+    <section id="about" class="section section-alt">
+      <div class="container">
+        <div class="about-panel reveal">
+          <div class="about-content">
+            <span class="section-eyebrow">About The Platform</span>
+            <h2 class="section-title">Independent Tools Crafted for Real-World Workflows</h2>
+            <p>
+              <strong>SenterDepo</strong> serves as the central software warehouse for our suite of productivity utilities—spanning GST-ready invoicing, Bluetooth thermal printing, GPS route testing, vehicle mileage logging, sales pipeline tracking, and personal wellness calculators.
+            </p>
+            <p>
+              Every project in the depot is designed around one core rule: practical software should launch fast, respect your device storage, and solve a specific job cleanly without bloating your phone or locking basic features behind monthly subscriptions.
+            </p>
+          </div>
+          <div class="about-specs">
+            <div class="spec-row">
+              <span class="spec-key">Platform Focus</span>
+              <span class="spec-val">Android APKs &amp; Standalone PWAs</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Distribution Model</span>
+              <span class="spec-val">Direct Release Binaries</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Infrastructure</span>
+              <span class="spec-val">Vercel Global Edge CDN</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Cost &amp; Access</span>
+              <span class="spec-val">Free · No Registration Required</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive App Details Modal -->
+  <div id="app-modal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-panel">
+      <button type="button" id="modal-close" class="modal-close" aria-label="Close modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div id="modal-body"></div>
+    </div>
   </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="brand-lockup">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </span>
+          <span class="brand-name">Senter<span class="brand-accent">Depo</span></span>
+        </div>
+        <p class="footer-tagline">
+          Independent Android APK and local-first web utility depot engineered for fast, reliable everyday workflows.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="#catalog">Application Catalog</a>
+        <a href="#architecture">Platform Architecture</a>
+        <a href="#install-guide">APK Install Guide</a>
+        <a href="#about">About SenterDepo</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Distribution</h4>
+        <span>Direct Release Verification</span>
+        <span>Zero-Tracker Web Tools</span>
+        <span>Edge-Cached API Delivery</span>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; <span id="footer-year">2026</span> SenterDepo. All packages distributed directly from official releases.</p>
+    </div>
+  </footer>
 
   <script src="app.js" defer></script>
 </body>
