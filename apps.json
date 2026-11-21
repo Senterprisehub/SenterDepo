@@ -45,7 +45,7 @@
     "repo": "senterprisehub/Mock-GPS-Pro",
     "pageUrl": "https://senterprisehub.github.io/Mock-GPS-Pro/",
     "defaultIcon": "https://raw.githubusercontent.com/senterprisehub/Mock-GPS-Pro/main/icon.png",
-    "fallbackDesc": "Developer mock location spoofer with customizable route simulations."
+    "fallbackDesc": "Developer mock location GPS simulation and route testing utility with customizable route simulations."
   },
   {
     "id": "sales-flow-app",
