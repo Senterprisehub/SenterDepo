@@ -12,7 +12,7 @@ function getHeaders() {
   const headers = {
     'Accept': 'application/vnd.github+json',
     'X-GitHub-Api-Version': '2022-11-28',
-    'User-Agent': 'SEnterpriseHub-Vercel-Catalog'
+    'User-Agent': 'SenterDepo-Vercel-Catalog'
   };
   if (process.env.GITHUB_TOKEN) {
     headers['Authorization'] = `Bearer ${process.env.GITHUB_TOKEN}`;
@@ -68,7 +68,7 @@ module.exports = async function handler(req, res) {
         return {
           id: repo.name.toLowerCase(),
           name: formatTitle(repo.name),
-          description: repo.description || 'Application developed by SEnterpriseHub.',
+          description: repo.description || 'Utility application published on SenterDepo.',
           repoFullName: repo.full_name,
           repoUrl: repo.html_url,
           appType: isAndroid && isWeb ? 'hybrid' : (isWeb ? 'webapp' : 'android'),
@@ -81,7 +81,6 @@ module.exports = async function handler(req, res) {
       })
     );
 
-    // Cache on Vercel Edge CDN for 15 minutes (900s), serve stale while revalidating
     res.setHeader('Cache-Control', 'public, s-maxage=900, stale-while-revalidate=3600');
     return res.status(200).json(catalog);
   } catch (err) {
